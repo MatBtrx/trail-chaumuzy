@@ -1,0 +1,11 @@
+{
+  "total": 500,
+  "updated": "2026-06-09",
+  "registrationUrl": "",
+  "earlyBirdThreshold": 200,
+  "categories": [
+    { "label": "Club", "sold": 0, "quota": 100 },
+    { "label": "Grand Public", "sold": 0, "quota": 375 }
+  ],
+  "_comment": "Jauge dossards PUBLICS (billetterie MILES REPUBLIC), alignee sur le budget L012. La vente B2B Entreprise (25 dossards, sur demande) n'apparait PAS dans la jauge. Quotas publics : Club 100 (50 au 18km + 50 au 24km), Grand Public 375 (early bird 200 + standard 175). 'sold' = inscrits releves dans l'espace organisateur. 'earlyBirdThreshold' = 200 dossards Grand Public au tarif early bird (100 par distance) avant passage au standard — logique par QUOTA, pas par date. 'updated' = date du releve. 'registrationUrl' = URL Miles Republic ; vide => renvoi vers la pre-inscription Brevo."
+}
