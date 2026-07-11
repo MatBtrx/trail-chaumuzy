@@ -121,6 +121,8 @@ a{color:inherit; text-decoration:none}
 /* secondary ("gold") CTA: bright on dark sections, legible-ink on light */
 .btn-gold{ background:transparent; color:var(--gold-ink); border-color:var(--gold-ink); }
 .btn-gold:hover{ background:var(--gold-ink); color:var(--cream); transform:translateY(-2px); }
+.btn.is-disabled{ opacity:.5; cursor:default; pointer-events:none; }
+.btn.is-disabled:hover{ background:transparent; color:inherit; transform:none; }
 .dark .btn-gold, .hero .btn-gold, .sticky-cta .btn-gold, .nav .btn-gold{ color:var(--gold); border-color:var(--gold); }
 .dark .btn-gold:hover, .hero .btn-gold:hover, .sticky-cta .btn-gold:hover, .nav .btn-gold:hover{ background:var(--gold); color:var(--ink); }
 .btn-ghost-dark{ background:transparent; color:var(--on-ink); border-color:var(--hair-on-ink); }
@@ -282,7 +284,7 @@ a{color:inherit; text-decoration:none}
 .rm-legend .rm-km{ font-family:var(--display); font-size:17px; color:var(--gold); letter-spacing:.04em; }
 /* commune markers on the trace */
 .rm-commune circle{ fill:var(--cream); stroke:var(--ink); stroke-width:3; }
-.rm-commune text, .rm-pin text{ fill:var(--on-ink); font-family:var(--text); font-weight:700; font-size:22px; paint-order:stroke; stroke:var(--ink); stroke-width:5px; stroke-linejoin:round; }
+.rm-commune text, .rm-pin text{ fill:var(--on-ink); font-family:var(--text); font-weight:700; font-size:36px; paint-order:stroke; stroke:var(--ink); stroke-width:7px; stroke-linejoin:round; }
 .rm-pin text{ fill:var(--gold); }
 /* commune partner slots */
 /* commune partner slots — name always on ONE line, 4 slots equal width & height */
