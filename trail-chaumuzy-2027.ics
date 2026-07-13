@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Marne Outdoor Experiences//Trail de Chaumuzy 2027//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:trail-chaumuzy-2027@marne-outdoor-xp
+DTSTAMP:20260607T090000Z
+DTSTART:20270404T073000Z
+DTEND:20270404T120000Z
+SUMMARY:Trail de Chaumuzy 2027 - 1re edition
+DESCRIPTION:Trail de Chaumuzy\, 1re edition. Deux parcours nature (Trail Experience 24 km a 09h30\, Trail Decouverte 18 km a 10h00) au coeur du vignoble champenois. Retrait des dossards des le samedi 3 avril au Foyer Rural de Chaumuzy. Infos et pre-inscription : https://trail-chaumuzy.fr
+LOCATION:Foyer Rural de Chaumuzy\, 33 rue du Capitaine Chesnais\, 51170 Chaumuzy
+GEO:49.1746;3.8653
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Trail de Chaumuzy demain - preparez votre materiel
+END:VALARM
+END:VEVENT
+END:VCALENDAR
