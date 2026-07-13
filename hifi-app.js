@@ -38,7 +38,6 @@ const TYPOS = {
     accent: "#6E3FA3"
   }
 };
-const ACCENTS = ["#E8631C", "#D6A23E", "#6E3FA3", "#E6FF1A", "#00838b", "#9600a6"];
 
 /* Each accent drives a COORDINATED theme: the accent itself + a secondary ("gold")
    that replaces every gold/secondary accent across the site, so picking a colour
@@ -89,16 +88,15 @@ function PulseDivider() {
   }, /*#__PURE__*/React.createElement(Reveal, null, /*#__PURE__*/React.createElement(PulseLine, null)));
 }
 function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const prevTypo = useRef(null);
   useEffect(() => {
+    const accent = TWEAK_DEFAULTS.accent;
+    const th = TYPOS[TWEAK_DEFAULTS.typo] || TYPOS.impact;
     const r = document.documentElement.style;
-    r.setProperty("--accent", t.accent);
-    r.setProperty("--accent-soft", hexToRgba(t.accent, 0.12));
-    r.setProperty("--accent-fg", readableOn(t.accent));
-    r.setProperty("--accent-safe", safeOnLight(t.accent));
-    // coordinated secondary so the whole site re-themes per colour
-    const theme = THEMES[t.accent] || {
+    r.setProperty("--accent", accent);
+    r.setProperty("--accent-soft", hexToRgba(accent, 0.12));
+    r.setProperty("--accent-fg", readableOn(accent));
+    r.setProperty("--accent-safe", safeOnLight(accent));
+    const theme = THEMES[accent] || {
       gold: "#D6A23E"
     };
     r.setProperty("--gold", theme.gold);
@@ -106,37 +104,14 @@ function App() {
     r.setProperty("--gold-ink", safeOnLight(theme.gold));
     r.setProperty("--gold-soft", hexToRgba(theme.gold, 0.14));
     r.setProperty("--champagne", theme.champ || theme.gold);
-  }, [t.accent]);
-  useEffect(() => {
-    const th = TYPOS[t.typo] || TYPOS.impact;
-    const r = document.documentElement.style;
     r.setProperty("--display", th.display);
     r.setProperty("--text", th.text);
     r.setProperty("--disp-tr", th.tr);
     r.setProperty("--disp-wt", th.wt);
     r.setProperty("--disp-tk", th.tk);
-    document.body.dataset.typo = t.typo;
-    if (prevTypo.current && prevTypo.current !== t.typo) setTweak("accent", th.accent);
-    prevTypo.current = t.typo;
-  }, [t.typo]);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Territoire, null), /*#__PURE__*/React.createElement(PulseDivider, null), /*#__PURE__*/React.createElement(Parcours, null), /*#__PURE__*/React.createElement(Programme, null), /*#__PURE__*/React.createElement(Inscriptions, null), /*#__PURE__*/React.createElement(Partenaires, null), /*#__PURE__*/React.createElement(Faq, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(StickyCTA, null), /*#__PURE__*/React.createElement(TweaksPanel, null, /*#__PURE__*/React.createElement(TweakSection, {
-    label: "Typographie"
-  }), /*#__PURE__*/React.createElement(TweakSelect, {
-    label: "Mod\xE8le typo",
-    value: t.typo,
-    options: Object.keys(TYPOS).map(k => ({
-      value: k,
-      label: TYPOS[k].label
-    })),
-    onChange: v => setTweak("typo", v)
-  }), /*#__PURE__*/React.createElement(TweakSection, {
-    label: "Identit\xE9"
-  }), /*#__PURE__*/React.createElement(TweakColor, {
-    label: "Couleur d'accent",
-    value: t.accent,
-    options: ACCENTS,
-    onChange: v => setTweak("accent", v)
-  })));
+    document.body.dataset.typo = TWEAK_DEFAULTS.typo;
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Territoire, null), /*#__PURE__*/React.createElement(PulseDivider, null), /*#__PURE__*/React.createElement(Parcours, null), /*#__PURE__*/React.createElement(Programme, null), /*#__PURE__*/React.createElement(Inscriptions, null), /*#__PURE__*/React.createElement(Partenaires, null), /*#__PURE__*/React.createElement(Faq, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(StickyCTA, null));
 }
 
 /* ---- color helpers ---- */

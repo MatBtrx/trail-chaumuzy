@@ -7,8 +7,6 @@ const TYPOS = {
   editorial: { label: "Éditorial Champagne",       display: "'DM Serif Display',serif",                   text: "'DM Sans',sans-serif",      tr: "none",      wt: 400, tk: "0",      accent: "#6E3FA3" },
 };
 
-const ACCENTS = ["#E8631C", "#D6A23E", "#6E3FA3", "#E6FF1A", "#00838b", "#9600a6"];
-
 /* Each accent drives a COORDINATED theme: the accent itself + a secondary ("gold")
    that replaces every gold/secondary accent across the site, so picking a colour
    re-themes the WHOLE page (rings, eyebrows, traces, secondary CTAs…), not just one
@@ -39,36 +37,27 @@ function PulseDivider() {
 }
 
 function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const prevTypo = useRef(null);
-
   useEffect(() => {
+    const accent = TWEAK_DEFAULTS.accent;
+    const th = TYPOS[TWEAK_DEFAULTS.typo] || TYPOS.impact;
     const r = document.documentElement.style;
-    r.setProperty("--accent", t.accent);
-    r.setProperty("--accent-soft", hexToRgba(t.accent, 0.12));
-    r.setProperty("--accent-fg", readableOn(t.accent));
-    r.setProperty("--accent-safe", safeOnLight(t.accent));
-    // coordinated secondary so the whole site re-themes per colour
-    const theme = THEMES[t.accent] || { gold: "#D6A23E" };
+    r.setProperty("--accent", accent);
+    r.setProperty("--accent-soft", hexToRgba(accent, 0.12));
+    r.setProperty("--accent-fg", readableOn(accent));
+    r.setProperty("--accent-safe", safeOnLight(accent));
+    const theme = THEMES[accent] || { gold: "#D6A23E" };
     r.setProperty("--gold", theme.gold);
     r.setProperty("--gold-deep", darken(theme.gold, 0.78));
     r.setProperty("--gold-ink", safeOnLight(theme.gold));
     r.setProperty("--gold-soft", hexToRgba(theme.gold, 0.14));
     r.setProperty("--champagne", theme.champ || theme.gold);
-  }, [t.accent]);
-
-  useEffect(() => {
-    const th = TYPOS[t.typo] || TYPOS.impact;
-    const r = document.documentElement.style;
     r.setProperty("--display", th.display);
     r.setProperty("--text", th.text);
     r.setProperty("--disp-tr", th.tr);
     r.setProperty("--disp-wt", th.wt);
     r.setProperty("--disp-tk", th.tk);
-    document.body.dataset.typo = t.typo;
-    if (prevTypo.current && prevTypo.current !== t.typo) setTweak("accent", th.accent);
-    prevTypo.current = t.typo;
-  }, [t.typo]);
+    document.body.dataset.typo = TWEAK_DEFAULTS.typo;
+  }, []);
 
   return (
     <React.Fragment>
@@ -85,16 +74,6 @@ function App() {
       </main>
       <Footer />
       <StickyCTA />
-
-      <TweaksPanel>
-        <TweakSection label="Typographie" />
-        <TweakSelect label="Modèle typo" value={t.typo}
-          options={Object.keys(TYPOS).map((k) => ({ value: k, label: TYPOS[k].label }))}
-          onChange={(v) => setTweak("typo", v)} />
-        <TweakSection label="Identité" />
-        <TweakColor label="Couleur d'accent" value={t.accent} options={ACCENTS}
-          onChange={(v) => setTweak("accent", v)} />
-      </TweaksPanel>
     </React.Fragment>
   );
 }
