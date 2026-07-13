@@ -1,6 +1,3 @@
-[README.md](https://github.com/user-attachments/files/28770858/README.md)
-# trail-chaumuzy
-Site internet du Trail de Chaumuzy
 # Trail de Chaumuzy 2027 — site web
 
 Site statique (HTML/CSS/JS). Aucune compilation nécessaire : tout est déjà prêt.
