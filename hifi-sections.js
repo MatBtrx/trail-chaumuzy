@@ -1,6 +1,13 @@
-/* hifi-sections.jsx — page sections for Trail de Chaumuzy 2027 */
+/* hifi-sections.jsx - page sections for Trail de Chaumuzy 2027 */
 
 /* ---------- data ---------- */
+/* Jauge de dossards + early bird masqués tant que la billetterie n'est pas ouverte.
+   Repasser à true à l'ouverture des inscriptions (octobre 2026). */
+const SHOW_GAUGE = false;
+/* CTA de téléchargement des tracés GPX masqué pour le moment. Repasser à true pour réafficher. */
+const SHOW_GPX = false;
+/* Pack entreprise (B2B) masqué pour le moment. Repasser à true pour réafficher. */
+const SHOW_B2B = false;
 const COMMUNES = [{
   nm: "Chaumuzy",
   meta: ""
@@ -53,37 +60,37 @@ const PARCOURS = {
 };
 const PROG = [{
   d: "Samedi 3 avril",
-  t: "17h–19h",
+  t: "17h-19h",
   w: "Retrait des dossards",
-  tag: "Foyer Rural · 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
   key: false
 }, {
   d: "Dimanche 4 avril",
-  t: "07h–09h",
+  t: "07h-09h",
   w: "Retrait des dossards",
-  tag: "Foyer Rural · 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
   key: false
 }, {
   d: "Dimanche 4 avril",
   t: "09h30",
   w: "Départ Trail 24 km",
-  tag: "Foyer Rural · 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
   key: true
 }, {
   d: "Dimanche 4 avril",
   t: "10h00",
   w: "Départ Trail 18 km",
-  tag: "Foyer Rural · 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
   key: true
 }, {
   d: "Dimanche 4 avril",
-  t: "11h15–13h15",
+  t: "11h15-13h15",
   w: "Arrivées et remise des prix",
-  tag: "Foyer Rural · 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
   key: false
 }];
@@ -179,15 +186,7 @@ function Nav() {
   }, n.l)), /*#__PURE__*/React.createElement("a", {
     href: "#partenaires",
     onClick: close
-  }, "Partenaires"), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: "#preinscription",
-    onClick: close,
-    style: {
-      marginTop: 20,
-      justifyContent: "center"
-    }
-  }, "Pr\xE9-inscription")));
+  }, "Partenaires")));
 }
 
 /* ---------- hero ---------- */
@@ -205,7 +204,7 @@ function Hero() {
   })), /*#__PURE__*/React.createElement(Reveal, {
     className: "hero-date",
     d: 1
-  }, "DIMANCHE 4 AVRIL 2027 \xB7 MARNE"), /*#__PURE__*/React.createElement(Reveal, {
+  }, "DIMANCHE 4 AVRIL 2027 - MARNE"), /*#__PURE__*/React.createElement(Reveal, {
     tag: "h1",
     className: "display hero-title",
     d: 1
@@ -227,7 +226,7 @@ function Hero() {
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
     href: "#preinscription"
-  }, "Pr\xE9-inscription"), /*#__PURE__*/React.createElement("a", {
+  }, "\xCAtre pr\xE9venu de l'ouverture"), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold",
     href: "#parcours"
   }, "D\xE9couvrir les parcours")), /*#__PURE__*/React.createElement(Reveal, {
@@ -275,13 +274,7 @@ function Territoire() {
     style: {
       marginTop: 18
     }
-  }, "Le Trail de Chaumuzy traverse quatre communes de la Montagne de Reims: Chaumuzy, Belval-sous-Ch\xE2tillon, La Neuville-aux-Larris et Champlat-et-Boujacourt. Entre vignobles, for\xEAts et villages typiques, les parcours offrent une immersion unique dans l'un des territoires les plus remarquables du Grand Est."), /*#__PURE__*/React.createElement("p", {
-    className: "lead",
-    style: {
-      marginTop: 14,
-      fontSize: 16
-    }
-  }), /*#__PURE__*/React.createElement("div", {
+  }, "Le Trail de Chaumuzy traverse quatre communes de la Montagne de Reims: Chaumuzy, Belval-sous-Ch\xE2tillon, La Neuville-aux-Larris et Champlat-et-Boujacourt. Entre vignobles, for\xEAts et villages typiques, les parcours offrent une immersion unique au c\u0153ur du Parc Naturel de la Montagne de Reims."), /*#__PURE__*/React.createElement("div", {
     className: "commune-list"
   }, COMMUNES.map((c, i) => /*#__PURE__*/React.createElement("div", {
     className: "commune",
@@ -336,10 +329,10 @@ function Parcours() {
   }, /*#__PURE__*/React.createElement("button", {
     className: "par-tab" + (km === 24 ? " on" : ""),
     onClick: () => setKm(24)
-  }, "Trail Exp\xE9rience \xB7 24 km"), /*#__PURE__*/React.createElement("button", {
+  }, "Trail Exp\xE9rience - 24 km"), /*#__PURE__*/React.createElement("button", {
     className: "par-tab" + (km === 18 ? " on" : ""),
     onClick: () => setKm(18)
-  }, "Trail D\xE9couverte \xB7 18 km"))), /*#__PURE__*/React.createElement("div", {
+  }, "Trail D\xE9couverte - 18 km"))), /*#__PURE__*/React.createElement("div", {
     className: "card par-card",
     key: km
   }, /*#__PURE__*/React.createElement("div", {
@@ -381,7 +374,7 @@ function Parcours() {
     s: 15
   }), " Altitude"), /*#__PURE__*/React.createElement("div", {
     className: "v"
-  }, p.altMin, "\u2013", p.altMax, " ", /*#__PURE__*/React.createElement("small", null, "m"))), /*#__PURE__*/React.createElement("div", {
+  }, p.altMin, "-", p.altMax, " ", /*#__PURE__*/React.createElement("small", null, "m"))), /*#__PURE__*/React.createElement("div", {
     className: "par-stat"
   }, /*#__PURE__*/React.createElement("div", {
     className: "k"
@@ -411,17 +404,30 @@ function Parcours() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "pin",
     s: 15
-  }), " ", window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 24 ? 4 : 3), " communes travers\xE9es")), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-gold",
-    href: "assets/trail_chaumuzy_" + p.km + "km.gpx",
-    download: true,
-    style: {
-      marginTop: 18
-    }
+  }), " ", window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 24 ? 4 : 3), " communes travers\xE9es")), /*#__PURE__*/React.createElement("div", {
+    style: { display: "flex", gap: 12, marginTop: 18, flexWrap: "wrap" }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "btn btn-gold is-disabled",
+    "aria-disabled": "true",
+    style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    n: "fileCheck",
+    s: 16
+  }), " R\xE8glement sportif \xE0 venir"), /*#__PURE__*/React.createElement("span", {
+    className: "btn btn-gold is-disabled",
+    "aria-disabled": "true",
+    style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "arrowDown",
     s: 16
-  }), " T\xE9l\xE9charger le trac\xE9 (.gpx)")), /*#__PURE__*/React.createElement("div", {
+  }), " Trac\xE9 GPX \xE0 venir"), SHOW_GPX && /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-gold",
+    href: "assets/trail_chaumuzy_" + p.km + "km.gpx",
+    download: true
+  }, /*#__PURE__*/React.createElement(Icon, {
+    n: "arrowDown",
+    s: 16
+  }), " T\xE9l\xE9charger le trac\xE9 (.gpx)"))), /*#__PURE__*/React.createElement("div", {
     className: "par-right"
   }, /*#__PURE__*/React.createElement("div", {
     className: "elev-h"
@@ -499,7 +505,7 @@ function Programme() {
 /* ---------- inscriptions ---------- */
 const MEET_B2B = "https://meet.brevo.com/mathieu-boutroux-2/rendez-vous-de-30-minutes";
 
-/* B2B enterprise offer — premium pack + interactive quote simulator + brochure lead */
+/* B2B enterprise offer - premium pack + interactive quote simulator + brochure lead */
 const B2B_UNIT = 50; // € / dossard
 function B2BOffer() {
   const incl = ["Dossards groupés (à partir de 5 coureurs)", "Inscription centralisée + facture unique", "Logo entreprise sur la page partenaires", "Visibilité sur la zone d'arrivée", "Ravitaillement et espace d'accueil dédié", "Photos de l'équipe offertes"];
@@ -596,7 +602,7 @@ function TarifCard({
       borderColor: color,
       color
     }
-  }, km === 18 ? 300 : 200, " dossards")), /*#__PURE__*/React.createElement("div", {
+  }, km === 18 ? 300 : 200, " dossards max")), /*#__PURE__*/React.createElement("div", {
     className: "tarif-rows"
   }, tiers.map((t, i) => /*#__PURE__*/React.createElement("div", {
     className: "tarif-row",
@@ -627,12 +633,12 @@ function Inscriptions() {
     l: "Grand public",
     s: "early bird",
     p: "20 €",
-    q: 100
+    q: 50
   }, {
     l: "Grand public",
     s: "standard",
     p: "25 €",
-    q: 125
+    q: 150
   }];
   const t24 = [{
     l: "Club",
@@ -644,12 +650,12 @@ function Inscriptions() {
     l: "Grand public",
     s: "early bird",
     p: "25 €",
-    q: 100
+    q: 50
   }, {
     l: "Grand public",
     s: "standard",
     p: "30 €",
-    q: 50
+    q: 100
   }];
   return /*#__PURE__*/React.createElement("section", {
     className: "section cream-2",
@@ -676,7 +682,7 @@ function Inscriptions() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "calendar",
     s: 24
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Ouverture officielle des inscriptions : octobre 2026."), " Laissez-nous votre e-mail pour \xEAtre pr\xE9venu en priorit\xE9 d\xE8s l'ouverture de la billetterie.")), /*#__PURE__*/React.createElement(DossardGauge, null), /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Ouverture officielle des inscriptions : octobre 2026."), " Laissez-nous votre e-mail pour \xEAtre pr\xE9venu en priorit\xE9 d\xE8s l'ouverture de la billetterie.")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
     className: "tarif-grid"
   }, /*#__PURE__*/React.createElement(TarifCard, {
     km: 18,
@@ -691,12 +697,7 @@ function Inscriptions() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "fileCheck",
     s: 16
-  }), " Licence FFA ou PPS + pi\xE8ce d'identit\xE9 requis lors du retrait des dossards. ", /*#__PURE__*/React.createElement("a", {
-    href: "mailto:contact@synapse-sport.com",
-    style: {
-      color: "var(--accent-safe)"
-    }
-  }), "."), /*#__PURE__*/React.createElement(B2BOffer, null), /*#__PURE__*/React.createElement(PreinscriptionForm, null)));
+  }), " Licence FFA ou PPS + pi\xE8ce d'identit\xE9 requis lors du retrait des dossards."), SHOW_B2B && /*#__PURE__*/React.createElement(B2BOffer, null), /*#__PURE__*/React.createElement(PreinscriptionForm, null)));
 }
 
 /* ---------- B2C urgency: dossard gauge + early-bird (par quota) ----------
@@ -719,7 +720,7 @@ function DossardGauge() {
   const [ref, seen] = useInView();
   const [data, setData] = useState(DOSSARDS);
   // Pilotée par dossards.json (reflète le nombre d'inscrits Miles Republic).
-  // Mettez à jour ce fichier depuis votre espace organisateur Miles Republic — ou via un script de synchro.
+  // Mettez à jour ce fichier depuis votre espace organisateur Miles Republic - ou via un script de synchro.
   useEffect(() => {
     let on = true;
     const load = () => fetch("dossards.json", {
@@ -848,7 +849,7 @@ function EarlyBird() {
     s: 16
   }), " Early bird"), /*#__PURE__*/React.createElement("div", {
     className: "eb-text"
-  }, /*#__PURE__*/React.createElement("b", null, done ? "Tarif early bird épuisé — tarif standard en vigueur" : "Tarif préférentiel sur les " + threshold + " premiers dossards"), /*#__PURE__*/React.createElement("span", null, done ? "Les premiers dossards au tarif réduit ont tous trouvé preneur." : "Jusqu'à 5 € d'économie par dossard. Réservé aux premiers inscrits."))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("b", null, done ? "Tarif early bird épuisé - tarif standard en vigueur" : "Tarif préférentiel sur les " + threshold + " premiers dossards"), /*#__PURE__*/React.createElement("span", null, done ? "Les premiers dossards au tarif réduit ont tous trouvé preneur." : "Jusqu'à 5 € d'économie par dossard. Réservé aux premiers inscrits."))), /*#__PURE__*/React.createElement("div", {
     className: "eb-count"
   }, /*#__PURE__*/React.createElement("span", {
     className: "eb-days"
@@ -871,37 +872,46 @@ const BREVO = {
 function PreinscriptionForm() {
   const [state, setState] = useState("idle"); // idle | sending | ok | error
   const [dist, setDist] = useState("");
+  const [errMsg, setErrMsg] = useState("");
   const formRef = useRef(null);
+  const LIST_IDS = { "24": 8, "18": 9, "?": 10 };
   const onSubmit = async e => {
     e.preventDefault();
     const form = e.currentTarget;
+    if (!dist) {
+      setState("error");
+      setErrMsg("Merci de choisir le parcours qui vous int\xE9resse.");
+      return;
+    }
+    const rgpd = form.querySelector("#rgpd-checkbox");
+    if (rgpd && !rgpd.checked) {
+      setState("error");
+      setErrMsg("Merci d'accepter la politique de confidentialit\xE9 pour continuer.");
+      return;
+    }
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    // If Brevo isn't configured yet, fall back to a mailto so nothing is lost.
-    if (BREVO.action.includes("REPLACE_WITH_YOUR_FORM_ID")) {
-      const data = new FormData(form);
-      const body = encodeURIComponent(`Prénom: ${data.get(BREVO.firstField) || ""}\nNom: ${data.get(BREVO.lastField) || ""}\nEmail: ${data.get(BREVO.emailField) || ""}\nDistance: ${data.get(BREVO.distField) || dist || "—"}`);
-      window.location.href = `mailto:contact@synapse-sport.com?subject=Pré-inscription%20Trail%20de%20Chaumuzy%202027&body=${body}`;
-      setState("ok");
-      return;
-    }
-    // honeypot tripped → silently treat as success (it's a bot)
-    if (form.elements.email_address_check && form.elements.email_address_check.value) {
-      setState("ok");
-      return;
-    }
+    const payload = {
+      firstname: (form.querySelector("#firstname") || {}).value || "",
+      lastname: (form.querySelector("#lastname") || {}).value || "",
+      email: (form.querySelector("#email") || {}).value || "",
+      listId: LIST_IDS[dist]
+    };
     try {
       setState("sending");
-      await fetch(BREVO.action, {
+      setErrMsg("");
+      const res = await fetch("/api/subscribe", {
         method: "POST",
-        mode: "no-cors",
-        body: new FormData(form)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       });
-      setState("ok"); // no-cors → opaque response, assume success
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      setState("ok");
     } catch (err) {
       setState("error");
+      setErrMsg("Un souci est survenu. R\xE9essayez ou \xE9crivez-nous \xE0 marne.outdoor.experiences@gmail.com.");
     }
   };
   if (state === "ok") {
@@ -923,8 +933,9 @@ function PreinscriptionForm() {
     className: "eyebrow"
   }, "Liste d'attente"), /*#__PURE__*/React.createElement("h3", null, "Soyez pr\xE9venu(e) en priorit\xE9"), /*#__PURE__*/React.createElement("p", {
     className: "muted"
-  }, "Inscriptions ouvertes en octobre 2026. Laissez vos coordonn\xE9es : vous recevrez le coup d'envoi avant tout le monde.")), /*#__PURE__*/React.createElement("form", {
+  }, "Inscriptions ouvertes en octobre 2026 ! Laissez vos coordonn\xE9es : vous recevrez le coup d'envoi avant tout le monde.")), /*#__PURE__*/React.createElement("form", {
     ref: formRef,
+    id: "waiting-list-form",
     className: "preinsc-form",
     onSubmit: onSubmit,
     noValidate: true
@@ -933,26 +944,29 @@ function PreinscriptionForm() {
   }, /*#__PURE__*/React.createElement("label", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", null, "Pr\xE9nom"), /*#__PURE__*/React.createElement("input", {
+    id: "firstname",
     name: BREVO.firstField,
     type: "text",
     autoComplete: "given-name",
-    placeholder: "Camille",
+    placeholder: "Kilian",
     required: true
   })), /*#__PURE__*/React.createElement("label", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", null, "Nom"), /*#__PURE__*/React.createElement("input", {
+    id: "lastname",
     name: BREVO.lastField,
     type: "text",
     autoComplete: "family-name",
-    placeholder: "Durand",
+    placeholder: "Jornet",
     required: true
   }))), /*#__PURE__*/React.createElement("label", {
     className: "field"
   }, /*#__PURE__*/React.createElement("span", null, "E-mail"), /*#__PURE__*/React.createElement("input", {
+    id: "email",
     name: BREVO.emailField,
     type: "email",
     autoComplete: "email",
-    placeholder: "camille.durand@email.fr",
+    placeholder: "kilian.jornet@jekiffchaumuzy.com",
     required: true
   })), /*#__PURE__*/React.createElement("div", {
     className: "field"
@@ -960,13 +974,15 @@ function PreinscriptionForm() {
     className: "seg",
     role: "radiogroup",
     "aria-label": "Parcours"
-  }, [["24", "Trail Expérience · 24 km"], ["18", "Trail Découverte · 18 km"], ["?", "Je ne sais pas encore"]].map(([v, l]) => /*#__PURE__*/React.createElement("label", {
+  }, [["24", "Trail Expérience - 24 km", "8"], ["18", "Trail Découverte - 18 km", "9"], ["?", "Je ne sais pas encore", "10"]].map(([v, l, listId]) => /*#__PURE__*/React.createElement("label", {
     key: v,
-    className: "seg-opt" + (dist === v ? " on" : "")
+    className: "seg-opt" + (dist === v ? " on" : ""),
+    "data-list-id": listId
   }, /*#__PURE__*/React.createElement("input", {
     type: "radio",
     name: BREVO.distField,
     value: v,
+    "data-list-id": listId,
     checked: dist === v,
     onChange: () => setDist(v),
     required: true
@@ -999,10 +1015,11 @@ function PreinscriptionForm() {
   }), /*#__PURE__*/React.createElement("label", {
     className: "consent"
   }, /*#__PURE__*/React.createElement("input", {
+    id: "rgpd-checkbox",
     type: "checkbox",
     required: true
   }), /*#__PURE__*/React.createElement("span", null, "J'accepte de recevoir des informations sur le Trail de Chaumuzy et que mes donn\xE9es soient trait\xE9es conform\xE9ment \xE0 la ", /*#__PURE__*/React.createElement("a", {
-    href: "mentions-legales.html#donnees",
+    href: "confidentialite.html",
     target: "_blank",
     rel: "noopener"
   }, "politique de confidentialit\xE9"), ".")), /*#__PURE__*/React.createElement("button", {
@@ -1015,7 +1032,7 @@ function PreinscriptionForm() {
     }
   }, state === "sending" ? "Envoi…" : "Je m'inscris à la liste d'attente"), state === "error" && /*#__PURE__*/React.createElement("p", {
     className: "form-err"
-  }, "Un souci est survenu. R\xE9essayez ou \xE9crivez-nous \xE0 contact@synapse-sport.com."), /*#__PURE__*/React.createElement("p", {
+  }, errMsg || "Un souci est survenu. R\xE9essayez ou \xE9crivez-nous \xE0 marne.outdoor.experiences@gmail.com."), /*#__PURE__*/React.createElement("p", {
     className: "form-fine"
   }, "Aucun spam. D\xE9sinscription en un clic. Vos donn\xE9es ne sont jamais revendues.")));
 }
@@ -1037,7 +1054,7 @@ function AddToCalendar() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "calendar",
     s: 16
-  }), " Apple \xB7 Outlook (.ics)"), /*#__PURE__*/React.createElement("a", {
+  }), " Apple - Outlook (.ics)"), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-ghost-dark cal-google",
     href: g,
     target: "_blank",
@@ -1052,7 +1069,7 @@ function AddToCalendar() {
 /* Mur de logos partenaires masqué tant qu'il n'y a pas de partenaires réels à afficher.
    Repasser à true pour réafficher Partenaire titre / Officiels / Communes / Mécènes. */
 const SHOW_PARTNER_WALL = false;
-/* PLACEHOLDER perks — à valider par l'organisateur. */
+/* PLACEHOLDER perks - à valider par l'organisateur. */
 const PARTNER_TIERS = [{
   name: "Partenaire titre",
   price: "5 000 €",
@@ -1068,12 +1085,6 @@ const PARTNER_TIERS = [{
   total: 4,
   taken: 0,
   perks: ["Logo sur banderoles et site", "Stand sur le village course", "5 dossards offerts", "Mention réseaux sociaux"]
-}, {
-  name: "Mécène",
-  price: "À partir de 500 €",
-  tone: "ink",
-  slots: "Places ouvertes",
-  perks: ["Logo sur la page partenaires", "Reçu fiscal (mécénat)", "Invitations village et ravitaillement"]
 }];
 function Partenaires() {
   return /*#__PURE__*/React.createElement("section", {
@@ -1097,7 +1108,7 @@ function Partenaires() {
       margin: "0 auto"
     }
   }, "Une 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition, 500 coureurs et 4 communes du vignoble champenois\xA0: une visibilit\xE9 locale forte pour votre entreprise. Trois niveaux d'engagement, \xE0 votre image.")), /*#__PURE__*/React.createElement("div", {
-    className: "tier-grid tier-grid-3"
+    className: "tier-grid tier-grid-2"
   }, PARTNER_TIERS.map(tr => {
     const color = tr.tone === "accent" ? "var(--accent-safe)" : tr.tone === "gold" ? "var(--gold-ink)" : "var(--ink)";
     const left = tr.total != null ? tr.total - tr.taken : null;
@@ -1121,7 +1132,11 @@ function Partenaires() {
       className: "tier-left"
     }, /*#__PURE__*/React.createElement("b", null, left), " / ", tr.total, " places restantes") : tr.slots), /*#__PURE__*/React.createElement("div", {
       className: "tier-price"
-    }, tr.sold ? "Exclusivité" : tr.price), tr.sold ? /*#__PURE__*/React.createElement("div", {
+    }, tr.sold ? "Exclusivité" : /*#__PURE__*/React.createElement("span", {
+      style: {
+        visibility: "hidden"
+      }
+    }, tr.price)), tr.sold ? /*#__PURE__*/React.createElement("div", {
       className: "tier-soldmsg"
     }, /*#__PURE__*/React.createElement("div", {
       className: "tier-partner"
@@ -1134,7 +1149,7 @@ function Partenaires() {
       className: "tier-partner-name"
     }, "Commune de", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("strong", null, "Chaumuzy"))), /*#__PURE__*/React.createElement("p", {
       className: "tier-soldmsg-sub"
-    }, "Partenaire titre de cette 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition \u2014 visibilit\xE9 maximale et exclusivit\xE9. Rendez-vous en 2028 pour ce palier.")) : /*#__PURE__*/React.createElement("ul", {
+    }, "Partenaire titre de cette 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition - visibilit\xE9 maximale et exclusivit\xE9. Rendez-vous en 2028 pour ce palier.")) : /*#__PURE__*/React.createElement("ul", {
       className: "tier-perks"
     }, tr.perks.map((p, i) => /*#__PURE__*/React.createElement("li", {
       key: i
@@ -1161,18 +1176,8 @@ function Partenaires() {
         width: "100%",
         justifyContent: "center"
       }
-    }, "Choisir ce palier"));
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "part-actions"
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: MEET_B2B,
-    target: "_blank",
-    rel: "noopener"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    n: "calendar",
-    s: 16
-  }), " \xC9changer avec l'organisateur")), SHOW_PARTNER_WALL && /*#__PURE__*/React.createElement("div", {
+    }, "En savoir plus"));
+  })), SHOW_PARTNER_WALL && /*#__PURE__*/React.createElement("div", {
     className: "part-wall"
   }, /*#__PURE__*/React.createElement(Reveal, {
     className: "js-reveal-root",
@@ -1247,13 +1252,13 @@ const FAQ = [{
   a: "Une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Pass'Running) OU un Parcours de Prévention Santé (PPS), accompagnée d'une pièce d'identité, à présenter lors du retrait du dossard."
 }, {
   q: "Où et quand retirer mon dossard ?",
-  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais) : le samedi 3 avril de 17h à 19h, et le dimanche 4 avril de 7h à 9h. Aucun dossard ne sera envoyé par courrier."
+  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais) : le samedi 3 avril 2027 de 17h à 19h, et le dimanche 4 avril 2027 de 7h à 9h. Aucun dossard ne sera envoyé par courrier."
 }, {
   q: "Où se garer le jour de la course ?",
-  a: "Un parking gratuit est fléché à proximité du village course, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve."
+  a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve."
 }, {
   q: "Combien y a-t-il de ravitaillements ?",
-  a: "Un ravitaillement principal est situé à La Neuville-aux-Larris. Un ravitaillement d'arrivée avec produits du terroir vous attend à Chaumuzy."
+  a: "Un ravitaillement principal est situé à La Neuville-aux-Larris. Un ravitaillement d'arrivée avec des produits du terroir vous attend à Chaumuzy."
 }, {
   q: "Le matériel est-il imposé ?",
   a: "Le gobelet personnel est obligatoire (course éco-responsable, sans gobelet jetable). Selon la météo, une réserve d'eau et une veste coupe-vent pourront être recommandées ou rendues obligatoires (précisé au règlement)."
@@ -1265,7 +1270,11 @@ const FAQ = [{
   a: "Les conditions d'annulation et de remboursement (par le coureur ou par l'organisation, notamment en cas de force majeure ou de météo dangereuse) seront précisées dans le règlement officiel."
 }, {
   q: "Proposez-vous une offre pour les entreprises ?",
-  a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque. Réservez un rendez-vous de 30 minutes via la section « Inscriptions »."
+  a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
+  link: {
+    href: MEET_B2B,
+    label: "Réserver un rendez-vous de 30 min"
+  }
 }];
 function FaqItem({
   item,
@@ -1291,7 +1300,15 @@ function FaqItem({
     }
   }, /*#__PURE__*/React.createElement("p", {
     ref: bodyRef
-  }, item.a)));
+  }, item.a, item.link && /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("a", {
+    href: item.link.href,
+    target: "_blank",
+    rel: "noopener",
+    style: {
+      color: "var(--accent-safe)",
+      fontWeight: 600
+    }
+  }, item.link.label, " \u2192")))));
 }
 function Faq() {
   const [open, setOpen] = useState(0);
@@ -1322,8 +1339,8 @@ function Faq() {
   }))), /*#__PURE__*/React.createElement("p", {
     className: "faq-foot"
   }, "Une autre question ? \xC9crivez-nous \xE0 ", /*#__PURE__*/React.createElement("a", {
-    href: "mailto:contact@synapse-sport.com"
-  }, "contact@synapse-sport.com"))));
+    href: "mailto:marne.outdoor.experiences@gmail.com"
+  }, "marne.outdoor.experiences@gmail.com"))));
 }
 
 /* ---------- footer ---------- */
@@ -1334,16 +1351,34 @@ function Footer() {
     className: "wrap"
   }, /*#__PURE__*/React.createElement("div", {
     className: "footer-top"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Logo, {
-    h: 46,
-    cls: "flogo"
-  }), /*#__PURE__*/React.createElement("p", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
     className: "muted",
     style: {
-      maxWidth: 280,
+      maxWidth: 320,
+      fontSize: 15,
+      margin: 0
+    },
+    "data-comment-anchor": "27087cbcc0-p-756-13"
+  }, "Trail de Chaumuzy - 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+      marginTop: 10
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "muted",
+    style: {
       fontSize: 15
     }
-  }, "Trail de Chaumuzy \u2014 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition. Organis\xE9 par Marne Outdoor Exp\xE9riences."), /*#__PURE__*/React.createElement("div", {
+  }, "Organis\xE9 par"), /*#__PURE__*/React.createElement("img", {
+    src: "assets/logo-marne-white.png",
+    alt: "Marne Outdoor Exp\xE9riences",
+    style: {
+      height: 46,
+      width: "auto"
+    }
+  })), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       gap: 10,
@@ -1366,31 +1401,22 @@ function Footer() {
   }, n.l))), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Contact"), /*#__PURE__*/React.createElement("a", {
-    href: "mailto:contact@synapse-sport.com"
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      display: "inline-flex",
-      gap: 8,
-      alignItems: "center"
-    }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    n: "phone",
-    s: 15
-  }), " contact@synapse-sport.com")), /*#__PURE__*/React.createElement("a", {
+    href: "mailto:marne.outdoor.experiences@gmail.com"
+  }, "marne.outdoor.experiences@gmail.com"), /*#__PURE__*/React.createElement("a", {
     href: "#preinscription"
-  }, "Pr\xE9-inscription"), /*#__PURE__*/React.createElement("a", {
+  }, "\xCAtre pr\xE9venu de l'ouverture"), /*#__PURE__*/React.createElement("a", {
     href: MEET_B2B,
     target: "_blank",
     rel: "noopener"
   }, "Devenir partenaire")), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
-  }, /*#__PURE__*/React.createElement("h5", null, "Infos"), /*#__PURE__*/React.createElement("p", null, "Dimanche 4 avril 2027"), /*#__PURE__*/React.createElement("p", null, "D\xE9part 09h30 \xB7 Chaumuzy (51)"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h5", null, "Infos"), /*#__PURE__*/React.createElement("p", null, "Dimanche 4 avril 2027"), /*#__PURE__*/React.createElement("p", null, "D\xE9part 09h30 - Chaumuzy (51)"), /*#__PURE__*/React.createElement("a", {
     href: "mentions-legales.html"
   }, "Mentions l\xE9gales"), /*#__PURE__*/React.createElement("a", {
-    href: "mentions-legales.html#donnees"
+    href: "confidentialite.html"
   }, "Confidentialit\xE9 (RGPD)")))), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
-  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Marne Outdoor Exp\xE9riences \xB7 Tous droits r\xE9serv\xE9s"), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Marne Outdoor Exp\xE9riences - Tous droits r\xE9serv\xE9s"), /*#__PURE__*/React.createElement("span", {
     style: {
       display: "inline-flex",
       alignItems: "center",
@@ -1436,10 +1462,16 @@ function StickyCTA() {
   return /*#__PURE__*/React.createElement("div", {
     className: "sticky-cta" + (show ? " show" : "")
   }, /*#__PURE__*/React.createElement("div", {
-    className: "inner"
-  }, /*#__PURE__*/React.createElement("div", {
+    className: "inner",
+    "data-comment-anchor": "f4fe7848e4-div-810-7"
+  }, /*#__PURE__*/React.createElement(Logo, {
+    h: 38,
+    style: {
+      flexShrink: 0
+    }
+  }), /*#__PURE__*/React.createElement("div", {
     className: "txt"
-  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 \xB7 Inscriptions : ouverture octobre 2026")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Ouverture des inscriptions au cours du mois d'octobre 2026")), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold sp",
     href: "#programme"
   }, "Programme"), /*#__PURE__*/React.createElement("a", {

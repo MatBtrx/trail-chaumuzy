@@ -1,5 +1,5 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* hifi-ui.jsx — primitives for the Trail de Chaumuzy hi-fi page */
+/* hifi-ui.jsx - primitives for the Trail de Chaumuzy hi-fi page */
 const {
   useState,
   useEffect,
@@ -159,8 +159,8 @@ function Logo({
 }) {
   return /*#__PURE__*/React.createElement("img", {
     className: cls,
-    src: "assets/logo-marne-" + (ink ? "ink" : "white") + ".png",
-    alt: "Marne Outdoor XP",
+    src: (typeof window !== "undefined" && window.LOGO_TRAIL ? (ink ? window.LOGO_TRAIL.ink : window.LOGO_TRAIL.white) : null) || (ink ? "assets/logo-trail-chaumuzy.png" : "assets/logo-trail-chaumuzy-white.png"),
+    alt: "Trail de Chaumuzy",
     style: {
       height: h,
       width: "auto",
@@ -254,7 +254,7 @@ function Countdown() {
   }));
 }
 
-/* ---- pulse line divider — a live ECG heartbeat monitor ----
+/* ---- pulse line divider - a live ECG heartbeat monitor ----
    Echoes the Marne Outdoor XP heartbeat mark. On reveal the baseline draws itself,
    then a bright beam sweeps the trace continuously with a glowing dot riding the front. */
 function PulseLine({
@@ -591,7 +591,7 @@ function RouteMap({
       r: "11"
     }), /*#__PURE__*/React.createElement("text", {
       x: cx,
-      y: cy - (isRavito ? 32 : 22),
+      y: cy - (isRavito ? 42 : 30),
       textAnchor: "middle"
     }, c.nm));
   })), /*#__PURE__*/React.createElement("div", {
@@ -609,7 +609,7 @@ function RouteMap({
     s: 15
   }), " Ravitaillement")), /*#__PURE__*/React.createElement("span", {
     className: "rm-km"
-  }, "Boucle \xB7 ", trace.km, " km")));
+  }, "Boucle \xB7 ", Math.round(trace.km), " km")));
 }
 Object.assign(window, {
   Icon,

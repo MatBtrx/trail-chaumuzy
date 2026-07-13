@@ -1,4 +1,4 @@
-/* hifi-app.jsx — Trail de Chaumuzy 2027 hi-fi landing page */
+/* hifi-app.jsx - Trail de Chaumuzy 2027 hi-fi landing page */
 
 const TYPOS = {
   impact: {
