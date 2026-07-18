@@ -1,40 +1,51 @@
-// Vercel Serverless Function — inscription à la liste d'attente Brevo
-// Reçoit { firstname, lastname, email, listId } en POST JSON,
-// crée/actualise le contact dans Brevo et l'ajoute à la liste correspondante.
-// Nécessite la variable d'environnement BREVO_API_KEY (Vercel → Settings → Environment Variables).
+// Vercel Serverless Function — inscription liste d'attente Brevo (DOUBLE OPT-IN)
+// Reçoit { firstname, lastname, email, listId } en POST JSON et déclenche
+// l'e-mail de confirmation double opt-in Brevo avec le template personnalisé.
+// Le contact n'est ajouté à la liste QU'APRÈS clic sur le lien de confirmation.
+//
+// Variables d'environnement requises (Vercel → Settings → Environment Variables) :
+//   BREVO_API_KEY            → clé API v3 Brevo
+//   BREVO_DOI_TEMPLATE_ID    → ID NUMÉRIQUE du template
+//                              « Trail de Chaumuzy_confirmation double opt-in »
+//                              (Brevo → Campagnes → Modèles : l'ID entier, ex. 7)
+
+const REDIRECT_URL = "https://www.traildechaumuzy.fr/merci.html";
 
 export default async function handler(req, res) {
-  // 1. méthode
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Méthode non autorisée." });
   }
 
-  // 2. clé API configurée ?
   const apiKey = process.env.BREVO_API_KEY;
+  // ID du template DOI « Trail de Chaumuzy_confirmation double opt-in » = 1
+  // (surchargeable via la variable d'environnement BREVO_DOI_TEMPLATE_ID)
+  const templateId = parseInt(process.env.BREVO_DOI_TEMPLATE_ID, 10) || 1;
   if (!apiKey) {
     return res.status(500).json({ error: "Configuration serveur manquante (BREVO_API_KEY)." });
   }
 
-  // 3. corps de requête (tolère string ou objet déjà parsé)
   let body = req.body;
   if (typeof body === "string") {
     try { body = JSON.parse(body); } catch { body = {}; }
   }
   const { email, firstname, lastname, listId } = body || {};
 
-  // 4. validation minimale
   const emailOk = typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!emailOk) {
     return res.status(400).json({ error: "Adresse e-mail invalide." });
   }
-  const listIds = [];
+  const includeListIds = [];
   const parsedList = parseInt(listId, 10);
-  if (!Number.isNaN(parsedList)) listIds.push(parsedList);
+  if (!Number.isNaN(parsedList)) includeListIds.push(parsedList);
+  if (!includeListIds.length) {
+    return res.status(400).json({ error: "Parcours (liste) manquant." });
+  }
 
-  // 5. appel à l'API Brevo
   try {
-    const brevoRes = await fetch("https://api.brevo.com/v3/contacts", {
+    // Double opt-in : déclenche l'e-mail de confirmation avec le template perso.
+    // Le contact est créé/ajouté à la liste uniquement après confirmation du clic.
+    const brevoRes = await fetch("https://api.brevo.com/v3/contacts/doubleOptinConfirmation", {
       method: "POST",
       headers: {
         "accept": "application/json",
@@ -47,22 +58,22 @@ export default async function handler(req, res) {
           PRENOM: firstname || "",
           NOM: lastname || ""
         },
-        listIds: listIds.length ? listIds : undefined,
-        updateEnabled: true // met à jour le contact s'il existe déjà
+        includeListIds,
+        templateId,
+        redirectionUrl: REDIRECT_URL
       })
     });
 
-    // Brevo renvoie 201 (créé) ou 204 (mis à jour). 400 « Contact already exist »
-    // est neutralisé par updateEnabled, mais on gère le cas par sécurité.
+    // 204 = e-mail de confirmation envoyé avec succès
     if (brevoRes.ok || brevoRes.status === 204) {
       return res.status(200).json({ success: true });
     }
 
     let detail = {};
     try { detail = await brevoRes.json(); } catch { /* ignore */ }
+    // contact déjà confirmé / existant → on considère l'inscription comme prise en compte
     if (detail && detail.code === "duplicate_parameter") {
-      // contact déjà présent → on considère l'inscription réussie
-      return res.status(200).json({ success: true });
+      return res.status(200).json({ success: true, already: true });
     }
     return res.status(brevoRes.status).json({
       error: (detail && detail.message) || "Erreur lors de l'inscription."

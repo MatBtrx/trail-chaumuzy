@@ -30,7 +30,12 @@ function Icon({ n, s = 20, style }) {
     gauge: <g><path d="M12 14l4-4" /><path d="M5 18a8 8 0 1 1 14 0" /></g>,
     leaf: <path d="M4 20c0-9 7-15 16-15 0 9-6 16-15 16 0 0-1-4 2-8" />,
     phone: <path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />,
-    flute: <g><path d="M9 3h6l-1.1 8.2a2 2 0 0 1-3.8 0z" /><path d="M12 13v7M9.2 20h5.6" /></g>
+    flute: <g><path d="M9 3h6l-1.1 8.2a2 2 0 0 1-3.8 0z" /><path d="M12 13v7M9.2 20h5.6" /></g>,
+    share: <g><circle cx="18" cy="5" r="2.6" /><circle cx="6" cy="12" r="2.6" /><circle cx="18" cy="19" r="2.6" /><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3" /></g>,
+    link: <g><path d="M9.5 14.5l5-5" /><path d="M8 13l-1.7 1.7a3.2 3.2 0 0 1-4.5-4.5L4 8" /><path d="M16 11l1.7-1.7a3.2 3.2 0 0 0-4.5-4.5L11 7" /></g>,
+    check: <path d="M5 12l5 5L20 7" />,
+    whatsapp: <g><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" /><path d="M8.5 8.2c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.5l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.3c.3.1.4 0 .6-.1l.5-.6c.1-.2.3-.2.5-.1l1.5.8c.2.1.3.2.3.4 0 .5-.2 1.2-.9 1.5-.7.3-1.5.4-3-.2a9 9 0 0 1-4.3-4c-.6-1.2-.6-2-.3-2.6z" fill="currentColor" stroke="none" /></g>,
+    facebook: <path d="M14 8.5V7c0-.8.4-1 1-1h1.5V3H14c-2 0-3.3 1.3-3.3 3.4v2.1H8.5V12h2.2v9h3.3v-9h2.3l.5-3.5H14z" fill="currentColor" stroke="none" />
   };
   return <svg {...p}>{g[n] || null}</svg>;
 }
@@ -43,7 +48,7 @@ function Logo({ ink, h = 34, cls, style }) {
   const src = ink
     ? (L.ink || "assets/logo-trail-chaumuzy.png")
     : (L.white || "assets/logo-trail-chaumuzy-white.png");
-  return <img className={cls} src={src} alt="Trail de Chaumuzy" style={st} />;
+  return <img className={cls} src={src} alt="Logo officiel du Trail de Chaumuzy" style={st} />;
 }
 
 /* ---- countdown ---- */

@@ -132,6 +132,14 @@
 <link rel="preconnect" href="https://9b0284a6.sibforms.com" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="hifi.css" />
+<script>
+/* Neutralise l'avertissement navigateur bénin "ResizeObserver loop completed with undelivered notifications"
+   (sans effet fonctionnel, il encombre juste la console). */
+(function(){
+  var RE=/ResizeObserver loop (completed with undelivered notifications|limit exceeded)/;
+  window.addEventListener('error',function(e){ if(e&&e.message&&RE.test(e.message)){ e.stopImmediatePropagation(); e.preventDefault(); } },true);
+}());
+</script>
 </head>
 <body>
 <div id="root"></div>
