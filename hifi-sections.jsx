@@ -31,11 +31,11 @@ const PARCOURS = {
 };
 
 const PROG = [
-{ d: "Samedi 3 avril", t: "17h-19h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy", key: false },
-{ d: "Dimanche 4 avril", t: "07h-09h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy", key: false },
-{ d: "Dimanche 4 avril", t: "09h30", w: "Départ Trail 24 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy", key: true },
-{ d: "Dimanche 4 avril", t: "10h00", w: "Départ Trail 18 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy", key: true },
-{ d: "Dimanche 4 avril", t: "11h15-13h15", w: "Arrivées et remise des prix", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy", key: false }];
+{ d: "Samedi 3 avril", t: "17h-19h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: false },
+{ d: "Dimanche 4 avril", t: "07h-09h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: false },
+{ d: "Dimanche 4 avril", t: "09h30", w: "Départ Trail 24 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: true },
+{ d: "Dimanche 4 avril", t: "10h00", w: "Départ Trail 18 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: true },
+{ d: "Dimanche 4 avril", t: "11h15-13h15", w: "Arrivées et remise des prix", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: false }];
 
 
 const NAV = [
@@ -120,9 +120,10 @@ function Territoire() {
       <div className="wrap">
         <div className="terr-grid">
           <Reveal className="terr-text">
-            <div className="eyebrow">Le territoire</div>
-            <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Découvrez la Champagne<br />autrement</h2>
-            <p className="lead" style={{ marginTop: 18 }}>Le Trail de Chaumuzy traverse quatre communes de la Montagne de Reims: Chaumuzy, Belval-sous-Châtillon, La Neuville-aux-Larris et Champlat-et-Boujacourt. Entre vignobles, forêts et villages typiques, les parcours offrent une immersion unique au cœur du Parc Naturel de la Montagne de Reims.</p>
+            <div className="eyebrow">Nouvelle épreuve — 1<sup>re</sup> édition</div>
+            <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Une nouvelle course<br />en Champagne</h2>
+            <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes en balcon, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes.</p>
+            <p className="lead" style={{ marginTop: 14 }}>Une course au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay.</p>
             <div className="commune-list">
               {COMMUNES.map((c, i) =>
               <div className="commune" key={c.nm}>
@@ -137,6 +138,35 @@ function Territoire() {
             <img src="assets/photo-vignes.png" alt="Vignes de Champagne au-dessus de Chaumuzy" />
             <div className="tag"><Icon n="pin" s={15} /> Chaumuzy, Montagne de Reims</div>
           </Reveal>
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* ---------- œnotourisme ---------- */
+const OENO = [
+  { ic: "flute", t: "Terroir de pinot", b: "Pinot noir et meunier règnent sur la Montagne de Reims. Autour du parcours, une dizaine de grands crus et des villages vignerons de caractère composent l'un des plus beaux paysages viticoles de Champagne." },
+  { ic: "leaf", t: "Vignes et forêt", b: "Le tracé alterne rangs de vigne, plateau agricole et lisières boisées. Le massif forestier de la Montagne de Reims, plus de 20 000 hectares, couronne les coteaux et offre aux coureurs l'ombre et un dénivelé franc." },
+  { ic: "route", t: "Un territoire à explorer", b: "La Montagne de Reims se parcourt aussi à pied et à vélo : sentiers balisés, tour du massif par le GR 141 et curiosités comme les Faux de Verzy, au cœur du Parc naturel régional, à moins de 30 minutes de Reims comme d'Épernay." },
+];
+function Oeno() {
+  return (
+    <section className="section cream-2" id="oenotourisme">
+      <div className="wrap">
+        <Reveal className="oeno-head">
+          <div className="eyebrow">Œnotourisme et nature</div>
+          <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Courez le matin,<br />savourez l'après-midi</h2>
+          <p className="lead" style={{ marginTop: 18 }}>Au-delà de la course, la Montagne de Reims est un terrain de jeu grandeur nature. Prolongez l'expérience sur un vignoble de Champagne inscrit au patrimoine mondial de l'UNESCO, à moins de 30 minutes de Reims comme d'Épernay.</p>
+        </Reveal>
+        <div className="oeno-grid">
+          {OENO.map((o, i) =>
+          <Reveal className="oeno-card" d={i + 1} key={o.t}>
+              <div className="oeno-ic"><Icon n={o.ic} s={24} /></div>
+              <h3 className="display">{o.t}</h3>
+              <p className="muted">{o.b}</p>
+            </Reveal>
+          )}
         </div>
       </div>
     </section>);
@@ -163,7 +193,7 @@ function Parcours() {
         </div>
         <div className="card par-card" key={km}>
           <div className="par-left">
-            <span className={"chip par-role"} style={{ borderColor: color, color: color }}>{p.role}</span>
+            <h3 className={"chip par-role"} style={{ borderColor: color, color: color }}>{p.role}<span className="sr-only"> - {p.km} km</span></h3>
             <div className="par-km">{p.km}<span className="u">KM</span></div>
             <p className="lead" style={{ marginTop: 14, maxWidth: 420 }}>{p.desc}</p>
             <div className="par-stats">
@@ -209,7 +239,7 @@ function Programme() {
       <div className="wrap">
         <div className="section-head center">
           <div className="eyebrow center" style={{ justifyContent: "center" }}>Le week-end</div>
-          <h2 className="display">Programme</h2>
+          <h2 className="display">Programme 2027</h2>
         </div>
         <Reveal className="js-reveal-root">
           <div className="agenda">
@@ -538,8 +568,8 @@ function PreinscriptionForm() {
     return (
       <Reveal className="card preinsc preinsc-done">
         <div className="preinsc-check"><Icon n="award" s={30} /></div>
-        <h3>Merci, c'est noté&nbsp;!</h3>
-        <p>Vous serez prévenu(e) en priorité dès l'ouverture des inscriptions. À très vite sur les sentiers de Chaumuzy.</p>
+        <h3>Vérifiez votre boîte mail&nbsp;!</h3>
+        <p>Un e-mail de confirmation vient de vous être envoyé. Cliquez sur le lien qu'il contient pour valider votre inscription à la liste d'attente. Pensez à vérifier vos spams.</p>
         <AddToCalendar />
       </Reveal>);
 
@@ -640,7 +670,7 @@ function Partenaires() {
         <div className="section-head center">
           <div className="eyebrow center" style={{ justifyContent: "center" }}>Devenez partenaire</div>
           <h2 className="display">Associez votre marque<br />à l'événement</h2>
-          <p className="lead" style={{ maxWidth: 720, margin: "0 auto" }}>Une 1<sup>re</sup> édition, 500 coureurs et 4 communes du vignoble champenois&nbsp;: une visibilité locale forte pour votre entreprise. Trois niveaux d'engagement, à votre image.</p>
+          <p className="lead" style={{ maxWidth: 720, margin: "0 auto" }}>Une 1<sup>re</sup> édition, 500 coureurs et 4 communes du vignoble champenois&nbsp;: une visibilité locale forte pour votre entreprise. Idéal pour associer votre marque à un événement sportif éco-responsable en Champagne, fédérer vos équipes ou soutenir le sport de territoire. Trois niveaux d'engagement, à votre image.</p>
         </div>
 
         <div className="tier-grid tier-grid-2">
@@ -733,6 +763,11 @@ const FAQ = [
 { q: "Le matériel est-il imposé ?", a: "Le gobelet personnel est obligatoire (course éco-responsable, sans gobelet jetable). Selon la météo, une réserve d'eau et une veste coupe-vent pourront être recommandées ou rendues obligatoires (précisé au règlement)." },
 { q: "Y a-t-il un âge minimum ?", a: "L'épreuve est soumise aux conditions d'âge fixées par la réglementation FFA pour les distances concernées (à confirmer selon les catégories retenues). Les mineurs doivent fournir une autorisation parentale." },
 { q: "Quelle est la politique d'annulation ?", a: "Les conditions d'annulation et de remboursement (par le coureur ou par l'organisation, notamment en cas de force majeure ou de météo dangereuse) seront précisées dans le règlement officiel." },
+{ q: "Comment venir à Chaumuzy ?", a: "Chaumuzy se situe dans la Marne, au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay et 1h30 de Paris. Accès par l'A4 puis routes départementales ; gare la plus proche à Reims. Un parking gratuit est fléché près de la zone départ et arrivée." },
+{ q: "Le trail est-il adapté aux débutants ?", a: "Oui. Le Trail Découverte de 18 km est pensé pour les coureurs sur route souhaitant s'initier au trail, tandis que le Trail Expérience de 24 km s'adresse aux traileurs confirmés. Les deux parcours restent accessibles à toute personne en bonne condition physique." },
+{ q: "Peut-on courir en groupe ou entre collègues ?", a: "Absolument. Le Trail de Chaumuzy est une belle occasion de cohésion : venez entre amis, en club ou entre collègues. Une offre entreprise avec inscription centralisée est également disponible." },
+{ q: "Que faire autour de la course, en couple ou en famille ?", a: "Profitez de votre venue pour découvrir la Champagne autrement : visite de caves et dégustation chez les vignerons du secteur (label Vignobles & Découvertes), randonnée dans le Parc naturel régional de la Montagne de Reims, escapade aux Faux de Verzy ou visite de Reims et d'Épernay, à moins de 30 minutes. Le Trail de Chaumuzy est l'occasion idéale d'un week-end sportif et œnotouristique." },
+{ q: "Où séjourner près de Chaumuzy ?", a: "Le vignoble de la Montagne de Reims regorge de gîtes, chambres d'hôtes et hébergements insolites au cœur des villages viticoles. Reims, Épernay et Châlons-en-Champagne, les trois villes-portes du Parc, offrent une large gamme d'hôtels à moins de 30 minutes du départ." },
 { q: "Proposez-vous une offre pour les entreprises ?", a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.", link: { href: MEET_B2B, label: "Réserver un rendez-vous de 30 min" } }];
 
 
@@ -772,6 +807,36 @@ function Faq() {
 }
 
 /* ---------- footer ---------- */
+function ShareRow() {
+  const [copied, setCopied] = useState(false);
+  const url = typeof window !== "undefined" ? window.location.href.split("#")[0] : "https://www.traildechaumuzy.fr/";
+  const text = "Trail de Chaumuzy 2027 - un trail nature au cœur du vignoble champenois, le dimanche 4 avril 2027.";
+  const share = (kind) => {
+    let link = "";
+    if (kind === "whatsapp") link = "https://wa.me/?text=" + encodeURIComponent(text + " " + url);
+    else if (kind === "facebook") link = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+    if (link) window.open(link, "_blank", "noopener,width=640,height=560");
+  };
+  const nativeShare = () => {
+    if (navigator.share) { navigator.share({ title: "Trail de Chaumuzy 2027", text, url }).catch(() => {}); }
+  };
+  const copy = () => {
+    const done = () => { setCopied(true); setTimeout(() => setCopied(false), 2000); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(url).then(done).catch(done); }
+    else { const t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t); done(); }
+  };
+  return (
+    <div className="share-row">
+      <button className="share-label" onClick={nativeShare} aria-label="Partager le site"><Icon n="share" s={17} /> Partager</button>
+      <div className="share-btns">
+        <button className="share-btn" onClick={() => share("whatsapp")}><Icon n="whatsapp" s={17} /> WhatsApp</button>
+        <button className="share-btn" onClick={() => share("facebook")}><Icon n="facebook" s={17} /> Facebook</button>
+        <button className={"share-btn" + (copied ? " is-copied" : "")} onClick={copy}><Icon n={copied ? "check" : "link"} s={16} /> {copied ? "Lien copié" : "Copier le lien"}</button>
+      </div>
+    </div>);
+
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -807,6 +872,7 @@ function Footer() {
             </div>
           </div>
         </div>
+        <ShareRow />
         <div className="footer-bottom">
           <span>© 2026 Marne Outdoor Expériences - Tous droits réservés</span>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>Organisé avec <Icon n="heart" s={15} style={{ color: "var(--accent)" }} /> en Champagne</span>
@@ -846,4 +912,4 @@ function StickyCTA() {
 
 }
 
-Object.assign(window, { Nav, Hero, Territoire, Parcours, Programme, Inscriptions, Partenaires, Faq, Footer, StickyCTA });
+Object.assign(window, { Nav, Hero, Territoire, Oeno, Parcours, Programme, Inscriptions, Partenaires, Faq, Footer, StickyCTA });

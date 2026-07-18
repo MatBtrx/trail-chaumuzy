@@ -22,7 +22,6 @@ Site statique + une fonction serverless (pré-inscription Brevo). Déployé sur 
 | `assets/` | Logos, favicon, image de partage `og-image.png`, tracés `.gpx`, calendrier `.ics`. |
 | `robots.txt` · `sitemap.xml` | SEO. |
 | `vercel.json` | En-têtes de sécurité + cache, routage de la fonction API. |
-| `site/` | Copie miroir prête à l'emploi (identique à la racine). |
 
 > **Le fichier servi est `index.html` (bundle autonome).** Les sources `.jsx` / `build/` / `trace-data.js` / `logo-data.js` ne sont **pas** chargées par la prod (déjà inlinées) — elles servent uniquement à régénérer le bundle.
 

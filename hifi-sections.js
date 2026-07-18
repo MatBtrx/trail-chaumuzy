@@ -63,35 +63,35 @@ const PROG = [{
   t: "17h-19h",
   w: "Retrait des dossards",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: false
 }, {
   d: "Dimanche 4 avril",
   t: "07h-09h",
   w: "Retrait des dossards",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: false
 }, {
   d: "Dimanche 4 avril",
   t: "09h30",
   w: "Départ Trail 24 km",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: true
 }, {
   d: "Dimanche 4 avril",
   t: "10h00",
   w: "Départ Trail 18 km",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: true
 }, {
   d: "Dimanche 4 avril",
   t: "11h15-13h15",
   w: "Arrivées et remise des prix",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://www.google.com/maps/search/?api=1&query=Foyer%20Rural%20de%20Chaumuzy%2C%2033%20rue%20du%20Capitaine%20Chesnais%2C%2051170%20Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: false
 }];
 const NAV = [{
@@ -262,19 +262,24 @@ function Territoire() {
     className: "terr-text"
   }, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "Le territoire"), /*#__PURE__*/React.createElement("h2", {
+  }, "Nouvelle épreuve — 1", /*#__PURE__*/React.createElement("sup", null, "re"), " édition"), /*#__PURE__*/React.createElement("h2", {
     className: "display",
     style: {
       fontSize: "clamp(38px,5.5vw,62px)",
       color: "var(--ink)",
       marginTop: 14
     }
-  }, "D\xE9couvrez la Champagne", /*#__PURE__*/React.createElement("br", null), "autrement"), /*#__PURE__*/React.createElement("p", {
+  }, "Une nouvelle course", /*#__PURE__*/React.createElement("br", null), "en Champagne"), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
       marginTop: 18
     }
-  }, "Le Trail de Chaumuzy traverse quatre communes de la Montagne de Reims: Chaumuzy, Belval-sous-Ch\xE2tillon, La Neuville-aux-Larris et Champlat-et-Boujacourt. Entre vignobles, for\xEAts et villages typiques, les parcours offrent une immersion unique au c\u0153ur du Parc Naturel de la Montagne de Reims."), /*#__PURE__*/React.createElement("div", {
+  }, "Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes en balcon, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes."), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
+    style: {
+      marginTop: 14
+    }
+  }, "Une course au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay."), /*#__PURE__*/React.createElement("div", {
     className: "commune-list"
   }, COMMUNES.map((c, i) => /*#__PURE__*/React.createElement("div", {
     className: "commune",
@@ -297,6 +302,60 @@ function Territoire() {
     n: "pin",
     s: 15
   }), " Chaumuzy, Montagne de Reims")))));
+}
+
+/* ---------- œnotourisme ---------- */
+const OENO = [{
+  ic: "flute",
+  t: "Terroir de pinot",
+  b: "Pinot noir et meunier règnent sur la Montagne de Reims. Autour du parcours, une dizaine de grands crus et des villages vignerons de caractère composent l'un des plus beaux paysages viticoles de Champagne."
+}, {
+  ic: "leaf",
+  t: "Vignes et forêt",
+  b: "Le tracé alterne rangs de vigne, plateau agricole et lisières boisées. Le massif forestier de la Montagne de Reims, plus de 20 000 hectares, couronne les coteaux et offre aux coureurs l'ombre et un dénivelé franc."
+}, {
+  ic: "route",
+  t: "Un territoire à explorer",
+  b: "La Montagne de Reims se parcourt aussi à pied et à vélo : sentiers balisés, tour du massif par le GR 141 et curiosités comme les Faux de Verzy, au cœur du Parc naturel régional, à moins de 30 minutes de Reims comme d'Épernay."
+}];
+function Oeno() {
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section cream-2",
+    id: "oenotourisme"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "wrap"
+  }, /*#__PURE__*/React.createElement(Reveal, {
+    className: "oeno-head"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "eyebrow"
+  }, "Œnotourisme et nature"), /*#__PURE__*/React.createElement("h2", {
+    className: "display",
+    style: {
+      fontSize: "clamp(38px,5.5vw,62px)",
+      color: "var(--ink)",
+      marginTop: 14
+    }
+  }, "Courez le matin,", /*#__PURE__*/React.createElement("br", null), "savourez l'après-midi"), /*#__PURE__*/React.createElement("p", {
+    className: "lead",
+    style: {
+      marginTop: 18
+    }
+  }, "Au-delà de la course, la Montagne de Reims est un terrain de jeu grandeur nature. Prolongez l'expérience sur un vignoble de Champagne inscrit au patrimoine mondial de l'UNESCO, à moins de 30 minutes de Reims comme d'Épernay.")), /*#__PURE__*/React.createElement("div", {
+    className: "oeno-grid"
+  }, OENO.map((o, i) => /*#__PURE__*/React.createElement(Reveal, {
+    className: "oeno-card",
+    d: i + 1,
+    key: o.t
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "oeno-ic"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    n: o.ic,
+    s: 24
+  })), /*#__PURE__*/React.createElement("h3", {
+    className: "display"
+  }, o.t), /*#__PURE__*/React.createElement("p", {
+    className: "muted"
+  }, o.b))))));
 }
 
 /* ---------- parcours comparator ---------- */
@@ -337,13 +396,15 @@ function Parcours() {
     key: km
   }, /*#__PURE__*/React.createElement("div", {
     className: "par-left"
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("h3", {
     className: "chip par-role",
     style: {
       borderColor: color,
       color: color
     }
-  }, p.role), /*#__PURE__*/React.createElement("div", {
+  }, p.role, /*#__PURE__*/React.createElement("span", {
+    className: "sr-only"
+  }, " - ", p.km, " km")), /*#__PURE__*/React.createElement("div", {
     className: "par-km"
   }, p.km, /*#__PURE__*/React.createElement("span", {
     className: "u"
@@ -465,7 +526,7 @@ function Programme() {
     }
   }, "Le week-end"), /*#__PURE__*/React.createElement("h2", {
     className: "display"
-  }, "Programme")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Programme 2027")), /*#__PURE__*/React.createElement(Reveal, {
     className: "js-reveal-root"
   }, /*#__PURE__*/React.createElement("div", {
     className: "agenda"
@@ -922,7 +983,7 @@ function PreinscriptionForm() {
     }, /*#__PURE__*/React.createElement(Icon, {
       n: "award",
       s: 30
-    })), /*#__PURE__*/React.createElement("h3", null, "Merci, c'est not\xE9\xA0!"), /*#__PURE__*/React.createElement("p", null, "Vous serez pr\xE9venu(e) en priorit\xE9 d\xE8s l'ouverture des inscriptions. \xC0 tr\xE8s vite sur les sentiers de Chaumuzy."), /*#__PURE__*/React.createElement(AddToCalendar, null));
+    })), /*#__PURE__*/React.createElement("h3", null, "V\xE9rifiez votre bo\xEEte mail\xA0!"), /*#__PURE__*/React.createElement("p", null, "Un e-mail de confirmation vient de vous \xEAtre envoy\xE9. Cliquez sur le lien qu'il contient pour valider votre inscription \xE0 la liste d'attente. Pensez \xE0 v\xE9rifier vos spams."), /*#__PURE__*/React.createElement(AddToCalendar, null));
   }
   return /*#__PURE__*/React.createElement(Reveal, {
     className: "card preinsc",
@@ -1107,7 +1168,7 @@ function Partenaires() {
       maxWidth: 720,
       margin: "0 auto"
     }
-  }, "Une 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition, 500 coureurs et 4 communes du vignoble champenois\xA0: une visibilit\xE9 locale forte pour votre entreprise. Trois niveaux d'engagement, \xE0 votre image.")), /*#__PURE__*/React.createElement("div", {
+  }, "Une 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition, 500 coureurs et 4 communes du vignoble champenois\xA0: une visibilit\xE9 locale forte pour votre entreprise. Idéal pour associer votre marque à un événement sportif éco-responsable en Champagne, fédérer vos équipes ou soutenir le sport de territoire. Trois niveaux d'engagement, \xE0 votre image.")), /*#__PURE__*/React.createElement("div", {
     className: "tier-grid tier-grid-2"
   }, PARTNER_TIERS.map(tr => {
     const color = tr.tone === "accent" ? "var(--accent-safe)" : tr.tone === "gold" ? "var(--gold-ink)" : "var(--ink)";
@@ -1269,6 +1330,21 @@ const FAQ = [{
   q: "Quelle est la politique d'annulation ?",
   a: "Les conditions d'annulation et de remboursement (par le coureur ou par l'organisation, notamment en cas de force majeure ou de météo dangereuse) seront précisées dans le règlement officiel."
 }, {
+  q: "Comment venir à Chaumuzy ?",
+  a: "Chaumuzy se situe dans la Marne, au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay et 1h30 de Paris. Accès par l'A4 puis routes départementales ; gare la plus proche à Reims. Un parking gratuit est fléché près de la zone départ et arrivée."
+}, {
+  q: "Le trail est-il adapté aux débutants ?",
+  a: "Oui. Le Trail Découverte de 18 km est pensé pour les coureurs sur route souhaitant s'initier au trail, tandis que le Trail Expérience de 24 km s'adresse aux traileurs confirmés. Les deux parcours restent accessibles à toute personne en bonne condition physique."
+}, {
+  q: "Peut-on courir en groupe ou entre collègues ?",
+  a: "Absolument. Le Trail de Chaumuzy est une belle occasion de cohésion : venez entre amis, en club ou entre collègues. Une offre entreprise avec inscription centralisée est également disponible."
+}, {
+  q: "Que faire autour de la course, en couple ou en famille ?",
+  a: "Profitez de votre venue pour découvrir la Champagne autrement : visite de caves et dégustation chez les vignerons du secteur (label Vignobles & Découvertes), randonnée dans le Parc naturel régional de la Montagne de Reims, escapade aux Faux de Verzy ou visite de Reims et d'Épernay, à moins de 30 minutes. Le Trail de Chaumuzy est l'occasion idéale d'un week-end sportif et œnotouristique."
+}, {
+  q: "Où séjourner près de Chaumuzy ?",
+  a: "Le vignoble de la Montagne de Reims regorge de gîtes, chambres d'hôtes et hébergements insolites au cœur des villages viticoles. Reims, Épernay et Châlons-en-Champagne, les trois villes-portes du Parc, offrent une large gamme d'hôtels à moins de 30 minutes du départ."
+}, {
   q: "Proposez-vous une offre pour les entreprises ?",
   a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
   link: {
@@ -1344,6 +1420,56 @@ function Faq() {
 }
 
 /* ---------- footer ---------- */
+function ShareRow() {
+  const [copied, setCopied] = useState(false);
+  const url = typeof window !== "undefined" ? window.location.href.split("#")[0] : "https://www.traildechaumuzy.fr/";
+  const text = "Trail de Chaumuzy 2027 - un trail nature au c\u0153ur du vignoble champenois, le dimanche 4 avril 2027.";
+  const share = kind => {
+    let link = "";
+    if (kind === "whatsapp") link = "https://wa.me/?text=" + encodeURIComponent(text + " " + url);else if (kind === "facebook") link = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+    if (link) window.open(link, "_blank", "noopener,width=640,height=560");
+  };
+  const nativeShare = () => {
+    if (navigator.share) {
+      navigator.share({ title: "Trail de Chaumuzy 2027", text, url }).catch(() => {});
+    }
+  };
+  const copy = () => {
+    const done = () => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(done).catch(done);
+    } else {
+      const t = document.createElement("textarea");
+      t.value = url;
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+      done();
+    }
+  };
+  return /*#__PURE__*/React.createElement("div", {
+    className: "share-row"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "share-label",
+    onClick: nativeShare,
+    "aria-label": "Partager le site"
+  }, /*#__PURE__*/React.createElement(Icon, { n: "share", s: 17 }), " Partager"), /*#__PURE__*/React.createElement("div", {
+    className: "share-btns"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "share-btn",
+    onClick: () => share("whatsapp")
+  }, /*#__PURE__*/React.createElement(Icon, { n: "whatsapp", s: 17 }), " WhatsApp"), /*#__PURE__*/React.createElement("button", {
+    className: "share-btn",
+    onClick: () => share("facebook")
+  }, /*#__PURE__*/React.createElement(Icon, { n: "facebook", s: 17 }), " Facebook"), /*#__PURE__*/React.createElement("button", {
+    className: "share-btn" + (copied ? " is-copied" : ""),
+    onClick: copy
+  }, /*#__PURE__*/React.createElement(Icon, { n: copied ? "check" : "link", s: 16 }), " ", copied ? "Lien copi\xE9" : "Copier le lien")));
+}
 function Footer() {
   return /*#__PURE__*/React.createElement("footer", {
     className: "footer"
@@ -1414,7 +1540,7 @@ function Footer() {
     href: "mentions-legales.html"
   }, "Mentions l\xE9gales"), /*#__PURE__*/React.createElement("a", {
     href: "confidentialite.html"
-  }, "Confidentialit\xE9 (RGPD)")))), /*#__PURE__*/React.createElement("div", {
+  }, "Confidentialit\xE9 (RGPD)")))), /*#__PURE__*/React.createElement(ShareRow, null), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
   }, /*#__PURE__*/React.createElement("span", null, "\xA9 2026 Marne Outdoor Exp\xE9riences - Tous droits r\xE9serv\xE9s"), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -1474,7 +1600,7 @@ function StickyCTA() {
   }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Ouverture des inscriptions au cours du mois d'octobre 2026")), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold sp",
     href: "#programme"
-  }, "Programme"), /*#__PURE__*/React.createElement("a", {
+  }, "Programme 2027"), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-primary",
     href: "#preinscription"
   }, "Pr\xE9-inscription")));
@@ -1483,6 +1609,7 @@ Object.assign(window, {
   Nav,
   Hero,
   Territoire,
+  Oeno,
   Parcours,
   Programme,
   Inscriptions,
