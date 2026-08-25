@@ -1,5 +1,5 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* hifi-ui.jsx — primitives for the Trail de Chaumuzy hi-fi page */
+/* hifi-ui.jsx - primitives for the Trail de Chaumuzy hi-fi page */
 const {
   useState,
   useEffect,
@@ -147,7 +147,12 @@ function Icon({
       d: "M9 3h6l-1.1 8.2a2 2 0 0 1-3.8 0z"
     }), /*#__PURE__*/React.createElement("path", {
       d: "M12 13v7M9.2 20h5.6"
-    }))
+    })),
+    share: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("circle", { cx: 18, cy: 5, r: 2.6 }), /*#__PURE__*/React.createElement("circle", { cx: 6, cy: 12, r: 2.6 }), /*#__PURE__*/React.createElement("circle", { cx: 18, cy: 19, r: 2.6 }), /*#__PURE__*/React.createElement("path", { d: "M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3" })),
+    link: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", { d: "M9.5 14.5l5-5" }), /*#__PURE__*/React.createElement("path", { d: "M8 13l-1.7 1.7a3.2 3.2 0 0 1-4.5-4.5L4 8" }), /*#__PURE__*/React.createElement("path", { d: "M16 11l1.7-1.7a3.2 3.2 0 0 0-4.5-4.5L11 7" })),
+    check: /*#__PURE__*/React.createElement("path", { d: "M5 12l5 5L20 7" }),
+    whatsapp: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", { d: "M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" }), /*#__PURE__*/React.createElement("path", { d: "M8.5 8.2c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.5l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.3c.3.1.4 0 .6-.1l.5-.6c.1-.2.3-.2.5-.1l1.5.8c.2.1.3.2.3.4 0 .5-.2 1.2-.9 1.5-.7.3-1.5.4-3-.2a9 9 0 0 1-4.3-4c-.6-1.2-.6-2-.3-2.6z", fill: "currentColor", stroke: "none" })),
+    facebook: /*#__PURE__*/React.createElement("path", { d: "M14 8.5V7c0-.8.4-1 1-1h1.5V3H14c-2 0-3.3 1.3-3.3 3.4v2.1H8.5V12h2.2v9h3.3v-9h2.3l.5-3.5H14z", fill: "currentColor", stroke: "none" })
   };
   return /*#__PURE__*/React.createElement("svg", p, g[n] || null);
 }
@@ -159,8 +164,8 @@ function Logo({
 }) {
   return /*#__PURE__*/React.createElement("img", {
     className: cls,
-    src: "assets/logo-marne-" + (ink ? "ink" : "white") + ".png",
-    alt: "Marne Outdoor XP",
+    src: (typeof window !== "undefined" && window.LOGO_TRAIL ? (ink ? window.LOGO_TRAIL.ink : window.LOGO_TRAIL.white) : null) || (ink ? "assets/logo-trail-chaumuzy.png" : "assets/logo-trail-chaumuzy-white.png"),
+    alt: "Logo officiel du Trail de Chaumuzy",
     style: {
       height: h,
       width: "auto",
@@ -254,7 +259,7 @@ function Countdown() {
   }));
 }
 
-/* ---- pulse line divider — a live ECG heartbeat monitor ----
+/* ---- pulse line divider - a live ECG heartbeat monitor ----
    Echoes the Marne Outdoor XP heartbeat mark. On reveal the baseline draws itself,
    then a bright beam sweeps the trace continuously with a glowing dot riding the front. */
 function PulseLine({
@@ -414,18 +419,34 @@ function useInView(opts) {
       setSeen(true);
       return;
     }
+    if (typeof IntersectionObserver === "undefined") {
+      setSeen(true);
+      return;
+    }
     const io = new IntersectionObserver(ents => {
       if (ents[0].isIntersecting) {
         setSeen(true);
         io.disconnect();
       }
     }, {
-      threshold: 0.12,
+      threshold: 0,
       rootMargin: "0px 0px -6% 0px",
       ...opts
     });
     io.observe(el);
-    return () => io.disconnect();
+    // Failsafe: si l'image/contenu se charge tardivement (boîte à hauteur nulle
+    // au démarrage), on force l'affichage pour ne jamais laisser un bloc invisible.
+    const failsafe = setTimeout(() => {
+      const rr = el.getBoundingClientRect();
+      if (rr.top < (window.innerHeight || 800)) {
+        setSeen(true);
+        io.disconnect();
+      }
+    }, 1500);
+    return () => {
+      io.disconnect();
+      clearTimeout(failsafe);
+    };
   }, []);
   return [ref, seen];
 }
@@ -575,7 +596,7 @@ function RouteMap({
       r: "11"
     }), /*#__PURE__*/React.createElement("text", {
       x: cx,
-      y: cy - (isRavito ? 32 : 22),
+      y: cy - (isRavito ? 42 : 30),
       textAnchor: "middle"
     }, c.nm));
   })), /*#__PURE__*/React.createElement("div", {
@@ -593,7 +614,7 @@ function RouteMap({
     s: 15
   }), " Ravitaillement")), /*#__PURE__*/React.createElement("span", {
     className: "rm-km"
-  }, "Boucle \xB7 ", trace.km, " km")));
+  }, "Boucle \xB7 ", Math.round(trace.km), " km")));
 }
 Object.assign(window, {
   Icon,

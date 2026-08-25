@@ -52,7 +52,6 @@ function App() {
       <main>
         <Hero />
         <Territoire />
-        <Oeno />
         <PulseDivider />
         <Parcours />
         <Programme />

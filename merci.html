@@ -23,7 +23,17 @@
   .merci-card h1{ font-family:var(--display); font-weight:var(--disp-wt); text-transform:uppercase; letter-spacing:.01em; font-size:clamp(46px,9vw,78px); line-height:.9; margin:0; color:var(--on-ink); }
   .merci-card p{ color:var(--on-ink-2); font-size:18px; line-height:1.6; margin:0; max-width:480px; }
   .merci-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
-  @media (max-width:560px){ .merci-actions{ flex-direction:column; width:100%; } .merci-actions .btn{ width:100%; justify-content:center; } }
+  @media (max-width:560px){
+    .merci-nav{ padding:14px 20px; }
+    .merci-nav img{ height:28px; }
+    .merci-main{ padding:36px 20px; }
+    .merci-card{ gap:18px; }
+    .merci-check{ width:72px; height:72px; }
+    .merci-check svg{ width:36px; height:36px; }
+    .merci-card p{ font-size:16px; }
+    .merci-actions{ flex-direction:column; width:100%; }
+    .merci-actions .btn{ width:100%; justify-content:center; }
+  }
 </style>
 </head>
 <body>
@@ -37,7 +47,7 @@
       </div>
       <div class="merci-eyebrow">Liste d'attente</div>
       <h1>Inscription<br />confirmée&nbsp;!</h1>
-      <p>Merci&nbsp;! Votre adresse e-mail est validée. Vous serez prévenu(e) en priorité dès l'ouverture des inscriptions, en octobre 2026. À très vite sur les sentiers de Chaumuzy.</p>
+      <p>Merci&nbsp;! Votre adresse e-mail est validée. Vous serez prévenu(e) en priorité dès l'ouverture des inscriptions, le 30 octobre 2026 à 10h00. À très vite sur les sentiers de Chaumuzy.</p>
       <div class="merci-actions">
         <a class="btn btn-primary" href="index.html">Retour au site</a>
         <a class="btn btn-gold" href="index.html#programme">Voir le programme</a>

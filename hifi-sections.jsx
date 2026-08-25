@@ -98,7 +98,7 @@ function Hero() {
         <Reveal tag="p" className="hero-tag" d={2}>Deux parcours. Quatre villages. Une seule expérience.</Reveal>
         <Reveal d={2}><Countdown /></Reveal>
         <Reveal className="hero-cta" d={3}>
-          <a className="btn btn-primary" href="#preinscription">Être prévenu de l'ouverture</a>
+          <a className="btn btn-primary" href="#preinscription">Être prévenu de l'ouverture des inscriptions</a>
           <a className="btn btn-gold" href="#parcours">Découvrir les parcours</a>
         </Reveal>
         <Reveal className="stat-strip" d={4}>
@@ -122,8 +122,8 @@ function Territoire() {
           <Reveal className="terr-text">
             <div className="eyebrow">Nouvelle épreuve — 1<sup>re</sup> édition</div>
             <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Une nouvelle course<br />en Champagne</h2>
-            <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes en balcon, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes.</p>
-            <p className="lead" style={{ marginTop: 14 }}>Une course au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay.</p>
+            <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes.</p>
+            <p className="lead" style={{ marginTop: 14 }}>Une course chronométrée avec classement, au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay.</p>
             <div className="commune-list">
               {COMMUNES.map((c, i) =>
               <div className="commune" key={c.nm}>
@@ -360,7 +360,7 @@ function Inscriptions() {
         </div>
         <Reveal className="alert">
           <Icon n="calendar" s={24} />
-          <div><b>Ouverture officielle des inscriptions : octobre 2026.</b> Laissez-nous votre e-mail pour être prévenu en priorité dès l'ouverture de la billetterie.</div>
+          <div><b>Ouverture officielle des inscriptions : le 30 octobre 2026 à 10h00.</b> Laissez-nous votre e-mail pour être prévenu en priorité dès l'ouverture de la billetterie.</div>
         </Reveal>
         {SHOW_GAUGE && <DossardGauge />}
         {SHOW_GAUGE && <EarlyBird />}
@@ -580,7 +580,7 @@ function PreinscriptionForm() {
       <div className="preinsc-head">
         <div className="eyebrow">Liste d'attente</div>
         <h3>Soyez prévenu(e) en priorité</h3>
-        <p className="muted">Inscriptions ouvertes en octobre 2026 ! Laissez vos coordonnées : vous recevrez le coup d'envoi avant tout le monde.</p>
+        <p className="muted">Inscriptions ouvertes le 30 octobre 2026 à 10h00 ! Laissez vos coordonnées : vous recevrez le coup d'envoi avant tout le monde.</p>
       </div>
       <form ref={formRef} id="waiting-list-form" className="preinsc-form" onSubmit={onSubmit} noValidate>
         <div className="field-row">
@@ -755,7 +755,7 @@ function Partenaires() {
    Réponses pré-remplies RÉALISTES mais À VALIDER par l'organisateur.
    Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
 const FAQ = [
-{ q: "Comment puis-je m'inscrire ?", a: "Les inscriptions officielles ouvrent en octobre 2026, en ligne. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie." },
+{ q: "Comment puis-je m'inscrire ?", a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, en ligne. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie." },
 { q: "Quels documents dois-je fournir ?", a: "Une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Pass'Running) OU un Parcours de Prévention Santé (PPS), accompagnée d'une pièce d'identité, à présenter lors du retrait du dossard." },
 { q: "Où et quand retirer mon dossard ?", a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais) : le samedi 3 avril 2027 de 17h à 19h, et le dimanche 4 avril 2027 de 7h à 9h. Aucun dossard ne sera envoyé par courrier." },
 { q: "Où se garer le jour de la course ?", a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve." },
@@ -904,7 +904,7 @@ function StickyCTA() {
     <div className={"sticky-cta" + (show ? " show" : "")}>
       <div className="inner">
         <Logo h={38} style={{ flexShrink: 0 }} />
-        <div className="txt"><b>Trail de Chaumuzy</b><span>Dimanche 4 avril 2027 - Ouverture des inscriptions au cours du mois d'octobre 2026</span></div>
+        <div className="txt"><b>Trail de Chaumuzy</b><span>Dimanche 4 avril 2027 - Ouverture des inscriptions le 30 octobre 2026 à 10h00</span></div>
         <a className="btn btn-gold sp" href="#programme">Programme</a>
         <a className="btn btn-primary" href="#preinscription">Pré-inscription</a>
       </div>
