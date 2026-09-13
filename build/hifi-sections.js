@@ -10,16 +10,17 @@ const SHOW_GPX = false;
 const SHOW_B2B = false;
 const COMMUNES = [{
   nm: "Chaumuzy",
+  meta: "",
+  url: "https://www.chaumuzy.fr/"
+}, {
+  nm: "Belval‑sous‑Châtillon",
   meta: ""
 }, {
-  nm: "Belval-sous-Châtillon",
-  meta: ""
-}, {
-  nm: "La Neuville-aux-Larris",
+  nm: "La Neuville‑aux‑Larris",
   meta: "",
   logo: "assets/logo-la-neuville.png"
 }, {
-  nm: "Champlat-et-Boujacourt",
+  nm: "Champlat‑et‑Boujacourt",
   meta: ""
 }];
 const PARCOURS = {
@@ -59,13 +60,6 @@ const PARCOURS = {
   }
 };
 const PROG = [{
-  d: "Samedi 3 avril",
-  t: "17h-19h",
-  w: "Retrait des dossards",
-  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
-  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
-  key: false
-}, {
   d: "Dimanche 4 avril",
   t: "07h-09h",
   w: "Retrait des dossards",
@@ -135,6 +129,12 @@ function Nav() {
       });
     };
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    const esc = e => { if (e.key === "Escape") setOpen(false); };
+    if (open) document.addEventListener("keydown", esc);
+    return () => { document.body.style.overflow = ""; document.removeEventListener("keydown", esc); };
+  }, [open]);
   const close = () => setOpen(false);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("nav", {
     className: "nav" + (solid ? " solid" : "")
@@ -160,13 +160,16 @@ function Nav() {
   }, "Pr\xE9-inscription"), /*#__PURE__*/React.createElement("button", {
     className: "nav-burger",
     onClick: () => setOpen(true),
-    "aria-label": "Menu"
+    "aria-label": "Ouvrir le menu",
+    "aria-expanded": open,
+    "aria-controls": "mobile-menu"
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "menu"
   })))), /*#__PURE__*/React.createElement("div", {
     className: "menu-scrim" + (open ? " open" : ""),
     onClick: close
   }), /*#__PURE__*/React.createElement("div", {
+    id: "mobile-menu",
     className: "mobile-menu" + (open ? " open" : "")
   }, /*#__PURE__*/React.createElement("button", {
     className: "nav-burger",
@@ -186,7 +189,11 @@ function Nav() {
   }, n.l)), /*#__PURE__*/React.createElement("a", {
     href: "#partenaires",
     onClick: close
-  }, "Partenaires")));
+  }, "Partenaires"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary mobile-menu-cta",
+    href: "#preinscription",
+    onClick: close
+  }, "\xCAtre pr\xE9venu de l'ouverture")));
 }
 
 /* ---------- hero ---------- */
@@ -274,7 +281,7 @@ function Territoire() {
     style: {
       marginTop: 18
     }
-  }, "Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes."), /*#__PURE__*/React.createElement("p", {
+  }, "Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village‑départ au pied des coteaux, Belval‑sous‑Châtillon et ses vignes, La Neuville‑aux‑Larris en lisière de forêt, et Champlat‑et‑Boujacourt, entre champs et vignes."), /*#__PURE__*/React.createElement("p", {
     className: "lead",
     style: {
       marginTop: 14
@@ -288,14 +295,22 @@ function Territoire() {
     className: "idx"
   }, String(i + 1).padStart(2, "0")), /*#__PURE__*/React.createElement("span", {
     className: "nm"
-  }, c.nm), /*#__PURE__*/React.createElement("span", {
+  }, c.url ? /*#__PURE__*/React.createElement("a", {
+    href: c.url,
+    target: "_blank",
+    rel: "noopener"
+  }, c.nm) : c.nm), /*#__PURE__*/React.createElement("span", {
     className: "meta"
   }, c.meta))))), /*#__PURE__*/React.createElement(Reveal, {
     className: "terr-photo",
     d: 1
   }, /*#__PURE__*/React.createElement("img", {
-    src: "assets/photo-vignes.png",
-    alt: "Vignes de Champagne au-dessus de Chaumuzy"
+    src: "assets/photo-vignes.webp",
+    alt: "Vignes de Champagne au-dessus de Chaumuzy",
+    width: 1200,
+    height: 533,
+    loading: "lazy",
+    decoding: "async"
   }), /*#__PURE__*/React.createElement("div", {
     className: "tag"
   }, /*#__PURE__*/React.createElement(Icon, {
@@ -1204,7 +1219,7 @@ function Partenaires() {
     }, /*#__PURE__*/React.createElement("div", {
       className: "tier-partner-logo"
     }, /*#__PURE__*/React.createElement("img", {
-      src: "assets/logo-chaumuzy.jpeg",
+      src: "assets/logo-chaumuzy.webp",
       alt: "Blason de la Commune de Chaumuzy"
     })), /*#__PURE__*/React.createElement("div", {
       className: "tier-partner-name"
@@ -1257,7 +1272,7 @@ function Partenaires() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "logo-slot lg logo-filled"
   }, /*#__PURE__*/React.createElement("img", {
-    src: "assets/logo-chaumuzy.jpeg",
+    src: "assets/logo-chaumuzy.webp",
     alt: "Blason de la Commune de Chaumuzy"
   }), /*#__PURE__*/React.createElement("span", null, "Commune de Chaumuzy")))), /*#__PURE__*/React.createElement("div", {
     className: "part-tier",
@@ -1307,43 +1322,31 @@ function Partenaires() {
    Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
 const FAQ = [{
   q: "Comment puis-je m'inscrire ?",
-  a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, en ligne. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie."
+  a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, exclusivement en ligne, dans la limite des quotas : 200 dossards sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie."
 }, {
   q: "Quels documents dois-je fournir ?",
-  a: "Une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Pass'Running) OU un Parcours de Prévention Santé (PPS), accompagnée d'une pièce d'identité, à présenter lors du retrait du dossard."
+  a: "Au choix : une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Athlé Entreprise — les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences FSCF, FSGT et UFOLEP mention « athlétisme » sont également acceptées. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Une pièce d'identité est demandée au retrait du dossard."
 }, {
   q: "Où et quand retirer mon dossard ?",
-  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais) : le samedi 3 avril 2027 de 17h à 19h, et le dimanche 4 avril 2027 de 7h à 9h. Aucun dossard ne sera envoyé par courrier."
+  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 à 9h00, sur présentation d'une pièce d'identité et de votre licence ou PPS. Aucun dossard n'est délivré après 9h00 ni envoyé par courrier. Le retrait par un tiers est possible avec une procuration et les pièces du participant."
 }, {
   q: "Où se garer le jour de la course ?",
-  a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve."
+  a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve. Chaumuzy se situe au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay."
 }, {
   q: "Combien y a-t-il de ravitaillements ?",
-  a: "Un ravitaillement principal est situé à La Neuville-aux-Larris. Un ravitaillement d'arrivée avec des produits du terroir vous attend à Chaumuzy."
+  a: "Un point de ravitaillement sur chaque parcours, à La Neuville‑aux‑Larris (Place du Général de Gaulle) : eau, boissons énergétiques, fruits secs et fruits frais. Un ravitaillement complet vous attend à l'arrivée, au Foyer Rural de Chaumuzy. Chacun remplit lui-même son contenant : aucun gobelet jetable n'est fourni."
 }, {
   q: "Le matériel est-il imposé ?",
-  a: "Le gobelet personnel est obligatoire (course éco-responsable, sans gobelet jetable). Selon la météo, une réserve d'eau et une veste coupe-vent pourront être recommandées ou rendues obligatoires (précisé au règlement)."
+  a: "Oui, les épreuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, réserve d'eau d'au moins 0,5 L, téléphone mobile chargé avec le son activé, sifflet, gobelet ou contenant réutilisable personnel, et dossard visible sur le devant. Des contrôles ont lieu au départ, sur le parcours et à l'arrivée : chaque élément manquant entraîne une pénalité de 5 minutes. Conseillés : réserve alimentaire, veste coupe-vent, casquette ou gants selon la météo. Les bâtons sont autorisés, à conserver du départ à l'arrivée."
 }, {
   q: "Y a-t-il un âge minimum ?",
-  a: "L'épreuve est soumise aux conditions d'âge fixées par la réglementation FFA pour les distances concernées (à confirmer selon les catégories retenues). Les mineurs doivent fournir une autorisation parentale."
+  a: "Oui, selon les catégories d'âge FFA appliquées au kilomètre-effort. Le Trail 24 km (29 km-effort) est réservé aux Espoirs (U23) et au-delà, soit les coureurs nés en 2007 et avant. Le Trail 18 km (22 km-effort) est ouvert aux Juniors (U20) et au-delà, soit les coureurs nés en 2009 et avant. La catégorie est contrôlée à l'inscription et au retrait du dossard : toute inscription non conforme est refusée, sans remboursement."
 }, {
-  q: "Quelle est la politique d'annulation ?",
-  a: "Les conditions d'annulation et de remboursement (par le coureur ou par l'organisation, notamment en cas de force majeure ou de météo dangereuse) seront précisées dans le règlement officiel."
+  q: "Y a-t-il une barrière horaire ?",
+  a: "Oui : 3h45 de course sur le 24 km et 2h40 sur le 18 km. Au-delà, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard. Tout abandon doit être signalé au plus tôt à un membre de l'organisation."
 }, {
-  q: "Comment venir à Chaumuzy ?",
-  a: "Chaumuzy se situe dans la Marne, au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay et 1h30 de Paris. Accès par l'A4 puis routes départementales ; gare la plus proche à Reims. Un parking gratuit est fléché près de la zone départ et arrivée."
-}, {
-  q: "Le trail est-il adapté aux débutants ?",
-  a: "Oui. Le Trail Découverte de 18 km est pensé pour les coureurs sur route souhaitant s'initier au trail, tandis que le Trail Expérience de 24 km s'adresse aux traileurs confirmés. Les deux parcours restent accessibles à toute personne en bonne condition physique."
-}, {
-  q: "Peut-on courir en groupe ou entre collègues ?",
-  a: "Absolument. Le Trail de Chaumuzy est une belle occasion de cohésion : venez entre amis, en club ou entre collègues. Une offre entreprise avec inscription centralisée est également disponible."
-}, {
-  q: "Que faire autour de la course, en couple ou en famille ?",
-  a: "Profitez de votre venue pour découvrir la Champagne autrement : visite de caves et dégustation chez les vignerons du secteur (label Vignobles & Découvertes), randonnée dans le Parc naturel régional de la Montagne de Reims, escapade aux Faux de Verzy ou visite de Reims et d'Épernay, à moins de 30 minutes. Le Trail de Chaumuzy est l'occasion idéale d'un week-end sportif et œnotouristique."
-}, {
-  q: "Où séjourner près de Chaumuzy ?",
-  a: "Le vignoble de la Montagne de Reims regorge de gîtes, chambres d'hôtes et hébergements insolites au cœur des villages viticoles. Reims, Épernay et Châlons-en-Champagne, les trois villes-portes du Parc, offrent une large gamme d'hôtels à moins de 30 minutes du départ."
+  q: "Puis-je annuler ou céder mon dossard ?",
+  a: "Non. L'engagement est personnel, ferme et définitif : conformément à l'article L.221-28 du Code de la consommation, l'inscription ne bénéficie d'aucun droit de rétractation et n'ouvre droit à aucun remboursement, quel qu'en soit le motif. Le dossard est incessible : toute revente ou tout échange expose le porteur et le titulaire initial à la mise hors course. Une assurance annulation facultative peut être proposée à l'inscription par un prestataire extérieur."
 }, {
   q: "Proposez-vous une offre pour les entreprises ?",
   a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
@@ -1352,6 +1355,7 @@ const FAQ = [{
     label: "Réserver un rendez-vous de 30 min"
   }
 }];
+
 function FaqItem({
   item,
   open,
@@ -1498,7 +1502,7 @@ function Footer() {
       fontSize: 15
     }
   }, "Organis\xE9 par"), /*#__PURE__*/React.createElement("img", {
-    src: "assets/logo-marne-white.png",
+    src: "assets/logo-marne-white.webp",
     alt: "Marne Outdoor Exp\xE9riences",
     style: {
       height: 46,
@@ -1524,7 +1528,13 @@ function Footer() {
   }, /*#__PURE__*/React.createElement("h5", null, "Course"), NAV.map(n => /*#__PURE__*/React.createElement("a", {
     key: n.id,
     href: "#" + n.id
-  }, n.l))), /*#__PURE__*/React.createElement("div", {
+  }, n.l)), /*#__PURE__*/React.createElement("a", {
+    href: "parcours-24km.html"
+  }, "Parcours 24 km"), /*#__PURE__*/React.createElement("a", {
+    href: "parcours-18km.html"
+  }, "Parcours 18 km"), /*#__PURE__*/React.createElement("a", {
+    href: "venir-sejourner.html"
+  }, "Venir & s\xE9journer")), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Contact"), /*#__PURE__*/React.createElement("a", {
     href: "mailto:marne.outdoor.experiences@gmail.com"

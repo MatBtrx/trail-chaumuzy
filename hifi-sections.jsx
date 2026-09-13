@@ -9,10 +9,10 @@ const SHOW_GPX = false;
 /* Pack entreprise (B2B) masqué pour le moment. Repasser à true pour réafficher. */
 const SHOW_B2B = false;
 const COMMUNES = [
-{ nm: "Chaumuzy", meta: "" },
-{ nm: "Belval-sous-Châtillon", meta: "" },
-{ nm: "La Neuville-aux-Larris", meta: "", logo: "assets/logo-la-neuville.png" },
-{ nm: "Champlat-et-Boujacourt", meta: "" }];
+{ nm: "Chaumuzy", meta: "", url: "https://www.chaumuzy.fr/" },
+{ nm: "Belval‑sous‑Châtillon", meta: "" },
+{ nm: "La Neuville‑aux‑Larris", meta: "", logo: "assets/logo-la-neuville.png" },
+{ nm: "Champlat‑et‑Boujacourt", meta: "" }];
 
 
 const PARCOURS = {
@@ -31,7 +31,6 @@ const PARCOURS = {
 };
 
 const PROG = [
-{ d: "Samedi 3 avril", t: "17h-19h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: false },
 { d: "Dimanche 4 avril", t: "07h-09h", w: "Retrait des dossards", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: false },
 { d: "Dimanche 4 avril", t: "09h30", w: "Départ Trail 24 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: true },
 { d: "Dimanche 4 avril", t: "10h00", w: "Départ Trail 18 km", tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy", gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9", key: true },
@@ -60,6 +59,12 @@ function Nav() {
       document.removeEventListener("scroll", on, { capture: true });
     };
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    const esc = (e) => { if (e.key === "Escape") setOpen(false); };
+    if (open) document.addEventListener("keydown", esc);
+    return () => { document.body.style.overflow = ""; document.removeEventListener("keydown", esc); };
+  }, [open]);
   const close = () => setOpen(false);
   return (
     <React.Fragment>
@@ -71,14 +76,15 @@ function Nav() {
         <div className="nav-cta">
           <a className="btn btn-gold nav-partner" href="#partenaires">Partenaire</a>
           <a className="btn btn-primary" href="#preinscription">Pré-inscription</a>
-          <button className="nav-burger" onClick={() => setOpen(true)} aria-label="Menu"><Icon n="menu" /></button>
+          <button className="nav-burger" onClick={() => setOpen(true)} aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-menu"><Icon n="menu" /></button>
         </div>
       </nav>
       <div className={"menu-scrim" + (open ? " open" : "")} onClick={close} />
-      <div className={"mobile-menu" + (open ? " open" : "")}>
+      <div id="mobile-menu" className={"mobile-menu" + (open ? " open" : "")}>
         <button className="nav-burger" style={{ position: "absolute", top: 24, right: 24 }} onClick={close} aria-label="Fermer"><Icon n="x" /></button>
         {NAV.map((n) => <a key={n.id} href={"#" + n.id} onClick={close}>{n.l}</a>)}
         <a href="#partenaires" onClick={close}>Partenaires</a>
+        <a className="btn btn-primary mobile-menu-cta" href="#preinscription" onClick={close}>Être prévenu de l'ouverture</a>
       </div>
     </React.Fragment>);
 
@@ -122,20 +128,20 @@ function Territoire() {
           <Reveal className="terr-text">
             <div className="eyebrow">Nouvelle épreuve — 1<sup>re</sup> édition</div>
             <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Une nouvelle course<br />en Champagne</h2>
-            <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village-départ au pied des coteaux, Belval-sous-Châtillon et ses vignes, La Neuville-aux-Larris en lisière de forêt, et Champlat-et-Boujacourt, entre champs et vignes.</p>
+            <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village‑départ au pied des coteaux, Belval‑sous‑Châtillon et ses vignes, La Neuville‑aux‑Larris en lisière de forêt, et Champlat‑et‑Boujacourt, entre champs et vignes.</p>
             <p className="lead" style={{ marginTop: 14 }}>Une course chronométrée avec classement, au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay.</p>
             <div className="commune-list">
               {COMMUNES.map((c, i) =>
               <div className="commune" key={c.nm}>
                   <span className="idx">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="nm">{c.nm}</span>
+                  <span className="nm">{c.url ? <a href={c.url} target="_blank" rel="noopener">{c.nm}</a> : c.nm}</span>
                   <span className="meta">{c.meta}</span>
                 </div>
               )}
             </div>
           </Reveal>
           <Reveal className="terr-photo" d={1}>
-            <img src="assets/photo-vignes.png" alt="Vignes de Champagne au-dessus de Chaumuzy" />
+            <img src="assets/photo-vignes.webp" alt="Vignes de Champagne au-dessus de Chaumuzy" width="1200" height="533" loading="lazy" decoding="async" />
             <div className="tag"><Icon n="pin" s={15} /> Chaumuzy, Montagne de Reims</div>
           </Reveal>
         </div>
@@ -694,7 +700,7 @@ function Partenaires() {
                 {tr.sold ?
                 <div className="tier-soldmsg">
                   <div className="tier-partner">
-                    <div className="tier-partner-logo"><img src="assets/logo-chaumuzy.png" alt="Blason de la Commune de Chaumuzy" /></div>
+                    <div className="tier-partner-logo"><img src="assets/logo-chaumuzy.webp" alt="Blason de la Commune de Chaumuzy" /></div>
                     <div className="tier-partner-name">Commune de<br /><strong>Chaumuzy</strong></div>
                   </div>
                   <p className="tier-soldmsg-sub">Partenaire titre de cette 1<sup>re</sup> édition - visibilité maximale et exclusivité. Rendez-vous en 2028 pour ce palier.</p>
@@ -717,7 +723,7 @@ function Partenaires() {
           <Reveal className="js-reveal-root" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div className="part-tier" style={{ width: "100%" }}>
               <h4>Partenaire titre</h4>
-              <div className="logo-row"><div className="logo-slot lg logo-filled"><img src="assets/logo-chaumuzy.png" alt="Blason de la Commune de Chaumuzy" /><span>Commune de Chaumuzy</span></div></div>
+              <div className="logo-row"><div className="logo-slot lg logo-filled"><img src="assets/logo-chaumuzy.webp" alt="Blason de la Commune de Chaumuzy" /><span>Commune de Chaumuzy</span></div></div>
             </div>
             <div className="part-tier" style={{ width: "100%" }}>
               <h4>Partenaires officiels</h4>
@@ -752,22 +758,17 @@ function Partenaires() {
 }
 
 /* ---------- FAQ ----------
-   Réponses pré-remplies RÉALISTES mais À VALIDER par l'organisateur.
-   Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
+   Contenu aligné sur le Règlement sportif Trail de Chaumuzy 2027 (v. 9 septembre 2026). */
 const FAQ = [
-{ q: "Comment puis-je m'inscrire ?", a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, en ligne. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie." },
-{ q: "Quels documents dois-je fournir ?", a: "Une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Pass'Running) OU un Parcours de Prévention Santé (PPS), accompagnée d'une pièce d'identité, à présenter lors du retrait du dossard." },
-{ q: "Où et quand retirer mon dossard ?", a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais) : le samedi 3 avril 2027 de 17h à 19h, et le dimanche 4 avril 2027 de 7h à 9h. Aucun dossard ne sera envoyé par courrier." },
-{ q: "Où se garer le jour de la course ?", a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve." },
-{ q: "Combien y a-t-il de ravitaillements ?", a: "Un ravitaillement principal est situé à La Neuville-aux-Larris. Un ravitaillement d'arrivée avec des produits du terroir vous attend à Chaumuzy." },
-{ q: "Le matériel est-il imposé ?", a: "Le gobelet personnel est obligatoire (course éco-responsable, sans gobelet jetable). Selon la météo, une réserve d'eau et une veste coupe-vent pourront être recommandées ou rendues obligatoires (précisé au règlement)." },
-{ q: "Y a-t-il un âge minimum ?", a: "L'épreuve est soumise aux conditions d'âge fixées par la réglementation FFA pour les distances concernées (à confirmer selon les catégories retenues). Les mineurs doivent fournir une autorisation parentale." },
-{ q: "Quelle est la politique d'annulation ?", a: "Les conditions d'annulation et de remboursement (par le coureur ou par l'organisation, notamment en cas de force majeure ou de météo dangereuse) seront précisées dans le règlement officiel." },
-{ q: "Comment venir à Chaumuzy ?", a: "Chaumuzy se situe dans la Marne, au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay et 1h30 de Paris. Accès par l'A4 puis routes départementales ; gare la plus proche à Reims. Un parking gratuit est fléché près de la zone départ et arrivée." },
-{ q: "Le trail est-il adapté aux débutants ?", a: "Oui. Le Trail Découverte de 18 km est pensé pour les coureurs sur route souhaitant s'initier au trail, tandis que le Trail Expérience de 24 km s'adresse aux traileurs confirmés. Les deux parcours restent accessibles à toute personne en bonne condition physique." },
-{ q: "Peut-on courir en groupe ou entre collègues ?", a: "Absolument. Le Trail de Chaumuzy est une belle occasion de cohésion : venez entre amis, en club ou entre collègues. Une offre entreprise avec inscription centralisée est également disponible." },
-{ q: "Que faire autour de la course, en couple ou en famille ?", a: "Profitez de votre venue pour découvrir la Champagne autrement : visite de caves et dégustation chez les vignerons du secteur (label Vignobles & Découvertes), randonnée dans le Parc naturel régional de la Montagne de Reims, escapade aux Faux de Verzy ou visite de Reims et d'Épernay, à moins de 30 minutes. Le Trail de Chaumuzy est l'occasion idéale d'un week-end sportif et œnotouristique." },
-{ q: "Où séjourner près de Chaumuzy ?", a: "Le vignoble de la Montagne de Reims regorge de gîtes, chambres d'hôtes et hébergements insolites au cœur des villages viticoles. Reims, Épernay et Châlons-en-Champagne, les trois villes-portes du Parc, offrent une large gamme d'hôtels à moins de 30 minutes du départ." },
+{ q: "Comment puis-je m'inscrire ?", a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, exclusivement en ligne, dans la limite des quotas : 200 dossards sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie." },
+{ q: "Quels documents dois-je fournir ?", a: "Au choix : une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Athlé Entreprise — les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences FSCF, FSGT et UFOLEP mention « athlétisme » sont également acceptées. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Une pièce d'identité est demandée au retrait du dossard." },
+{ q: "Où et quand retirer mon dossard ?", a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 à 9h00, sur présentation d'une pièce d'identité et de votre licence ou PPS. Aucun dossard n'est délivré après 9h00 ni envoyé par courrier. Le retrait par un tiers est possible avec une procuration et les pièces du participant." },
+{ q: "Où se garer le jour de la course ?", a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve. Chaumuzy se situe au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay." },
+{ q: "Combien y a-t-il de ravitaillements ?", a: "Un point de ravitaillement sur chaque parcours, à La Neuville‑aux‑Larris (Place du Général de Gaulle) : eau, boissons énergétiques, fruits secs et fruits frais. Un ravitaillement complet vous attend à l'arrivée, au Foyer Rural de Chaumuzy. Chacun remplit lui-même son contenant : aucun gobelet jetable n'est fourni." },
+{ q: "Le matériel est-il imposé ?", a: "Oui, les épreuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, réserve d'eau d'au moins 0,5 L, téléphone mobile chargé avec le son activé, sifflet, gobelet ou contenant réutilisable personnel, et dossard visible sur le devant. Des contrôles ont lieu au départ, sur le parcours et à l'arrivée : chaque élément manquant entraîne une pénalité de 5 minutes. Conseillés : réserve alimentaire, veste coupe-vent, casquette ou gants selon la météo. Les bâtons sont autorisés, à conserver du départ à l'arrivée." },
+{ q: "Y a-t-il un âge minimum ?", a: "Oui, selon les catégories d'âge FFA appliquées au kilomètre-effort. Le Trail 24 km (29 km-effort) est réservé aux Espoirs (U23) et au-delà, soit les coureurs nés en 2007 et avant. Le Trail 18 km (22 km-effort) est ouvert aux Juniors (U20) et au-delà, soit les coureurs nés en 2009 et avant. La catégorie est contrôlée à l'inscription et au retrait du dossard : toute inscription non conforme est refusée, sans remboursement." },
+{ q: "Y a-t-il une barrière horaire ?", a: "Oui : 3h45 de course sur le 24 km et 2h40 sur le 18 km. Au-delà, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard. Tout abandon doit être signalé au plus tôt à un membre de l'organisation." },
+{ q: "Puis-je annuler ou céder mon dossard ?", a: "Non. L'engagement est personnel, ferme et définitif : conformément à l'article L.221-28 du Code de la consommation, l'inscription ne bénéficie d'aucun droit de rétractation et n'ouvre droit à aucun remboursement, quel qu'en soit le motif. Le dossard est incessible : toute revente ou tout échange expose le porteur et le titulaire initial à la mise hors course. Une assurance annulation facultative peut être proposée à l'inscription par un prestataire extérieur." },
 { q: "Proposez-vous une offre pour les entreprises ?", a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.", link: { href: MEET_B2B, label: "Réserver un rendez-vous de 30 min" } }];
 
 
@@ -846,7 +847,7 @@ function Footer() {
             <p className="muted" style={{ maxWidth: 320, fontSize: 15, margin: 0 }}>Trail de Chaumuzy - 1<sup>re</sup> édition.</p>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 10 }}>
               <span className="muted" style={{ fontSize: 15 }}>Organisé par</span>
-              <img src="assets/logo-marne-white.png" alt="Marne Outdoor Expériences" style={{ height: 46, width: "auto" }} />
+              <img src="assets/logo-marne-white.webp" alt="Marne Outdoor Expériences" style={{ height: 46, width: "auto" }} />
             </div>
             <div style={{ display: "flex", gap: 10, marginTop: 14 }}>
               {COMMUNES.map((c) => <span className="chip" key={c.nm} style={{ fontSize: 12, padding: "5px 11px" }}>{c.nm}</span>).slice(0, 0)}
@@ -856,6 +857,9 @@ function Footer() {
             <div className="footer-col">
               <h5>Course</h5>
               {NAV.map((n) => <a key={n.id} href={"#" + n.id}>{n.l}</a>)}
+              <a key="p24" href="parcours-24km.html">Parcours 24 km</a>
+              <a key="p18" href="parcours-18km.html">Parcours 18 km</a>
+              <a key="vs" href="venir-sejourner.html">Venir &amp; séjourner</a>
             </div>
             <div className="footer-col">
               <h5>Contact</h5>

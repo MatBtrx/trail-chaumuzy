@@ -614,7 +614,7 @@ function RouteMap({
     s: 15
   }), " Ravitaillement")), /*#__PURE__*/React.createElement("span", {
     className: "rm-km"
-  }, "Boucle \xB7 ", Math.round(trace.km), " km")));
+  }, "Boucle - ", Math.round(trace.km), " km")));
 }
 Object.assign(window, {
   Icon,
