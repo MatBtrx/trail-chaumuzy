@@ -714,7 +714,7 @@ function Inscriptions() {
     l: "Grand public",
     s: "standard",
     p: "25 €",
-    q: 150
+    q: 200
   }];
   const t24 = [{
     l: "Club",
@@ -758,7 +758,7 @@ function Inscriptions() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "calendar",
     s: 24
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Ouverture officielle des inscriptions : le 30 octobre 2026 à 10h00."), " Laissez-nous votre e-mail pour \xEAtre pr\xE9venu en priorit\xE9 d\xE8s l'ouverture de la billetterie.")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Ouverture officielle des inscriptions : le mercredi 28 octobre 2026 à 10h00."), " Laissez-nous votre e-mail pour \xEAtre pr\xE9venu en priorit\xE9 d\xE8s l'ouverture de la billetterie.")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
     className: "tarif-grid"
   }, /*#__PURE__*/React.createElement(TarifCard, {
     km: 18,
@@ -1009,7 +1009,7 @@ function PreinscriptionForm() {
     className: "eyebrow"
   }, "Liste d'attente"), /*#__PURE__*/React.createElement("h3", null, "Soyez pr\xE9venu(e) en priorit\xE9"), /*#__PURE__*/React.createElement("p", {
     className: "muted"
-  }, "Inscriptions ouvertes le 30 octobre 2026 \xE0 10h00 ! Laissez vos coordonn\xE9es : vous recevrez le coup d'envoi avant tout le monde.")), /*#__PURE__*/React.createElement("form", {
+  }, "Inscriptions ouvertes le mercredi 28 octobre 2026 \xE0 10h00 ! Laissez vos coordonn\xE9es : vous recevrez le coup d'envoi avant tout le monde.")), /*#__PURE__*/React.createElement("form", {
     ref: formRef,
     id: "waiting-list-form",
     className: "preinsc-form",
@@ -1322,7 +1322,7 @@ function Partenaires() {
    Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
 const FAQ = [{
   q: "Comment puis-je m'inscrire ?",
-  a: "Les inscriptions officielles ouvrent le 30 octobre 2026 à 10h00, exclusivement en ligne, dans la limite des quotas : 200 dossards sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie."
+  a: "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 à 10h00, exclusivement en ligne, dans la limite des quotas : 200 dossards sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture de la billetterie."
 }, {
   q: "Quels documents dois-je fournir ?",
   a: "Au choix : une licence FFA en cours de validité (Athlé Compétition, Athlé Running ou Athlé Entreprise — les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences FSCF, FSGT et UFOLEP mention « athlétisme » sont également acceptées. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Une pièce d'identité est demandée au retrait du dossard."
@@ -1607,7 +1607,7 @@ function StickyCTA() {
     }
   }), /*#__PURE__*/React.createElement("div", {
     className: "txt"
-  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Ouverture des inscriptions le 30 octobre 2026 à 10h00")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Ouverture des inscriptions le mercredi 28 octobre 2026 à 10h00")), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold sp",
     href: "#programme"
   }, "Programme 2027"), /*#__PURE__*/React.createElement("a", {
