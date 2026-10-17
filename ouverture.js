@@ -59,7 +59,7 @@
     document.querySelectorAll('.faq-a p').forEach(function (p) {
       if (p.dataset.open || p.textContent.indexOf('Les inscriptions officielles ouvrent') !== 0) return;
       p.dataset.open = '1';
-      p.textContent = "Les inscriptions sont ouvertes, exclusivement en ligne sur la billetterie de l'événement, dans la limite des quotas : 200 dossards sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. Les licenciés FFA bénéficient de 5 € de réduction sur les 50 premiers dossards, toutes courses confondues.";
+      p.textContent = "Les inscriptions sont ouvertes, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement et envoi de votre licence ou PPS. Licenciés FFA : 5 € de réduction sur les 50 premiers dossards, toutes courses confondues.";
     });
 
     // 6. Repère d'urgence sous les boutons du haut de page

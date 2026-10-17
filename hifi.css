@@ -352,12 +352,11 @@ html.reg-open #preinscription{ display:none; }
 .tarif-row .qte b{ font-family:var(--display); font-size:18px; color:var(--ink); font-weight:400; }
 .tarif-row .pr{ font-family:var(--display); font-size:30px; color:var(--ink); min-width:62px; text-align:right; }
 .tarif-row .pr.acc{ color:var(--accent-safe); }
-.tarif-perk{ display:flex; gap:12px; align-items:flex-start; background:var(--accent-soft); border-radius:14px; padding:16px 18px; margin:6px 0 20px; font-size:14.5px; font-weight:600; line-height:1.45; color:var(--ink); }
+.tarif-perk{ display:flex; gap:12px; align-items:flex-start; background:var(--accent-soft); border-radius:14px; padding:16px 18px; margin:6px 0 20px; font-size:14.5px; font-weight:700; line-height:1.45; color:var(--ink); text-align:left; }
 .tarif-perk svg{ flex-shrink:0; margin-top:1px; }
-.tarif-bridge{ grid-column:1 / -1; display:flex; gap:14px; align-items:center; justify-content:center; text-align:center; background:var(--ink); color:var(--on-ink); border-radius:var(--radius-lg); padding:18px 24px; font-size:15.5px; line-height:1.45; }
-.tarif-bridge svg{ color:var(--gold); flex-shrink:0; }
-.tarif-bridge b{ color:var(--gold); font-weight:700; }
-.tarif-bridge span{ flex:0 1 auto; text-wrap:balance; }
+.tarif-perk-shared{ grid-column:1 / -1; margin:0; align-items:center; justify-content:center; text-align:center; }
+.tarif-perk-shared svg{ color:var(--accent-safe); margin-top:0; }
+.tarif-perk-shared span{ text-wrap:balance; }
 .tarif-cta{ width:100%; justify-content:center; text-align:center; white-space:normal; line-height:1.3; text-transform:uppercase; letter-spacing:.04em; padding-top:18px; padding-bottom:18px; }
 .req{ display:flex; gap:10px; align-items:flex-start; justify-content:center; margin-top:22px; font-size:13px; color:var(--tx-2); max-width:640px; margin-left:auto; margin-right:auto; }
 .req svg{ width:16px; height:16px; color:var(--accent-safe); flex-shrink:0; margin-top:2px; }
