@@ -126,7 +126,7 @@ function Territoire() {
       <div className="wrap">
         <div className="terr-grid">
           <Reveal className="terr-text">
-            <div className="eyebrow">Nouvelle épreuve — 1<sup>re</sup> édition</div>
+            <div className="eyebrow"><span>Nouvelle épreuve — 1<sup>re</sup> édition</span></div>
             <h2 className="display" style={{ fontSize: "clamp(38px,5.5vw,62px)", color: "var(--ink)", marginTop: 14 }}>Une nouvelle course<br />en Champagne</h2>
             <p className="lead" style={{ marginTop: 18 }}>Le 4 avril 2027, la Montagne de Reims accueille sa nouvelle épreuve nature. Pour cette première édition, le Trail de Chaumuzy traverse quatre communes du vignoble : Chaumuzy, village‑départ au pied des coteaux, Belval‑sous‑Châtillon et ses vignes, La Neuville‑aux‑Larris en lisière de forêt, et Champlat‑et‑Boujacourt, entre champs et vignes.</p>
             <p className="lead" style={{ marginTop: 14 }}>Une course chronométrée avec classement, au cœur du Parc naturel régional de la Montagne de Reims, à moins de 30 minutes de Reims et d'Épernay.</p>
@@ -213,9 +213,9 @@ function Parcours() {
               <span className="chip"><Icon n="pin" s={15} /> {window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 24 ? 4 : 3)} communes traversées</span>
             </div>
             <div style={{ display: "flex", gap: 12, marginTop: 18, flexWrap: "wrap" }}>
-              <span className="btn btn-gold is-disabled" aria-disabled="true" style={{ justifyContent: "center", flex: "1 1 0", minWidth: 150 }}>
-                <Icon n="fileCheck" s={16} /> Règlement sportif à venir
-              </span>
+              <a className="btn btn-gold" href="assets/reglement-sportif-trail-chaumuzy-2027.pdf" target="_blank" rel="noopener" style={{ justifyContent: "center", flex: "1 1 0", minWidth: 150 }}>
+                <Icon n="fileCheck" s={16} /> Règlement sportif (PDF)
+              </a>
               <span className="btn btn-gold is-disabled" aria-disabled="true" style={{ justifyContent: "center", flex: "1 1 0", minWidth: 150 }}>
                 <Icon n="arrowDown" s={16} /> Tracé GPX à venir
               </span>
@@ -226,7 +226,7 @@ function Parcours() {
             </div>
           </div>
           <div className="par-right">
-            <div className="elev-h"><span>Tracé du parcours</span><span>{p.km} km</span></div>
+            <div className="elev-h"><span>Tracé du parcours (en cours de validation auprès des autorités locales)</span><span>{p.km} km</span></div>
             <RouteMap trace={window.TRACES && window.TRACES[p.km]} color={p.tone === "accent" ? "var(--accent)" : "var(--gold)"} />
             <div className="elev-h" style={{ marginTop: 18 }}><span>Profil d'élévation</span><span>D+ {p.dplus} m</span></div>
             <ElevationProfile points={p.elev} dplus={p.dplus} altMin={p.altMin} altMax={p.altMax} dist={p.dist}
@@ -330,32 +330,30 @@ function TarifCard({ km, tone, tiers }) {
   return (
     <Reveal className="card tarif" d={tone === "accent" ? 0 : 1} style={{ borderTopColor: color, borderTopWidth: 4, borderTopStyle: "solid" }}>
       <div className="top">
-        <div className="km">{km}<span className="u">KM</span></div>
+        <div className="km">{km}<span className="u" style={{ color }}>KM</span></div>
         <span className="chip" style={{ borderColor: color, color }}>{km === 18 ? 300 : 200} dossards max</span>
       </div>
       <div className="tarif-rows">
         {tiers.map((t, i) =>
         <div className="tarif-row" key={i}>
-            <div className="lab">{t.l}{t.s && <small>{t.s}</small>}</div>
-            <div className="qte">{t.q > 0 ? <><b>{t.q}</b> dossards</> : "sur demande"}</div>
-            <div className={"pr" + (t.acc ? " acc" : "")}>{t.p}</div>
+            <div className="lab">{t.l}</div>
+            <div className="qte"><b>{t.q}</b> dossards</div>
+            <div className="pr">{t.p}</div>
           </div>
         )}
       </div>
-      <a className="btn btn-primary" href="#preinscription" style={{ width: "100%", justifyContent: "center" }}>Être prévenu de l'ouverture</a>
+      <a className="btn btn-primary tarif-cta" href="#preinscription">Être prévenu de l'ouverture des inscriptions</a>
     </Reveal>);
 
 }
 function Inscriptions() {
   const t18 = [
-  { l: "Club", s: "tarif préférentiel", p: "15 €", q: 50, acc: true },
-  { l: "Grand public", s: "early bird", p: "20 €", q: 50 },
-  { l: "Grand public", s: "standard", p: "25 €", q: 200 }];
+  { l: "Tarif de lancement", p: "20 €", q: 50 },
+  { l: "Plein tarif", p: "25 €", q: 250 }];
 
   const t24 = [
-  { l: "Club", s: "tarif préférentiel", p: "20 €", q: 50, acc: true },
-  { l: "Grand public", s: "early bird", p: "25 €", q: 50 },
-  { l: "Grand public", s: "standard", p: "30 €", q: 100 }];
+  { l: "Tarif de lancement", p: "25 €", q: 50 },
+  { l: "Plein tarif", p: "30 €", q: 150 }];
 
   return (
     <section className="section cream-2" id="inscriptions">
@@ -364,15 +362,12 @@ function Inscriptions() {
           <div className="eyebrow center" style={{ justifyContent: "center" }}>Inscriptions</div>
           <h2 className="display">Tarifs et inscription</h2>
         </div>
-        <Reveal className="alert">
-          <Icon n="calendar" s={24} />
-          <div><b>Ouverture officielle des inscriptions : le mercredi 28 octobre 2026 à 10h00.</b> Laissez-nous votre e-mail pour être prévenu en priorité dès l'ouverture de la billetterie.</div>
-        </Reveal>
         {SHOW_GAUGE && <DossardGauge />}
         {SHOW_GAUGE && <EarlyBird />}
         <div className="tarif-grid">
           <TarifCard km={18} tone="gold" tiers={t18} />
           <TarifCard km={24} tone="accent" tiers={t24} />
+          <div className="tarif-bridge"><Icon n="award" s={22} /><span><b>Offre licenciés FFA - 5 € de réduction</b> sur les 50 premiers dossards, 18 km et 24 km confondus</span></div>
         </div>
         <div className="req"><Icon n="fileCheck" s={16} /> Licence FFA ou PPS + pièce d'identité requis lors du retrait des dossards.</div>
 
@@ -801,6 +796,10 @@ function Faq() {
           <FaqItem key={i} item={item} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
           )}
         </Reveal>
+        <div className="faq-cta">
+          <p className="display">Prêt à prendre le départ ?</p>
+          <a className="btn btn-primary" href="#preinscription" data-track="faq">Être prévenu de l'ouverture</a>
+        </div>
         <p className="faq-foot">Une autre question ? Écrivez-nous à <a href="mailto:marne.outdoor.experiences@gmail.com">marne.outdoor.experiences@gmail.com</a></p>
       </div>
     </section>);

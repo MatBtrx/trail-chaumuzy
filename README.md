@@ -19,7 +19,7 @@ Site statique + une fonction serverless (pré-inscription Brevo). Déployé sur 
 | `build/` | JS précompilé (généré depuis les `.jsx`). |
 | `mentions-legales.html` · `confidentialite.html` · `merci.html` | Pages légales RGPD + page de confirmation double opt-in. |
 | `api/subscribe.js` | **Fonction serverless Vercel** — pré-inscription Brevo (double opt-in). |
-| `assets/` | Logos, favicon, image de partage `og-image.png`, tracés `.gpx`, calendrier `.ics`. |
+| `assets/` | Logos, favicon, image de partage `og-image-2027.jpg`, tracés `.gpx`, calendrier `.ics`. |
 | `robots.txt` · `sitemap.xml` | SEO. |
 | `vercel.json` | En-têtes de sécurité + cache, routage de la fonction API. |
 
@@ -71,5 +71,25 @@ Mapping parcours → liste Brevo : **24 km → 8**, **18 km → 9**, « Je ne sa
 - [ ] `BREVO_API_KEY` (+ éventuellement `BREVO_DOI_TEMPLATE_ID`) définies sur Vercel.
 - [ ] Template DOI Brevo actif et testé (e-mail reçu + redirection `merci.html`).
 - [ ] Domaine d'envoi Brevo authentifié (SPF/DKIM).
-- [ ] `og-image.png` vérifié au partage (LinkedIn Post Inspector / Facebook Debugger).
+- [ ] `og-image-2027.jpg` vérifié au partage (LinkedIn Post Inspector / Facebook Debugger).
 - [ ] `sitemap.xml` soumis dans Google Search Console.
+
+
+## Ouverture des inscriptions (28/10/2026 à 10h00)
+
+Tout est automatisé dans `ouverture.js`. **Seule action requise** : coller le lien Miles Republic dans `dossards.json` > `"registrationUrl"`, puis pousser.
+
+- Tant que le lien est vide, le site reste en mode « liste d'attente ».
+- Lien renseigné + date atteinte : boutons « Je m'inscris » vers la billetterie, liste d'attente Brevo masquée, barre mobile, FAQ, titre de l'onglet, repère d'urgence FFA et données Google (InStock) basculent ensemble.
+- Aperçu à tout moment : `traildechaumuzy.fr/?ouverture`.
+
+## Suivi des ventes (tracking.js)
+
+Événements envoyés à Vercel Web Analytics (Custom Events, offre Pro) :
+- `cta_inscription` { emplacement, distance } : clic vers la billetterie Miles Republic (après le 28/10).
+- `cta_preinscription` { emplacement } : clic avant l'ouverture.
+- `liste_attente_envoi`, `rdv_b2b`, `gpx`, `reglement_pdf`, `contact_email`, `contact_partenaire`, `partage`.
+
+Les liens billetterie portent aussi `utm_source=traildechaumuzy.fr&utm_medium=site&utm_campaign=inscriptions-2027&utm_content=<emplacement>` : à lire dans les statistiques Miles Republic (ou Google Analytics s'il y est branché) pour relier un clic à une vente.
+
+Emplacements : nav, menu-mobile, hero, tarif-18, tarif-24, faq, footer, barre-mobile, page-24km, page-18km, page-sejour.

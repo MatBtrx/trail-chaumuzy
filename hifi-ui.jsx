@@ -52,11 +52,15 @@ function Logo({ ink, h = 34, cls, style }) {
 }
 
 /* ---- countdown ---- */
-const RACE = new Date("2027-04-04T09:30:00").getTime();
+/* Avant l'ouverture : compte à rebours vers les inscriptions, puis vers la course. */
+const OPEN = new Date("2026-10-28T10:00:00+01:00").getTime();
+const RACE = new Date("2027-04-04T09:30:00+02:00").getTime();
 function useCountdown() {
   const calc = () => {
-    const ms = Math.max(0, RACE - Date.now());
+    const now = Date.now(), pre = now < OPEN;
+    const ms = Math.max(0, (pre ? OPEN : RACE) - now);
     return {
+      pre,
       d: Math.floor(ms / 86400000),
       h: Math.floor(ms % 86400000 / 3600000),
       m: Math.floor(ms % 3600000 / 60000),
@@ -88,11 +92,14 @@ function Ring({ value, max, label, lead }) {
 function Countdown() {
   const t = useCountdown();
   return (
-    <div className="countdown">
-      <Ring value={t.d} max={400} label="Jours" lead />
-      <Ring value={t.h} max={24} label="Heures" />
-      <Ring value={t.m} max={60} label="Min" />
-      <Ring value={t.s} max={60} label="Sec" />
+    <div className="cd-wrap">
+      <p className="cd-cap">{t.pre ? "Ouverture des inscriptions dans" : "Départ dans"}</p>
+      <div className="countdown">
+        <Ring value={t.d} max={t.pre ? 60 : 400} label="Jours" lead />
+        <Ring value={t.h} max={24} label="Heures" />
+        <Ring value={t.m} max={60} label="Min" />
+        <Ring value={t.s} max={60} label="Sec" />
+      </div>
     </div>);
 
 }

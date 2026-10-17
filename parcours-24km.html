@@ -10,7 +10,7 @@
 <meta property="og:title" content="Trail 24 km Chaumuzy 2027 | Parcours, dénivelé &amp; profil" />
 <meta property="og:description" content="Le Trail Expérience 24 km du Trail de Chaumuzy : 445 m de dénivelé positif, 4 communes de la Montagne de Reims, barrière horaire 3h45. Profil, ravitaillement et conditions." />
 <meta property="og:url" content="https://www.traildechaumuzy.fr/parcours-24km.html" />
-<meta property="og:image" content="https://www.traildechaumuzy.fr/assets/og-image.jpg" />
+<meta property="og:image" content="https://www.traildechaumuzy.fr/assets/og-image-2027.jpg" />
 <meta property="og:locale" content="fr_FR" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +73,8 @@
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "sport": "Trail running",
-  "image": "https://www.traildechaumuzy.fr/assets/og-image.jpg",
+  "maximumAttendeeCapacity": 200,
+  "image": "https://www.traildechaumuzy.fr/assets/og-image-2027.jpg",
   "url": "https://www.traildechaumuzy.fr/parcours-24km.html",
   "location": {
     "@type": "Place",
@@ -81,7 +82,7 @@
     "address": { "@type": "PostalAddress", "streetAddress": "33 rue du Capitaine Chesnais", "addressLocality": "Chaumuzy", "postalCode": "51170", "addressRegion": "Marne", "addressCountry": "FR" }
   },
   "organizer": { "@type": "Organization", "name": "Marne Outdoor Expériences", "url": "https://www.traildechaumuzy.fr/" },
-  "offers": { "@type": "Offer", "availability": "https://schema.org/PreOrder", "availabilityStarts": "2026-10-28T10:00:00+01:00", "url": "https://www.traildechaumuzy.fr/#inscriptions", "priceCurrency": "EUR" }
+  "offers": { "@type": "AggregateOffer", "lowPrice": "25", "highPrice": "30", "priceCurrency": "EUR", "availability": "https://schema.org/PreOrder", "availabilityStarts": "2026-10-28T10:00:00+01:00", "url": "https://www.traildechaumuzy.fr/#inscriptions" }
 }
 </script>
 <main class="legal-body">
@@ -143,16 +144,9 @@
     </div>
   </div>
 </footer>
-<!-- Vercel Web Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
+<!-- Suivi des clics + mode ouverture des inscriptions (bascule auto le 28/10/2026 à 10h00 - aperçu : ?ouverture) -->
+<script defer src="tracking.js"></script>
+<script defer src="ouverture.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
-
-<!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>

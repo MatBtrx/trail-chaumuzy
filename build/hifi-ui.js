@@ -176,11 +176,15 @@ function Logo({
 }
 
 /* ---- countdown ---- */
-const RACE = new Date("2027-04-04T09:30:00").getTime();
+const OPEN = new Date("2026-10-28T10:00:00+01:00").getTime();
+const RACE = new Date("2027-04-04T09:30:00+02:00").getTime();
 function useCountdown() {
   const calc = () => {
-    const ms = Math.max(0, RACE - Date.now());
+    const now = Date.now(),
+      pre = now < OPEN;
+    const ms = Math.max(0, (pre ? OPEN : RACE) - now);
     return {
+      pre,
       d: Math.floor(ms / 86400000),
       h: Math.floor(ms % 86400000 / 3600000),
       m: Math.floor(ms % 3600000 / 60000),
@@ -238,10 +242,14 @@ function Ring({
 function Countdown() {
   const t = useCountdown();
   return /*#__PURE__*/React.createElement("div", {
+    className: "cd-wrap"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "cd-cap"
+  }, t.pre ? "Ouverture des inscriptions dans" : "D\xE9part dans"), /*#__PURE__*/React.createElement("div", {
     className: "countdown"
   }, /*#__PURE__*/React.createElement(Ring, {
     value: t.d,
-    max: 400,
+    max: t.pre ? 60 : 400,
     label: "Jours",
     lead: true
   }), /*#__PURE__*/React.createElement(Ring, {
@@ -256,7 +264,7 @@ function Countdown() {
     value: t.s,
     max: 60,
     label: "Sec"
-  }));
+  })));
 }
 
 /* ---- pulse line divider - a live ECG heartbeat monitor ----

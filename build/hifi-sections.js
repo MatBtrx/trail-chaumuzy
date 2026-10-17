@@ -269,7 +269,7 @@ function Territoire() {
     className: "terr-text"
   }, /*#__PURE__*/React.createElement("div", {
     className: "eyebrow"
-  }, "Nouvelle épreuve — 1", /*#__PURE__*/React.createElement("sup", null, "re"), " édition"), /*#__PURE__*/React.createElement("h2", {
+  }, /*#__PURE__*/React.createElement("span", null, "Nouvelle épreuve — 1", /*#__PURE__*/React.createElement("sup", null, "re"), " édition")), /*#__PURE__*/React.createElement("h2", {
     className: "display",
     style: {
       fontSize: "clamp(38px,5.5vw,62px)",
@@ -482,14 +482,16 @@ function Parcours() {
     s: 15
   }), " ", window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 24 ? 4 : 3), " communes travers\xE9es")), /*#__PURE__*/React.createElement("div", {
     style: { display: "flex", gap: 12, marginTop: 18, flexWrap: "wrap" }
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "btn btn-gold is-disabled",
-    "aria-disabled": "true",
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-gold",
+    href: "assets/reglement-sportif-trail-chaumuzy-2027.pdf",
+    target: "_blank",
+    rel: "noopener",
     style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "fileCheck",
     s: 16
-  }), " R\xE8glement sportif \xE0 venir"), /*#__PURE__*/React.createElement("span", {
+  }), " R\xE8glement sportif (PDF)"), /*#__PURE__*/React.createElement("span", {
     className: "btn btn-gold is-disabled",
     "aria-disabled": "true",
     style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
@@ -507,7 +509,7 @@ function Parcours() {
     className: "par-right"
   }, /*#__PURE__*/React.createElement("div", {
     className: "elev-h"
-  }, /*#__PURE__*/React.createElement("span", null, "Trac\xE9 du parcours"), /*#__PURE__*/React.createElement("span", null, p.km, " km")), /*#__PURE__*/React.createElement(RouteMap, {
+  }, /*#__PURE__*/React.createElement("span", null, "Trac\xE9 du parcours (en cours de validation aupr\xE8s des autorit\xE9s locales)"), /*#__PURE__*/React.createElement("span", null, p.km, " km")), /*#__PURE__*/React.createElement(RouteMap, {
     trace: window.TRACES && window.TRACES[p.km],
     color: p.tone === "accent" ? "var(--accent)" : "var(--gold)"
   }), /*#__PURE__*/React.createElement("div", {
@@ -661,78 +663,19 @@ function TarifCard({
   return /*#__PURE__*/React.createElement(Reveal, {
     className: "card tarif",
     d: tone === "accent" ? 0 : 1,
-    style: {
-      borderTopColor: color,
-      borderTopWidth: 4,
-      borderTopStyle: "solid"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "top"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "km"
-  }, km, /*#__PURE__*/React.createElement("span", {
-    className: "u"
-  }, "KM")), /*#__PURE__*/React.createElement("span", {
-    className: "chip",
-    style: {
-      borderColor: color,
-      color
-    }
-  }, km === 18 ? 300 : 200, " dossards max")), /*#__PURE__*/React.createElement("div", {
-    className: "tarif-rows"
-  }, tiers.map((t, i) => /*#__PURE__*/React.createElement("div", {
-    className: "tarif-row",
-    key: i
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "lab"
-  }, t.l, t.s && /*#__PURE__*/React.createElement("small", null, t.s)), /*#__PURE__*/React.createElement("div", {
-    className: "qte"
-  }, t.q > 0 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("b", null, t.q), " dossards") : "sur demande"), /*#__PURE__*/React.createElement("div", {
-    className: "pr" + (t.acc ? " acc" : "")
-  }, t.p)))), /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-primary",
-    href: "#preinscription",
-    style: {
-      width: "100%",
-      justifyContent: "center"
-    }
-  }, "\xCAtre pr\xE9venu de l'ouverture"));
+    style: { borderTopColor: color, borderTopWidth: 4, borderTopStyle: "solid" }
+  }, /*#__PURE__*/React.createElement("div", { className: "top" },
+    /*#__PURE__*/React.createElement("div", { className: "km" }, km, /*#__PURE__*/React.createElement("span", { className: "u", style: { color } }, "KM")),
+    /*#__PURE__*/React.createElement("span", { className: "chip", style: { borderColor: color, color } }, km === 18 ? 300 : 200, " dossards max")),
+  /*#__PURE__*/React.createElement("div", { className: "tarif-rows" }, tiers.map((t, i) => /*#__PURE__*/React.createElement("div", { className: "tarif-row", key: i },
+    /*#__PURE__*/React.createElement("div", { className: "lab" }, t.l),
+    /*#__PURE__*/React.createElement("div", { className: "qte" }, /*#__PURE__*/React.createElement("b", null, t.q), " dossards"),
+    /*#__PURE__*/React.createElement("div", { className: "pr" }, t.p)))),
+  /*#__PURE__*/React.createElement("a", { className: "btn btn-primary tarif-cta", href: "#preinscription" }, "\xCAtre pr\xE9venu de l'ouverture des inscriptions"));
 }
 function Inscriptions() {
-  const t18 = [{
-    l: "Club",
-    s: "tarif préférentiel",
-    p: "15 €",
-    q: 50,
-    acc: true
-  }, {
-    l: "Grand public",
-    s: "early bird",
-    p: "20 €",
-    q: 50
-  }, {
-    l: "Grand public",
-    s: "standard",
-    p: "25 €",
-    q: 200
-  }];
-  const t24 = [{
-    l: "Club",
-    s: "tarif préférentiel",
-    p: "20 €",
-    q: 50,
-    acc: true
-  }, {
-    l: "Grand public",
-    s: "early bird",
-    p: "25 €",
-    q: 50
-  }, {
-    l: "Grand public",
-    s: "standard",
-    p: "30 €",
-    q: 100
-  }];
+  const t18 = [{ l: "Tarif de lancement", p: "20 \u20AC", q: 50 }, { l: "Plein tarif", p: "25 \u20AC", q: 250 }];
+  const t24 = [{ l: "Tarif de lancement", p: "25 \u20AC", q: 50 }, { l: "Plein tarif", p: "30 \u20AC", q: 150 }];
   return /*#__PURE__*/React.createElement("section", {
     className: "section cream-2",
     id: "inscriptions"
@@ -753,12 +696,7 @@ function Inscriptions() {
     }
   }, "Inscriptions"), /*#__PURE__*/React.createElement("h2", {
     className: "display"
-  }, "Tarifs et inscription")), /*#__PURE__*/React.createElement(Reveal, {
-    className: "alert"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    n: "calendar",
-    s: 24
-  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("b", null, "Ouverture officielle des inscriptions : le mercredi 28 octobre 2026 à 10h00."), " Laissez-nous votre e-mail pour \xEAtre pr\xE9venu en priorit\xE9 d\xE8s l'ouverture de la billetterie.")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
+  }, "Tarifs et inscription")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
     className: "tarif-grid"
   }, /*#__PURE__*/React.createElement(TarifCard, {
     km: 18,
@@ -768,7 +706,7 @@ function Inscriptions() {
     km: 24,
     tone: "accent",
     tiers: t24
-  })), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", { className: "tarif-bridge" }, /*#__PURE__*/React.createElement(Icon, { n: "award", s: 22 }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, "Offre licenci\xE9s FFA - 5 \u20AC de r\xE9duction"), " sur les 50 premiers dossards, 18 km et 24 km confondus"))), /*#__PURE__*/React.createElement("div", {
     className: "req"
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "fileCheck",
@@ -1416,7 +1354,15 @@ function Faq() {
     item: item,
     open: open === i,
     onToggle: () => setOpen(open === i ? -1 : i)
-  }))), /*#__PURE__*/React.createElement("p", {
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "faq-cta"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "display"
+  }, "Pr\xEAt \xE0 prendre le d\xE9part ?"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-primary",
+    href: "#preinscription",
+    "data-track": "faq"
+  }, "\xCAtre pr\xE9venu de l'ouverture")), /*#__PURE__*/React.createElement("p", {
     className: "faq-foot"
   }, "Une autre question ? \xC9crivez-nous \xE0 ", /*#__PURE__*/React.createElement("a", {
     href: "mailto:marne.outdoor.experiences@gmail.com"
