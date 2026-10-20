@@ -24,36 +24,36 @@ const COMMUNES = [{
   meta: ""
 }];
 const PARCOURS = {
-  24: {
-    km: 24,
+  23: {
+    km: 23,
     role: "Trail Expérience",
     tone: "accent",
     desc: "Un tracé plus exigeant pour les traileurs confirmés souhaitant profiter pleinement des reliefs, des panoramas et des chemins emblématiques de la Montagne de Reims. Plus de distance, plus de dénivelé, plus d'immersion.",
-    dplus: 450,
+    dplus: 460,
     altMin: 123,
     altMax: 263,
-    dist: 23.9,
+    dist: 22.8,
     coureurs: 200,
     depart: "09h30",
-    barriere: "3h45",
-    elev: [138, 159, 185, 210, 205, 205, 168, 142, 132, 137, 127, 132, 138, 156, 174, 196, 222, 233, 250, 256, 259, 258, 260, 261, 259, 249, 212, 227, 247, 253, 249, 243, 234, 221, 200, 179, 170, 204, 227, 240, 235, 240, 240, 245, 242, 244, 247, 232, 225, 221, 202, 183, 161, 176, 206, 213, 221, 224, 224, 222, 209, 203, 186, 160, 138].map((y, i, a) => ({
+    barriere: "3h30",
+    elev: [135, 158, 171, 170, 163, 153, 140, 131, 131, 139, 153, 172, 192, 212, 229, 244, 253, 258, 258, 259, 260, 260, 253, 236, 223, 232, 247, 251, 249, 242, 233, 219, 202, 185, 176, 190, 215, 231, 237, 239, 239, 241, 243, 243, 244, 242, 234, 226, 219, 206, 185, 168, 172, 196, 213, 216, 220, 224, 223, 217, 206, 198, 183, 159, 135].map((y, i, a) => ({
       x: i / (a.length - 1),
       y
     }))
   },
-  18: {
-    km: 18,
+  15: {
+    km: 15,
     role: "Trail Découverte",
     tone: "gold",
     desc: "Un parcours accessible et dynamique permettant de découvrir l'univers du trail dans un environnement exceptionnel. Idéal pour les coureurs sur route souhaitant franchir le pas vers le trail ou pour les pratiquants à la recherche d'une expérience nature conviviale.",
-    dplus: 340,
+    dplus: 300,
     altMin: 123,
-    altMax: 261,
-    dist: 18.3,
+    altMax: 253,
+    dist: 15.1,
     coureurs: 300,
-    depart: "10h00",
-    barriere: "2h40",
-    elev: [138, 154, 175, 194, 210, 206, 205, 192, 165, 144, 133, 134, 136, 127, 130, 135, 143, 157, 170, 188, 206, 223, 232, 248, 251, 258, 260, 259, 254, 236, 228, 238, 239, 239, 238, 239, 244, 242, 242, 244, 248, 240, 226, 226, 223, 213, 193, 180, 162, 167, 190, 212, 214, 213, 223, 224, 224, 224, 219, 201, 202, 194, 175, 153, 138].map((y, i, a) => ({
+    depart: "10h30",
+    barriere: "2h30",
+    elev: [135, 149, 165, 174, 172, 168, 164, 158, 149, 139, 131, 128, 130, 136, 143, 153, 165, 178, 191, 205, 219, 233, 243, 249, 251, 252, 250, 244, 239, 240, 243, 243, 242, 242, 244, 247, 241, 232, 226, 224, 221, 211, 198, 185, 170, 160, 168, 188, 207, 214, 210, 216, 222, 223, 224, 224, 222, 214, 205, 202, 198, 185, 166, 149, 135].map((y, i, a) => ({
       x: i / (a.length - 1),
       y
     }))
@@ -62,27 +62,34 @@ const PARCOURS = {
 const PROG = [{
   d: "Dimanche 4 avril",
   t: "07h-09h",
-  w: "Retrait des dossards",
+  w: "Retrait des dossards - Trail 23 km",
+  tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
+  gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
+  key: false
+}, {
+  d: "Dimanche 4 avril",
+  t: "07h-10h",
+  w: "Retrait des dossards - Trail 15 km",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: false
 }, {
   d: "Dimanche 4 avril",
   t: "09h30",
-  w: "Départ Trail 24 km",
+  w: "Départ Trail 23 km",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: true
 }, {
   d: "Dimanche 4 avril",
-  t: "10h00",
-  w: "Départ Trail 18 km",
+  t: "10h30",
+  w: "Départ Trail 15 km",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
   key: true
 }, {
   d: "Dimanche 4 avril",
-  t: "11h15-13h15",
+  t: "11h15-13h00",
   w: "Arrivées et remise des prix",
   tag: "Foyer Rural - 33 rue du Capitaine Chesnais, 51170 Chaumuzy",
   gps: "https://maps.app.goo.gl/iQEZokPHo54NmzSU9",
@@ -375,7 +382,7 @@ function Oeno() {
 
 /* ---------- parcours comparator ---------- */
 function Parcours() {
-  const [km, setKm] = useState(24);
+  const [km, setKm] = useState(23);
   const p = PARCOURS[km];
   const color = p.tone === "accent" ? "var(--accent-safe)" : "var(--gold-ink)";
   return /*#__PURE__*/React.createElement("section", {
@@ -401,12 +408,12 @@ function Parcours() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "par-tabs"
   }, /*#__PURE__*/React.createElement("button", {
-    className: "par-tab" + (km === 24 ? " on" : ""),
-    onClick: () => setKm(24)
-  }, "Trail Exp\xE9rience - 24 km"), /*#__PURE__*/React.createElement("button", {
-    className: "par-tab" + (km === 18 ? " on" : ""),
-    onClick: () => setKm(18)
-  }, "Trail D\xE9couverte - 18 km"))), /*#__PURE__*/React.createElement("div", {
+    className: "par-tab" + (km === 23 ? " on" : ""),
+    onClick: () => setKm(23)
+  }, "Trail Exp\xE9rience - 23 km"), /*#__PURE__*/React.createElement("button", {
+    className: "par-tab" + (km === 15 ? " on" : ""),
+    onClick: () => setKm(15)
+  }, "Trail D\xE9couverte - 15 km"))), /*#__PURE__*/React.createElement("div", {
     className: "card par-card",
     key: km
   }, /*#__PURE__*/React.createElement("div", {
@@ -480,18 +487,9 @@ function Parcours() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "pin",
     s: 15
-  }), " ", window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 24 ? 4 : 3), " communes travers\xE9es")), /*#__PURE__*/React.createElement("div", {
+  }), " ", window.TRACES && window.TRACES[p.km] && window.TRACES[p.km].nbCommunes || (p.km === 23 ? 4 : 3), " communes travers\xE9es")), /*#__PURE__*/React.createElement("div", {
     style: { display: "flex", gap: 12, marginTop: 18, flexWrap: "wrap" }
-  }, /*#__PURE__*/React.createElement("a", {
-    className: "btn btn-gold",
-    href: "assets/reglement-sportif-trail-chaumuzy-2027.pdf",
-    target: "_blank",
-    rel: "noopener",
-    style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
-  }, /*#__PURE__*/React.createElement(Icon, {
-    n: "fileCheck",
-    s: 16
-  }), " R\xE8glement sportif (PDF)"), /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", {
     className: "btn btn-gold is-disabled",
     "aria-disabled": "true",
     style: { justifyContent: "center", flex: "1 1 0", minWidth: 150 }
@@ -666,7 +664,7 @@ function TarifCard({
     style: { borderTopColor: color, borderTopWidth: 4, borderTopStyle: "solid" }
   }, /*#__PURE__*/React.createElement("div", { className: "top" },
     /*#__PURE__*/React.createElement("div", { className: "km" }, km, /*#__PURE__*/React.createElement("span", { className: "u", style: { color } }, "KM")),
-    /*#__PURE__*/React.createElement("span", { className: "chip", style: { borderColor: color, color } }, km === 18 ? 300 : 200, " dossards max")),
+    /*#__PURE__*/React.createElement("span", { className: "chip", style: { borderColor: color, color } }, km === 15 ? 300 : 200, " dossards max")),
   /*#__PURE__*/React.createElement("div", { className: "tarif-rows" }, tiers.map((t, i) => /*#__PURE__*/React.createElement("div", { className: "tarif-row", key: i },
     /*#__PURE__*/React.createElement("div", { className: "lab" }, t.l),
     /*#__PURE__*/React.createElement("div", { className: "qte" }, /*#__PURE__*/React.createElement("b", null, t.q), " dossards"),
@@ -699,11 +697,11 @@ function Inscriptions() {
   }, "Tarifs et inscription")), SHOW_GAUGE && /*#__PURE__*/React.createElement(DossardGauge, null), SHOW_GAUGE && /*#__PURE__*/React.createElement(EarlyBird, null), /*#__PURE__*/React.createElement("div", {
     className: "tarif-grid"
   }, /*#__PURE__*/React.createElement(TarifCard, {
-    km: 18,
+    km: 15,
     tone: "gold",
     tiers: t18
   }), /*#__PURE__*/React.createElement(TarifCard, {
-    km: 24,
+    km: 23,
     tone: "accent",
     tiers: t24
   }), /*#__PURE__*/React.createElement("div", {
@@ -711,7 +709,7 @@ function Inscriptions() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "award",
     s: 20
-  }), /*#__PURE__*/React.createElement("span", null, "Une r\xE9duction de 5 \u20AC est pr\xE9vue pour les 50 premi\xE8res inscriptions de licenci\xE9(e)s FFA, 18 km et 24 km confondus"))), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("span", null, "Une r\xE9duction de 5 \u20AC est pr\xE9vue pour les 50 premi\xE8res inscriptions de licenci\xE9(e)s FFA, 15 km et 23 km confondus"))), /*#__PURE__*/React.createElement("div", {
     className: "req"
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "fileCheck",
@@ -886,14 +884,14 @@ const BREVO = {
   firstField: "PRENOM",
   lastField: "NOM",
   distField: "CHAUMUZY_DISTANCE",
-  distField2: "CHAUMUZY_24KM" // second (required) distance attribute on the Brevo form
+  distField2: "CHAUMUZY_23KM" // second (required) distance attribute on the Brevo form
 };
 function PreinscriptionForm() {
   const [state, setState] = useState("idle"); // idle | sending | ok | error
   const [dist, setDist] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const formRef = useRef(null);
-  const LIST_IDS = { "24": 8, "18": 9, "?": 10 };
+  const LIST_IDS = { "23": 8, "15": 9, "?": 10 };
   const onSubmit = async e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -993,7 +991,7 @@ function PreinscriptionForm() {
     className: "seg",
     role: "radiogroup",
     "aria-label": "Parcours"
-  }, [["24", "Trail Expérience - 24 km", "8"], ["18", "Trail Découverte - 18 km", "9"], ["?", "Je ne sais pas encore", "10"]].map(([v, l, listId]) => /*#__PURE__*/React.createElement("label", {
+  }, [["23", "Trail Expérience - 23 km", "8"], ["15", "Trail Découverte - 15 km", "9"], ["?", "Je ne sais pas encore", "10"]].map(([v, l, listId]) => /*#__PURE__*/React.createElement("label", {
     key: v,
     className: "seg-opt" + (dist === v ? " on" : ""),
     "data-list-id": listId
@@ -1058,7 +1056,7 @@ function PreinscriptionForm() {
 
 /* ---------- add to calendar ---------- */
 function AddToCalendar() {
-  // Google Calendar pre-filled link (UTC times: 24km start 09:30 local = 07:30Z)
+  // Google Calendar pre-filled link (UTC times: 23km start 09:30 local = 07:30Z)
   const g = "https://calendar.google.com/calendar/render?action=TEMPLATE" + "&text=" + encodeURIComponent("Trail de Chaumuzy 2027") + "&dates=20270404T073000Z/20270404T120000Z" + "&details=" + encodeURIComponent("1re édition. Deux parcours nature au cœur du vignoble champenois. Infos : https://trail-chaumuzy.fr") + "&location=" + encodeURIComponent("Foyer Rural de Chaumuzy, 33 rue du Capitaine Chesnais, 51170 Chaumuzy");
   return /*#__PURE__*/React.createElement("div", {
     className: "cal-block"
@@ -1265,13 +1263,13 @@ function Partenaires() {
    Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
 const FAQ = [{
   q: "Comment puis-je m'inscrire ?",
-  a: "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 \xE0 10h00, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. Votre inscription est valid\xE9e apr\xE8s paiement, acceptation du r\xE8glement et envoi de votre licence ou PPS. En attendant, laissez votre e-mail via le formulaire de pr\xE9-inscription : vous serez pr\xE9venu(e) en priorit\xE9 d\xE8s l'ouverture."
+  a: "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 \xE0 10h00, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est valid\xE9e apr\xE8s paiement, acceptation du r\xE8glement et envoi de votre licence ou PPS. En attendant, laissez votre e-mail via le formulaire de pr\xE9-inscription : vous serez pr\xE9venu(e) en priorit\xE9 d\xE8s l'ouverture."
 }, {
   q: "Quels documents dois-je fournir ?",
   a: "Au choix : une licence FFA Athl\xE9 Comp\xE9tition, Athl\xE9 Running ou Athl\xE9 Entreprise en cours de validit\xE9 (les licences Sant\xE9, Encadrement et D\xE9couverte ne sont pas accept\xE9es), ou une attestation Pass Pr\xE9vention Sant\xE9 (PPS) d\xE9livr\xE9e par la FFA sur pps.athle.fr, dat\xE9e de moins d'un an. Les licences FSCF, FSGT et UFOLEP mention \xAB athl\xE9tisme \xBB sont \xE9galement accept\xE9es. Les licences \xE9trang\xE8res ne le sont pas : les coureurs \xE9trangers doivent fournir un PPS. Le document est demand\xE9 \xE0 l'inscription, et au plus tard au retrait du dossard."
 }, {
   q: "O\xF9 et quand retirer mon dossard ?",
-  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 \xE0 9h00, sur pr\xE9sentation d'une pi\xE8ce d'identit\xE9 et de votre licence ou PPS. Aucun dossard n'est d\xE9livr\xE9 apr\xE8s 9h00 ni envoy\xE9 par courrier. Le retrait par un tiers est possible avec une procuration et les pi\xE8ces du participant. Le dossard se porte visible sur le devant, ceinture porte-dossard accept\xE9e, sans \xEAtre pli\xE9 ni masqu\xE9."
+  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 \xE0 9h00 pour le 23 km et de 7h00 \xE0 10h00 pour le 15 km, sur pr\xE9sentation d'une pi\xE8ce d'identit\xE9 et de votre licence ou PPS. Aucun dossard n'est d\xE9livr\xE9 apr\xE8s ces horaires ni envoy\xE9 par courrier. Le retrait par un tiers est possible avec une procuration et les pi\xE8ces du participant. Le dossard se porte visible sur le devant, ceinture porte-dossard accept\xE9e, sans \xEAtre pli\xE9 ni masqu\xE9."
 }, {
   q: "O\xF9 se garer le jour de la course ?",
   a: "Un parking gratuit est fl\xE9ch\xE9 \xE0 proximit\xE9 de la zone d\xE9part et arriv\xE9e, \xE0 Chaumuzy. Nous vous recommandons le covoiturage : l'acc\xE8s au village est limit\xE9 le matin de l'\xE9preuve. Chaumuzy se situe au c\u0153ur de la Montagne de Reims, \xE0 environ 30 minutes de Reims et d'\xC9pernay."
@@ -1283,10 +1281,10 @@ const FAQ = [{
   a: "Oui, les \xE9preuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, r\xE9serve d'eau d'au moins 0,5 L, t\xE9l\xE9phone mobile charg\xE9 avec le num\xE9ro du PC course enregistr\xE9 et le son activ\xE9, sifflet, gobelet ou contenant r\xE9utilisable personnel, et dossard visible sur le devant. Chaque \xE9l\xE9ment manquant entra\xEEne une p\xE9nalit\xE9 de 5 minutes. Conseill\xE9s : r\xE9serve alimentaire, veste coupe-vent, casquette ou gants selon la m\xE9t\xE9o, petite trousse de premiers soins. Les b\xE2tons sont autoris\xE9s, \xE0 conserver du d\xE9part \xE0 l'arriv\xE9e. Les \xE9couteurs sont tol\xE9r\xE9s si vous restez audible des consignes."
 }, {
   q: "Y a-t-il un \xE2ge minimum ?",
-  a: "Oui, selon les cat\xE9gories d'\xE2ge FFA appliqu\xE9es au kilom\xE8tre-effort. Le Trail 24 km (29 km-effort) est r\xE9serv\xE9 aux Espoirs (U23) et au-del\xE0, soit les coureurs n\xE9s en 2007 et avant. Le Trail 18 km (22 km-effort) est ouvert aux Juniors (U20) et au-del\xE0, soit les coureurs n\xE9s en 2009 et avant. La cat\xE9gorie est contr\xF4l\xE9e \xE0 l'inscription et au retrait du dossard : toute inscription non conforme est refus\xE9e, sans remboursement."
+  a: "Oui, selon les cat\xE9gories d'\xE2ge FFA appliqu\xE9es au kilom\xE8tre-effort. Le Trail 23 km (27 km-effort) est r\xE9serv\xE9 aux Espoirs (U23) et au-del\xE0, soit les coureurs n\xE9s en 2007 et avant. Le Trail 15 km (18 km-effort) est ouvert aux Juniors (U20) et au-del\xE0, soit les coureurs n\xE9s en 2009 et avant. La cat\xE9gorie est contr\xF4l\xE9e \xE0 l'inscription et au retrait du dossard : toute inscription non conforme est refus\xE9e, sans remboursement."
 }, {
   q: "Y a-t-il une barri\xE8re horaire ?",
-  a: "Oui : 3h45 de course sur le 24 km et 2h40 sur le 18 km. Au-del\xE0, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard et sa puce. Tout abandon doit \xEAtre signal\xE9 au plus t\xF4t \xE0 un membre de l'organisation."
+  a: "Oui : 3h30 de course sur le 23 km et 2h30 sur le 15 km. Au-del\xE0, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard et sa puce. Tout abandon doit \xEAtre signal\xE9 au plus t\xF4t \xE0 un membre de l'organisation."
 }, {
   q: "Les courses sont-elles chronom\xE9tr\xE9es ?",
   a: "Oui, par puce \xE9lectronique, avec un classement pour chaque \xE9preuve. Les r\xE9sultats officiels sont publi\xE9s en ligne \xE0 l'issue de la course. Sont r\xE9compens\xE9s, sans cumul, les trois premiers hommes et les trois premi\xE8res femmes au scratch de chaque \xE9preuve, ainsi que le premier et la premi\xE8re de chaque cat\xE9gorie d'\xE2ge. Les distances n'\xE9tant pas officielles au sens FFA, elles ne permettent ni record ni points au classement des clubs."
@@ -1339,7 +1337,7 @@ function FaqItem({
       color: "var(--accent-safe)",
       fontWeight: 600
     }
-  }, item.link.label, " \u2192")))));
+  }, item.link.label)))));
 }
 function Faq() {
   const [open, setOpen] = useState(0);
@@ -1488,10 +1486,10 @@ function Footer() {
     key: n.id,
     href: "#" + n.id
   }, n.l)), /*#__PURE__*/React.createElement("a", {
-    href: "parcours-24km.html"
-  }, "Parcours 24 km"), /*#__PURE__*/React.createElement("a", {
-    href: "parcours-18km.html"
-  }, "Parcours 18 km"), /*#__PURE__*/React.createElement("a", {
+    href: "parcours-23km.html"
+  }, "Parcours 23 km"), /*#__PURE__*/React.createElement("a", {
+    href: "parcours-15km.html"
+  }, "Parcours 15 km"), /*#__PURE__*/React.createElement("a", {
     href: "venir-sejourner.html"
   }, "Venir & s\xE9journer")), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"

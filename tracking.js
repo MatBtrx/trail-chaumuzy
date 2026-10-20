@@ -8,7 +8,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
   /* Emplacement lisible d'un bouton (partagé avec ouverture.js) */
   function place(el) {
-    var p = location.pathname, km = /24km/.test(p) ? '24' : /18km/.test(p) ? '18' : '';
+    var p = location.pathname, km = /23km/.test(p) ? '24' : /15km/.test(p) ? '18' : '';
     if (el.closest('.sticky-cta')) return 'barre-mobile';
     if (el.closest('.mobile-menu,#mobile-menu')) return 'menu-mobile';
     if (el.closest('.nav')) return 'nav';
@@ -21,11 +21,11 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   }
   function distance(el) {
     var p = location.pathname;
-    if (/24km/.test(p)) return '24';
-    if (/18km/.test(p)) return '18';
+    if (/23km/.test(p)) return '24';
+    if (/15km/.test(p)) return '18';
     var c = el.closest('.card'); if (!c) return '';
     var h = (c.querySelector('h3,.display') || c).textContent;
-    return /24\s?km/i.test(h) ? '24' : /18\s?km/i.test(h) ? '18' : '';
+    return /23\s?km/i.test(h) ? '23' : /15\s?km/i.test(h) ? '15' : '';
   }
   window.TDC_place = place;
   window.TDC_distance = distance;

@@ -3,7 +3,11 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true }
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/parcours-24km.html", "destination": "/parcours-23km.html", "permanent": true },
+    { "source": "/parcours-18km.html", "destination": "/parcours-15km.html", "permanent": true },
+    { "source": "/assets/trail_chaumuzy_24km.gpx", "destination": "/assets/trail_chaumuzy_23km.gpx", "permanent": true },
+    { "source": "/assets/trail_chaumuzy_18km.gpx", "destination": "/assets/trail_chaumuzy_15km.gpx", "permanent": true }
   ],
   "headers": [
     {

@@ -52,14 +52,14 @@
     if (pc && !pc.dataset.open) {
       pc.dataset.open = '1';
       swapText(pc.querySelector('h2'), 'Les inscriptions sont ouvertes');
-      swapText(pc.querySelector('p'), '500 dossards au total, 200 sur le 24 km et 300 sur le 18 km. Licenciés FFA : 5 € de réduction sur les 50 premiers dossards.');
+      swapText(pc.querySelector('p'), '500 dossards au total, 200 sur le 23 km et 300 sur le 15 km. Licenciés FFA : 5 € de réduction sur les 50 premiers dossards.');
     }
 
     // 5. FAQ « Comment puis-je m'inscrire ? »
     document.querySelectorAll('.faq-a p').forEach(function (p) {
       if (p.dataset.open || p.textContent.indexOf('Les inscriptions officielles ouvrent') !== 0) return;
       p.dataset.open = '1';
-      p.textContent = "Les inscriptions sont ouvertes, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 24 km et 300 sur le 18 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement et envoi de votre licence ou PPS. Licenciés FFA : 5 € de réduction sur les 50 premiers dossards, toutes courses confondues.";
+      p.textContent = "Les inscriptions sont ouvertes, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement et envoi de votre licence ou PPS. Licenciés FFA : 5 € de réduction sur les 50 premiers dossards, toutes courses confondues.";
     });
 
     // 6. Repère d'urgence sous les boutons du haut de page
@@ -75,9 +75,9 @@
     if (!document.documentElement.dataset.seoOpen) {
       document.documentElement.dataset.seoOpen = '1';
       if (document.getElementById('top')) {
-        document.title = 'Inscriptions ouvertes | Trail de Chaumuzy 2027 - 18 et 24 km';
+        document.title = 'Inscriptions ouvertes | Trail de Chaumuzy 2027 - 15 et 23 km';
         var md = document.querySelector('meta[name="description"]');
-        if (md) md.setAttribute('content', "Inscriptions ouvertes au Trail de Chaumuzy, dimanche 4 avril 2027 : 18 et 24 km dans les vignes et forêts de la Montagne de Reims. 500 dossards, réservez le vôtre.");
+        if (md) md.setAttribute('content', "Inscriptions ouvertes au Trail de Chaumuzy, dimanche 4 avril 2027 : 15 et 23 km dans les vignes et forêts de la Montagne de Reims. 500 dossards, réservez le vôtre.");
       }
     }
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
