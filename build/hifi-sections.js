@@ -1261,50 +1261,72 @@ function Partenaires() {
 /* ---------- FAQ ----------
    Réponses pré-remplies RÉALISTES mais À VALIDER par l'organisateur.
    Les passages marqués (à confirmer) doivent être vérifiés avant publication. */
-const FAQ = [{
-  q: "Comment puis-je m'inscrire ?",
-  a: "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 \xE0 10h00, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est valid\xE9e apr\xE8s paiement, acceptation du r\xE8glement et envoi de votre licence ou PPS. En attendant, laissez votre e-mail via le formulaire de pr\xE9-inscription : vous serez pr\xE9venu(e) en priorit\xE9 d\xE8s l'ouverture."
-}, {
-  q: "Quels documents dois-je fournir ?",
-  a: "Au choix : une licence FFA Athl\xE9 Comp\xE9tition, Athl\xE9 Running ou Athl\xE9 Entreprise en cours de validit\xE9 (les licences Sant\xE9, Encadrement et D\xE9couverte ne sont pas accept\xE9es), ou une attestation Pass Pr\xE9vention Sant\xE9 (PPS) d\xE9livr\xE9e par la FFA sur pps.athle.fr, dat\xE9e de moins d'un an. Les licences FSCF, FSGT et UFOLEP mention \xAB athl\xE9tisme \xBB sont \xE9galement accept\xE9es. Les licences \xE9trang\xE8res ne le sont pas : les coureurs \xE9trangers doivent fournir un PPS. Le document est demand\xE9 \xE0 l'inscription, et au plus tard au retrait du dossard."
-}, {
-  q: "O\xF9 et quand retirer mon dossard ?",
-  a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 \xE0 9h00 pour le 23 km et de 7h00 \xE0 10h00 pour le 15 km, sur pr\xE9sentation d'une pi\xE8ce d'identit\xE9 et de votre licence ou PPS. Aucun dossard n'est d\xE9livr\xE9 apr\xE8s ces horaires ni envoy\xE9 par courrier. Le retrait par un tiers est possible avec une procuration et les pi\xE8ces du participant. Le dossard se porte visible sur le devant, ceinture porte-dossard accept\xE9e, sans \xEAtre pli\xE9 ni masqu\xE9."
-}, {
-  q: "O\xF9 se garer le jour de la course ?",
-  a: "Un parking gratuit est fl\xE9ch\xE9 \xE0 proximit\xE9 de la zone d\xE9part et arriv\xE9e, \xE0 Chaumuzy. Nous vous recommandons le covoiturage : l'acc\xE8s au village est limit\xE9 le matin de l'\xE9preuve. Chaumuzy se situe au c\u0153ur de la Montagne de Reims, \xE0 environ 30 minutes de Reims et d'\xC9pernay."
-}, {
-  q: "Combien y a-t-il de ravitaillements ?",
-  a: "Un point de ravitaillement sur chaque parcours, \xE0 La Neuville\u2011aux\u2011Larris (Place du G\xE9n\xE9ral de Gaulle) : eau, boissons \xE9nerg\xE9tiques, fruits secs et fruits frais. Un ravitaillement complet vous attend \xE0 l'arriv\xE9e, au Foyer Rural de Chaumuzy. Chacun remplit lui-m\xEAme son contenant : aucun gobelet jetable n'est fourni. Les d\xE9chets se jettent uniquement dans les zones de propret\xE9, de 20 m avant \xE0 100 m apr\xE8s le ravitaillement."
-}, {
-  q: "Le mat\xE9riel est-il impos\xE9 ?",
-  a: "Oui, les \xE9preuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, r\xE9serve d'eau d'au moins 0,5 L, t\xE9l\xE9phone mobile charg\xE9 avec le num\xE9ro du PC course enregistr\xE9 et le son activ\xE9, sifflet, gobelet ou contenant r\xE9utilisable personnel, et dossard visible sur le devant. Chaque \xE9l\xE9ment manquant entra\xEEne une p\xE9nalit\xE9 de 5 minutes. Conseill\xE9s : r\xE9serve alimentaire, veste coupe-vent, casquette ou gants selon la m\xE9t\xE9o, petite trousse de premiers soins. Les b\xE2tons sont autoris\xE9s, \xE0 conserver du d\xE9part \xE0 l'arriv\xE9e. Les \xE9couteurs sont tol\xE9r\xE9s si vous restez audible des consignes."
-}, {
-  q: "Y a-t-il un \xE2ge minimum ?",
-  a: "Oui, selon les cat\xE9gories d'\xE2ge FFA appliqu\xE9es au kilom\xE8tre-effort. Le Trail 23 km (27 km-effort) est r\xE9serv\xE9 aux Espoirs (U23) et au-del\xE0, soit les coureurs n\xE9s en 2007 et avant. Le Trail 15 km (18 km-effort) est ouvert aux Juniors (U20) et au-del\xE0, soit les coureurs n\xE9s en 2009 et avant. La cat\xE9gorie est contr\xF4l\xE9e \xE0 l'inscription et au retrait du dossard : toute inscription non conforme est refus\xE9e, sans remboursement."
-}, {
-  q: "Y a-t-il une barri\xE8re horaire ?",
-  a: "Oui : 3h30 de course sur le 23 km et 2h30 sur le 15 km. Au-del\xE0, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard et sa puce. Tout abandon doit \xEAtre signal\xE9 au plus t\xF4t \xE0 un membre de l'organisation."
-}, {
-  q: "Les courses sont-elles chronom\xE9tr\xE9es ?",
-  a: "Oui, par puce \xE9lectronique, avec un classement pour chaque \xE9preuve. Les r\xE9sultats officiels sont publi\xE9s en ligne \xE0 l'issue de la course. Sont r\xE9compens\xE9s, sans cumul, les trois premiers hommes et les trois premi\xE8res femmes au scratch de chaque \xE9preuve, ainsi que le premier et la premi\xE8re de chaque cat\xE9gorie d'\xE2ge. Les distances n'\xE9tant pas officielles au sens FFA, elles ne permettent ni record ni points au classement des clubs."
-}, {
-  q: "Que se passe-t-il en cas de mauvais temps ?",
-  a: "En d\xE9but de printemps, la m\xE9t\xE9o peut \xEAtre changeante : pluie, vent, sols glissants. En cas de force majeure ou de danger pour les coureurs, l'organisation peut modifier les parcours, les horaires ou les barri\xE8res horaires, neutraliser une portion, reporter ou annuler l'\xE9preuve. Aucun remboursement ne peut alors \xEAtre exig\xE9 ; selon les circonstances, un report, un avoir ou un remboursement partiel pourra \xEAtre propos\xE9."
-}, {
-  q: "Les accompagnants peuvent-ils suivre les coureurs ?",
-  a: "Non. Pour des raisons de s\xE9curit\xE9, les suiveurs, accompagnants \xE0 v\xE9lo, poussettes et animaux, m\xEAme tenus en laisse, sont interdits sur les parcours. Les ravitaillements organis\xE9s par des proches en dehors des zones pr\xE9vues sont interdits et passibles de mise hors course. Vos supporters sont les bienvenus sur la zone d\xE9part et arriv\xE9e."
-}, {
-  q: "Puis-je annuler ou c\xE9der mon dossard ?",
-  a: "L'engagement est personnel, ferme et d\xE9finitif : l'inscription ne b\xE9n\xE9ficie d'aucun droit de r\xE9tractation (article L.221-28 du Code de la consommation) et n'ouvre droit \xE0 aucun remboursement de la part de l'organisateur. En revanche, si vous ne pouvez plus participer, vous pouvez c\xE9der votre dossard via la plateforme Miles Republic : c'est la seule voie autoris\xE9e. Tout \xE9change en dehors de la plateforme expose le porteur et le titulaire initial \xE0 la mise hors course. Une assurance annulation facultative peut \xEAtre propos\xE9e \xE0 l'inscription."
-}, {
-  q: "Proposez-vous une offre pour les entreprises ?",
-  a: "Oui. Le Pack entreprise (50 \u20AC / dossard) permet d'engager une \xE9quipe avec inscription centralis\xE9e, facture unique et visibilit\xE9 de votre marque.",
-  link: {
-    href: MEET_B2B,
-    label: "R\xE9server un rendez-vous de 30 min"
+const FAQ = [
+ {
+  "q": "Comment puis-je m'inscrire ?",
+  "a": "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 à 10h00, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement et envoi de votre licence ou PPS. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture."
+ },
+ {
+  "q": "Quels documents dois-je fournir ?",
+  "a": "Au choix : une licence FFA Athlé Compétition, Athlé Running ou Athlé Entreprise en cours de validité (les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences d'autres fédérations ne sont acceptées que si elles figurent sur la liste des partenariats reconnus par la FFA. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Le document est demandé à l'inscription, et au plus tard au retrait du dossard. Coureurs mineurs (15 km) : une autorisation parentale signée est également demandée."
+ },
+ {
+  "q": "Où et quand retirer mon dossard ?",
+  "a": "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 à 9h00 pour le 23 km et de 7h00 à 10h00 pour le 15 km, sur présentation d'une pièce d'identité et de votre licence ou PPS, ainsi que de l'autorisation parentale pour les mineurs. Aucun dossard n'est délivré après ces horaires ni envoyé par courrier. Le retrait par un tiers est possible avec une procuration et les pièces du participant. Le dossard se porte visible sur le devant, ceinture porte-dossard acceptée, sans être plié ni masqué."
+ },
+ {
+  "q": "Où se garer le jour de la course ?",
+  "a": "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve. Chaumuzy se situe au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay."
+ },
+ {
+  "q": "Combien y a-t-il de ravitaillements ?",
+  "a": "Un point de ravitaillement sur chaque parcours, à La Neuville‑aux‑Larris (Place du Général de Gaulle) : eau, boissons énergétiques, fruits secs et fruits frais. Un ravitaillement complet vous attend à l'arrivée, au Foyer Rural de Chaumuzy. Chacun remplit lui-même son contenant : aucun gobelet jetable n'est fourni. Les déchets se jettent uniquement dans les zones de propreté, de 20 m avant à 100 m après le ravitaillement."
+ },
+ {
+  "q": "Le matériel est-il imposé ?",
+  "a": "Oui, les épreuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, réserve d'eau d'au moins 0,5 L, téléphone mobile chargé avec le numéro du PC course enregistré et le son activé, sifflet, gobelet ou contenant réutilisable personnel, et dossard visible sur le devant. Chaque élément manquant entraîne une pénalité de 5 minutes. Conseillés : réserve alimentaire, veste coupe-vent, casquette ou gants selon la météo, petite trousse de premiers soins. Les bâtons sont autorisés, à conserver du départ à l'arrivée. Les écouteurs sont tolérés si vous restez audible des consignes."
+ },
+ {
+  "q": "Y a-t-il un âge minimum ?",
+  "a": "Oui, selon les catégories d'âge FFA appliquées au kilomètre-effort. Le Trail 23 km (27,6 km-effort) est réservé aux Espoirs (U23) et au-delà, soit les coureurs nés en 2007 et avant. Le Trail 15 km (18 km-effort) est ouvert aux Juniors (U20) et au-delà, soit les coureurs nés en 2009 et avant. La catégorie est contrôlée à l'inscription et au retrait du dossard : toute inscription non conforme est refusée, sans remboursement."
+ },
+ {
+  "q": "Y a-t-il une barrière horaire ?",
+  "a": "Oui : 3h30 de course sur le 23 km et 2h30 sur le 15 km. Au-delà, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard et sa puce. Tout abandon doit être signalé au plus tôt à un membre de l'organisation."
+ },
+ {
+  "q": "Les courses sont-elles chronométrées ?",
+  "a": "Oui, par puce électronique, avec un classement pour chaque épreuve. Les résultats officiels sont publiés en ligne à l'issue de la course. Les réclamations se font par écrit auprès du directeur de course, dans les 30 minutes suivant l'affichage des résultats. Sont récompensés, sans cumul, les trois premiers hommes et les trois premières femmes au scratch de chaque épreuve, ainsi que le premier et la première de chaque catégorie d'âge. Les distances n'étant pas officielles au sens FFA, elles ne permettent ni record ni points au classement des clubs."
+ },
+ {
+  "q": "Que se passe-t-il en cas de mauvais temps ?",
+  "a": "En début de printemps, la météo peut être changeante : pluie, vent, sols glissants. En cas de force majeure ou de danger pour les coureurs, l'organisation peut modifier les parcours, les horaires ou les barrières horaires, neutraliser une portion, reporter ou annuler l'épreuve. Aucun remboursement ne peut alors être exigé ; selon les circonstances, un report, un avoir ou un remboursement partiel pourra être proposé."
+ },
+ {
+  "q": "Les accompagnants peuvent-ils suivre les coureurs ?",
+  "a": "Non. Pour des raisons de sécurité, les suiveurs, accompagnants à vélo, poussettes et animaux, même tenus en laisse, sont interdits sur les parcours. Les ravitaillements organisés par des proches en dehors des zones prévues sont interdits et passibles de mise hors course. Vos supporters sont les bienvenus sur la zone départ et arrivée."
+ },
+ {
+  "q": "Quel dispositif de sécurité est prévu ?",
+  "a": "Un dispositif de secours adapté à 500 coureurs : secouristes d'une association agréée, médecin de course, ambulance et défibrillateur au Foyer Rural de Chaumuzy, avec une prise en charge possible en tout point du parcours en moins de 30 minutes. Des signaleurs sécurisent les traversées de routes, une équipe de tête et des serre-files ferment le parcours. Chaque coureur s'engage à porter assistance à un concurrent en difficulté jusqu'à l'arrivée des secours."
+ },
+ {
+  "q": "Le trail est-il éco-responsable ?",
+  "a": "Oui. Aucun gobelet jetable sur les ravitaillements, produits locaux et de saison, balisage retiré après l'épreuve. Les coureurs restent sur les sentiers balisés, sans couper les virages, et respectent les vignes, les cultures et la faune. Le covoiturage est encouragé. L'organisation suit une démarche RSE inspirée de la norme ISO 20121."
+ },
+ {
+  "q": "Puis-je annuler ou céder mon dossard ?",
+  "a": "L'engagement est personnel, ferme et définitif : l'inscription ne bénéficie d'aucun droit de rétractation (article L.221-28 du Code de la consommation) et n'ouvre droit à aucun remboursement de la part de l'organisateur. En revanche, si vous ne pouvez plus participer, vous pouvez céder votre dossard via la plateforme Miles Republic : c'est la seule voie autorisée. Tout échange en dehors de la plateforme expose le porteur et le titulaire initial à la mise hors course. Une assurance annulation facultative peut être proposée à l'inscription."
+ },
+ {
+  "q": "Proposez-vous une offre pour les entreprises ?",
+  "a": "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
+  "link": {
+   "href": MEET_B2B,
+   "label": "Réserver un rendez-vous de 30 min"
   }
-}];
+ }
+];
 function FaqItem({
   item,
   open,
