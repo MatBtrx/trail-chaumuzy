@@ -15,17 +15,21 @@ const COMMUNES = [
 { nm: "Champlat‑et‑Boujacourt", meta: "" }];
 
 
+/* Billetterie officielle Miles Republic. Chaque bouton porte un lien suivi (utm_content = emplacement) + data-reg pour tracking.js. */
+const REG_URL = "https://fr.milesrepublic.com/event/trail-de-chaumuzy-18058";
+const reg = (where, km) => ({ href: REG_URL + "?utm_source=traildechaumuzy.fr&utm_medium=site&utm_campaign=inscriptions-2027&utm_content=" + where, target: "_blank", rel: "noopener", "data-reg": "1", "data-cta": where, ...(km ? { "data-km": String(km) } : {}) });
+
 const PARCOURS = {
   23: {
     km: 23, role: "Trail Expérience", tone: "accent",
     desc: "Un tracé plus exigeant pour les traileurs confirmés souhaitant profiter pleinement des reliefs, des panoramas et des chemins emblématiques de la Montagne de Reims. Plus de distance, plus de dénivelé, plus d'immersion.",
-    dplus: 460, altMin: 123, altMax: 263, dist: 22.8, coureurs: 200, depart: "09h30", barriere: "3h30",
+    dplus: 407, altMin: 123, altMax: 263, dist: 23, coureurs: 200, depart: "09h30", barriere: "3h30",
     elev: [135, 158, 171, 170, 163, 153, 140, 131, 131, 139, 153, 172, 192, 212, 229, 244, 253, 258, 258, 259, 260, 260, 253, 236, 223, 232, 247, 251, 249, 242, 233, 219, 202, 185, 176, 190, 215, 231, 237, 239, 239, 241, 243, 243, 244, 242, 234, 226, 219, 206, 185, 168, 172, 196, 213, 216, 220, 224, 223, 217, 206, 198, 183, 159, 135].map((y, i, a) => ({ x: i / (a.length - 1), y }))
   },
   15: {
     km: 15, role: "Trail Découverte", tone: "gold",
     desc: "Un parcours accessible et dynamique permettant de découvrir l'univers du trail dans un environnement exceptionnel. Idéal pour les coureurs sur route souhaitant franchir le pas vers le trail ou pour les pratiquants à la recherche d'une expérience nature conviviale.",
-    dplus: 300, altMin: 123, altMax: 253, dist: 15.1, coureurs: 300, depart: "10h30", barriere: "2h30",
+    dplus: 273, altMin: 123, altMax: 253, dist: 15, coureurs: 300, depart: "10h30", barriere: "2h30",
     elev: [135, 149, 165, 174, 172, 168, 164, 158, 149, 139, 131, 128, 130, 136, 143, 153, 165, 178, 191, 205, 219, 233, 243, 249, 251, 252, 250, 244, 239, 240, 243, 243, 242, 242, 244, 247, 241, 232, 226, 224, 221, 211, 198, 185, 170, 160, 168, 188, 207, 214, 210, 216, 222, 223, 224, 224, 222, 214, 205, 202, 198, 185, 166, 149, 135].map((y, i, a) => ({ x: i / (a.length - 1), y }))
   }
 };
@@ -76,7 +80,7 @@ function Nav() {
         </div>
         <div className="nav-cta">
           <a className="btn btn-gold nav-partner" href="#partenaires">Partenaire</a>
-          <a className="btn btn-primary" href="#preinscription">Pré-inscription</a>
+          <a className="btn btn-primary" {...reg("nav")}>S'inscrire</a>
           <button className="nav-burger" onClick={() => setOpen(true)} aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="mobile-menu"><Icon n="menu" /></button>
         </div>
       </nav>
@@ -85,7 +89,7 @@ function Nav() {
         <button className="nav-burger" style={{ position: "absolute", top: 24, right: 24 }} onClick={close} aria-label="Fermer"><Icon n="x" /></button>
         {NAV.map((n) => <a key={n.id} href={"#" + n.id} onClick={close}>{n.l}</a>)}
         <a href="#partenaires" onClick={close}>Partenaires</a>
-        <a className="btn btn-primary mobile-menu-cta" href="#preinscription" onClick={close}>Être prévenu de l'ouverture</a>
+        <a className="btn btn-primary mobile-menu-cta" {...reg("menu-mobile")} onClick={close}>Je m'inscris</a>
       </div>
     </React.Fragment>);
 
@@ -99,20 +103,20 @@ function Hero() {
       <div className="hero-veil" />
       <div className="hero-inner">
         <Reveal><Logo h={86} cls="hero-logo" /></Reveal>
-        <Reveal className="hero-date" d={1}>DIMANCHE 4 AVRIL 2027 - MARNE</Reveal>
+        <Reveal className="hero-date" d={1}><span style={{ whiteSpace: "nowrap" }}>DIMANCHE 4 AVRIL 2027</span> - <span style={{ whiteSpace: "nowrap" }}>INSCRIPTIONS OUVERTES</span></Reveal>
         <Reveal tag="h1" className="display hero-title" d={1}>Trail de<br /><span className="l2">Chaumuzy</span></Reveal>
         <Reveal tag="p" className="hero-sub" d={2}>Le dimanche 4 avril 2027, vivez une expérience trail unique au cœur du vignoble champenois. Entre forêts, coteaux viticoles et villages de caractère, le Trail de Chaumuzy vous invite à découvrir la Montagne de Reims autrement.</Reveal>
         <Reveal tag="p" className="hero-tag" d={2}>Deux parcours. Quatre villages. Une seule expérience.</Reveal>
         <Reveal d={2}><Countdown /></Reveal>
         <Reveal className="hero-cta" d={3}>
-          <a className="btn btn-primary" href="#preinscription">Être prévenu de l'ouverture des inscriptions</a>
+          <a className="btn btn-primary" {...reg("hero")}>Je m'inscris</a>
           <a className="btn btn-gold" href="#parcours">Découvrir les parcours</a>
         </Reveal>
         <Reveal className="stat-strip" d={4}>
           <div className="st"><b>500</b><span>Participant(e)s</span></div>
           <div className="st"><b>2</b><span>Parcours</span></div>
           <div className="st"><b>4</b><span>Communes</span></div>
-          <div className="st"><b>908</b><span>D+ cumulé (m)</span></div>
+          <div className="st"><b>680</b><span>D+ cumulé (m)</span></div>
         </Reveal>
       </div>
       <a className="hero-scroll" href="#territoire">Explorer<Icon n="chevronDown" s={20} /></a>
@@ -204,7 +208,7 @@ function Parcours() {
             <div className="par-km">{p.km}<span className="u">KM</span></div>
             <p className="lead" style={{ marginTop: 14, maxWidth: 420 }}>{p.desc}</p>
             <div className="par-stats">
-              <div className="par-stat"><div className="k"><Icon n="trend" s={15} /> Dénivelé +</div><div className="v">{p.dplus} <small>m</small></div></div>
+              <div className="par-stat"><div className="k"><Icon n="trend" s={15} /> Dénivelé +/-</div><div className="v">{p.dplus} <small>m</small></div></div>
               <div className="par-stat"><div className="k"><Icon n="mountain" s={15} /> Altitude</div><div className="v">{p.altMin}-{p.altMax} <small>m</small></div></div>
               <div className="par-stat"><div className="k"><Icon n="users" s={15} /> Dossards max</div><div className="v">{p.coureurs}</div></div>
               <div className="par-stat"><div className="k"><Icon n="clock" s={15} /> Barrière horaire</div><div className="v">{p.barriere}</div></div>
@@ -226,7 +230,7 @@ function Parcours() {
           <div className="par-right">
             <div className="elev-h"><span>Tracé du parcours (en cours de validation auprès des autorités locales)</span><span>{p.km} km</span></div>
             <RouteMap trace={window.TRACES && window.TRACES[p.km]} color={p.tone === "accent" ? "var(--accent)" : "var(--gold)"} />
-            <div className="elev-h" style={{ marginTop: 18 }}><span>Profil d'élévation</span><span>D+ {p.dplus} m</span></div>
+            <div className="elev-h" style={{ marginTop: 18 }}><span>Profil d'élévation</span><span>D+/D- {p.dplus} m</span></div>
             <ElevationProfile points={p.elev} dplus={p.dplus} altMin={p.altMin} altMax={p.altMax} dist={p.dist}
             color={p.tone === "accent" ? "var(--accent)" : "var(--gold)"} />
           </div>
@@ -340,7 +344,7 @@ function TarifCard({ km, tone, tiers }) {
           </div>
         )}
       </div>
-      <a className="btn btn-primary tarif-cta" href="#preinscription">Être prévenu de l'ouverture des inscriptions</a>
+      <a className="btn btn-primary tarif-cta" {...reg("tarif-" + km + "km", km)}>S'inscrire au {km} km</a>
     </Reveal>);
 
 }
@@ -357,7 +361,7 @@ function Inscriptions() {
     <section className="section cream-2" id="inscriptions">
       <div className="wrap" style={{ maxWidth: 860 }}>
         <div className="section-head center" style={{ marginBottom: 32 }}>
-          <div className="eyebrow center" style={{ justifyContent: "center" }}>Inscriptions</div>
+          <div className="eyebrow center" style={{ justifyContent: "center" }}>Inscriptions ouvertes</div>
           <h2 className="display">Tarifs et inscription</h2>
         </div>
         {SHOW_GAUGE && <DossardGauge />}
@@ -365,13 +369,11 @@ function Inscriptions() {
         <div className="tarif-grid">
           <TarifCard km={15} tone="gold" tiers={t18} />
           <TarifCard km={23} tone="accent" tiers={t24} />
-          <div className="tarif-perk tarif-perk-shared"><Icon n="award" s={20} /><span>Une réduction de 5 € est prévue pour les 50 premières inscriptions de licencié(e)s FFA, 15 km et 23 km confondus</span></div>
+          <div className="tarif-perk tarif-perk-shared"><Icon n="award" s={20} /><span>Une réduction de 2 € est offerte pour les licencié(e)s FFA</span></div>
         </div>
         <div className="req"><Icon n="fileCheck" s={16} /> Licence FFA ou PPS + pièce d'identité requis lors du retrait des dossards.</div>
 
         {SHOW_B2B && <B2BOffer />}
-
-        <PreinscriptionForm />
       </div>
     </section>);
 
@@ -503,130 +505,6 @@ function EarlyBird() {
 }
 
 
-/* ---------- Brevo pre-inscription form ----------
-   Wired to the Marne Outdoor XP Brevo form. To change list/fields, regenerate the
-   Brevo form embed and update `action` + the field names below. */
-const BREVO = {
-  action: "https://9b0284a6.sibforms.com/serve/MUIFAOK0pfhxGAPoqY-pFqcs6MtpyYLXKO-Wdx9wtbSWOat38S4RePyklschBxoFW_K05YI6W51ctw79vo1Y-D-TdxXwlNSKaS0OrbXLaFX9PbR1rjN3LKbOgIdYGRxsa4gR91qVgB2al0G-0Kk-bkqeVULnHd-AV9IQYjLkwc90_qx9a9Utl-KeR4riYthWcYqkIoMcPpZ_Fg2x_Q==",
-  emailField: "EMAIL",
-  firstField: "PRENOM",
-  lastField: "NOM",
-  distField: "CHAUMUZY_DISTANCE",
-  distField2: "CHAUMUZY_23KM" // second (required) distance attribute on the Brevo form
-};
-const LIST_IDS = { "23": 8, "15": 9, "?": 10 };
-function PreinscriptionForm() {
-  const [state, setState] = useState("idle"); // idle | sending | ok | error
-  const [dist, setDist] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const formRef = useRef(null);
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    // 1. un parcours doit être sélectionné
-    if (!dist) {
-      setState("error");
-      setErrMsg("Merci de choisir le parcours qui vous intéresse.");
-      return;
-    }
-    // 2. la case RGPD doit être cochée
-    const rgpd = form.querySelector("#rgpd-checkbox");
-    if (rgpd && !rgpd.checked) {
-      setState("error");
-      setErrMsg("Merci d'accepter la politique de confidentialité pour continuer.");
-      return;
-    }
-    // 3. champs texte valides (email, prénom, nom)
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-
-    const payload = {
-      firstname: (form.querySelector("#firstname") || {}).value || "",
-      lastname: (form.querySelector("#lastname") || {}).value || "",
-      email: (form.querySelector("#email") || {}).value || "",
-      listId: LIST_IDS[dist]
-    };
-
-    try {
-      setState("sending");
-      setErrMsg("");
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      setState("ok");
-    } catch (err) {
-      setState("error");
-      setErrMsg("Un souci est survenu. Réessayez ou écrivez-nous à marne.outdoor.experiences@gmail.com.");
-    }
-  };
-
-  if (state === "ok") {
-    return (
-      <Reveal className="card preinsc preinsc-done">
-        <div className="preinsc-check"><Icon n="award" s={30} /></div>
-        <h3>Vérifiez votre boîte mail&nbsp;!</h3>
-        <p>Un e-mail de confirmation vient de vous être envoyé. Cliquez sur le lien qu'il contient pour valider votre inscription à la liste d'attente. Pensez à vérifier vos spams.</p>
-        <AddToCalendar />
-      </Reveal>);
-
-  }
-
-  return (
-    <Reveal className="card preinsc" id="preinscription">
-      <div className="preinsc-head">
-        <div className="eyebrow">Liste d'attente</div>
-        <h3>Soyez prévenu(e) en priorité</h3>
-        <p className="muted">Inscriptions ouvertes le mercredi 28 octobre 2026 à 10h00 ! Laissez vos coordonnées : vous recevrez le coup d'envoi avant tout le monde.</p>
-      </div>
-      <form ref={formRef} id="waiting-list-form" className="preinsc-form" onSubmit={onSubmit} noValidate>
-        <div className="field-row">
-          <label className="field">
-            <span>Prénom</span>
-            <input id="firstname" name={BREVO.firstField} type="text" autoComplete="given-name" placeholder="Kilian" required />
-          </label>
-          <label className="field">
-            <span>Nom</span>
-            <input id="lastname" name={BREVO.lastField} type="text" autoComplete="family-name" placeholder="Jornet" required />
-          </label>
-        </div>
-        <label className="field">
-          <span>E-mail</span>
-          <input id="email" name={BREVO.emailField} type="email" autoComplete="email" placeholder="kilian.jornet@jekiffchaumuzy.com" required />
-        </label>
-        <div className="field">
-          <span>Parcours qui vous intéresse</span>
-          <div className="seg" role="radiogroup" aria-label="Parcours">
-            {[["23", "Trail Expérience - 23 km", "8"], ["15", "Trail Découverte - 15 km", "9"], ["?", "Je ne sais pas encore", "10"]].map(([v, l, listId]) =>
-            <label key={v} className={"seg-opt" + (dist === v ? " on" : "")} data-list-id={listId}>
-                <input type="radio" name={BREVO.distField} value={v} data-list-id={listId} checked={dist === v} onChange={() => setDist(v)} required />
-                {l}
-              </label>
-            )}
-          </div>
-        </div>
-        {/* mirror the chosen distance into Brevo's 2nd (required) distance attribute */}
-        <input type="hidden" name={BREVO.distField2} value={dist} />
-        {/* Brevo anti-bot honeypot + hidden form params */}
-        <input type="text" name="email_address_check" defaultValue="" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }} />
-        <input type="hidden" name="locale" value="fr" />
-        <input type="hidden" name="html_type" value="simple" />
-        <label className="consent">
-          <input id="rgpd-checkbox" type="checkbox" required />
-          <span>J'accepte de recevoir des informations sur le Trail de Chaumuzy et que mes données soient traitées conformément à la <a href="confidentialite.html" target="_blank" rel="noopener">politique de confidentialité</a>.</span>
-        </label>
-        <button type="submit" className="btn btn-primary" disabled={state === "sending"} style={{ width: "100%", justifyContent: "center" }}>
-          {state === "sending" ? "Envoi…" : "Je m'inscris à la liste d'attente"}
-        </button>
-        {state === "error" && <p className="form-err">{errMsg || "Un souci est survenu. Réessayez ou écrivez-nous à marne.outdoor.experiences@gmail.com."}</p>}
-        <p className="form-fine">Aucun spam. Désinscription en un clic. Vos données ne sont jamais revendues.</p>
-      </form>
-    </Reveal>);
-
-}
-
 /* ---------- add to calendar ---------- */
 function AddToCalendar() {
   // Google Calendar pre-filled link (UTC times: 23km start 09:30 local = 07:30Z)
@@ -751,15 +629,15 @@ function Partenaires() {
 }
 
 /* ---------- FAQ ----------
-   Contenu aligné sur le Règlement sportif Trail de Chaumuzy 2027 (v. 20 octobre 2026). */
+   Inscriptions ouvertes sur Miles Republic. */
 const FAQ = [
-{ q: "Comment puis-je m'inscrire ?", a: "Les inscriptions officielles ouvrent le mercredi 28 octobre 2026 à 10h00, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement et envoi de votre licence ou PPS. En attendant, laissez votre e-mail via le formulaire de pré-inscription : vous serez prévenu(e) en priorité dès l'ouverture." },
+{ q: "Comment puis-je m'inscrire ?", a: "Exclusivement en ligne sur la plateforme Miles Republic, à partir du mercredi 28 octobre 2026 à 10h00, dans la limite de 500 dossards. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement et envoi de votre licence ou PPS. Une réduction de 2 € est offerte pour les licencié(e)s FFA.", regInline: true },
 { q: "Quels documents dois-je fournir ?", a: "Au choix : une licence FFA Athlé Compétition, Athlé Running ou Athlé Entreprise en cours de validité (les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences d'autres fédérations ne sont acceptées que si elles figurent sur la liste des partenariats reconnus par la FFA. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Le document est demandé à l'inscription, et au plus tard au retrait du dossard. Coureurs mineurs (15 km) : une autorisation parentale signée est également demandée." },
 { q: "Où et quand retirer mon dossard ?", a: "Au Foyer Rural de Chaumuzy (33 rue du Capitaine Chesnais), le dimanche 4 avril 2027 de 7h00 à 9h00 pour le 23 km et de 7h00 à 10h00 pour le 15 km, sur présentation d'une pièce d'identité et de votre licence ou PPS, ainsi que de l'autorisation parentale pour les mineurs. Aucun dossard n'est délivré après ces horaires ni envoyé par courrier. Le retrait par un tiers est possible avec une procuration et les pièces du participant. Le dossard se porte visible sur le devant, ceinture porte-dossard acceptée, sans être plié ni masqué." },
 { q: "Où se garer le jour de la course ?", a: "Un parking gratuit est fléché à proximité de la zone départ et arrivée, à Chaumuzy. Nous vous recommandons le covoiturage : l'accès au village est limité le matin de l'épreuve. Chaumuzy se situe au cœur de la Montagne de Reims, à environ 30 minutes de Reims et d'Épernay." },
 { q: "Combien y a-t-il de ravitaillements ?", a: "Un point de ravitaillement sur chaque parcours, à La Neuville‑aux‑Larris (Place du Général de Gaulle) : eau, boissons énergétiques, fruits secs et fruits frais. Un ravitaillement complet vous attend à l'arrivée, au Foyer Rural de Chaumuzy. Chacun remplit lui-même son contenant : aucun gobelet jetable n'est fourni. Les déchets se jettent uniquement dans les zones de propreté, de 20 m avant à 100 m après le ravitaillement." },
 { q: "Le matériel est-il imposé ?", a: "Oui, les épreuves se courent en semi-autonomie. Sont obligatoires sur les deux parcours : couverture de survie, réserve d'eau d'au moins 0,5 L, téléphone mobile chargé avec le numéro du PC course enregistré et le son activé, sifflet, gobelet ou contenant réutilisable personnel, et dossard visible sur le devant. Chaque élément manquant entraîne une pénalité de 5 minutes. Conseillés : réserve alimentaire, veste coupe-vent, casquette ou gants selon la météo, petite trousse de premiers soins. Les bâtons sont autorisés, à conserver du départ à l'arrivée. Les écouteurs sont tolérés si vous restez audible des consignes." },
-{ q: "Y a-t-il un âge minimum ?", a: "Oui, selon les catégories d'âge FFA appliquées au kilomètre-effort. Le Trail 23 km (27,6 km-effort) est réservé aux Espoirs (U23) et au-delà, soit les coureurs nés en 2007 et avant. Le Trail 15 km (18 km-effort) est ouvert aux Juniors (U20) et au-delà, soit les coureurs nés en 2009 et avant. La catégorie est contrôlée à l'inscription et au retrait du dossard : toute inscription non conforme est refusée, sans remboursement." },
+{ q: "Y a-t-il un âge minimum ?", a: "Oui, selon les catégories d'âge FFA appliquées au kilomètre-effort. Le Trail 23 km (27,1 km-effort) est réservé aux Espoirs (U23) et au-delà, soit les coureurs nés en 2007 et avant. Le Trail 15 km (17,7 km-effort) est ouvert aux Juniors (U20) et au-delà, soit les coureurs nés en 2009 et avant. La catégorie est contrôlée à l'inscription et au retrait du dossard : toute inscription non conforme est refusée, sans remboursement." },
 { q: "Y a-t-il une barrière horaire ?", a: "Oui : 3h30 de course sur le 23 km et 2h30 sur le 15 km. Au-delà, le concurrent est mis hors course : il suit les consignes des serre-files et remet son dossard et sa puce. Tout abandon doit être signalé au plus tôt à un membre de l'organisation." },
 { q: "Les courses sont-elles chronométrées ?", a: "Oui, par puce électronique, avec un classement pour chaque épreuve. Les résultats officiels sont publiés en ligne à l'issue de la course. Les réclamations se font par écrit auprès du directeur de course, dans les 30 minutes suivant l'affichage des résultats. Sont récompensés, sans cumul, les trois premiers hommes et les trois premières femmes au scratch de chaque épreuve, ainsi que le premier et la première de chaque catégorie d'âge. Les distances n'étant pas officielles au sens FFA, elles ne permettent ni record ni points au classement des clubs." },
 { q: "Que se passe-t-il en cas de mauvais temps ?", a: "En début de printemps, la météo peut être changeante : pluie, vent, sols glissants. En cas de force majeure ou de danger pour les coureurs, l'organisation peut modifier les parcours, les horaires ou les barrières horaires, neutraliser une portion, reporter ou annuler l'épreuve. Aucun remboursement ne peut alors être exigé ; selon les circonstances, un report, un avoir ou un remboursement partiel pourra être proposé." },
@@ -779,7 +657,7 @@ function FaqItem({ item, open, onToggle }) {
         <span className="faq-icon"><Icon n="chevronDown" s={22} /></span>
       </button>
       <div className="faq-a" style={{ maxHeight: open ? bodyRef.current ? bodyRef.current.scrollHeight + 24 : 400 : 0 }}>
-        <p ref={bodyRef}>{item.a}{item.link && <> <a href={item.link.href} target="_blank" rel="noopener" style={{ color: "var(--accent-safe)", fontWeight: 600 }}>{item.link.label}</a></>}</p>
+        <p ref={bodyRef}>{item.regInline ? item.a.split("Miles Republic").map((part, k, arr) => <React.Fragment key={k}>{part}{k < arr.length - 1 && <a {...reg("faq-reponse")} style={{ color: "var(--accent-safe)", fontWeight: 600 }}>Miles Republic</a>}</React.Fragment>) : item.a}{item.link && <> <a href={item.link.href} target="_blank" rel="noopener" style={{ color: "var(--accent-safe)", fontWeight: 600 }}>{item.link.label}</a></>}</p>
       </div>
     </div>);
 
@@ -801,7 +679,7 @@ function Faq() {
         </Reveal>
         <div className="faq-cta">
           <p className="display">Prêt à prendre le départ ?</p>
-          <a className="btn btn-primary" href="#preinscription" data-track="faq">Être prévenu de l'ouverture</a>
+          <a className="btn btn-primary" {...reg("faq")}>Je m'inscris</a>
         </div>
         <p className="faq-foot">Une autre question ? Écrivez-nous à <a href="mailto:marne.outdoor.experiences@gmail.com">marne.outdoor.experiences@gmail.com</a></p>
       </div>
@@ -866,7 +744,7 @@ function Footer() {
             <div className="footer-col">
               <h5>Contact</h5>
               <a href="mailto:marne.outdoor.experiences@gmail.com">marne.outdoor.experiences@gmail.com</a>
-              <a href="#preinscription">Être prévenu de l'ouverture</a>
+              <a {...reg("footer")}>S'inscrire</a>
               <a href={MEET_B2B} target="_blank" rel="noopener">Devenir partenaire</a>
             </div>
             <div className="footer-col">
@@ -910,9 +788,9 @@ function StickyCTA() {
     <div className={"sticky-cta" + (show ? " show" : "")}>
       <div className="inner">
         <Logo h={38} style={{ flexShrink: 0 }} />
-        <div className="txt"><b>Trail de Chaumuzy</b><span>Dimanche 4 avril 2027 - Ouverture des inscriptions le mercredi 28 octobre 2026 à 10h00</span></div>
+        <div className="txt"><b>Trail de Chaumuzy</b><span>Dimanche 4 avril 2027 - Inscriptions dès le mercredi 28 octobre 2026 à 10h00</span></div>
         <a className="btn btn-gold sp" href="#programme">Programme</a>
-        <a className="btn btn-primary" href="#preinscription">Pré-inscription</a>
+        <a className="btn btn-primary" {...reg("barre-mobile")}>S'inscrire</a>
       </div>
     </div>);
 

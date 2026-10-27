@@ -52,7 +52,7 @@ function Logo({ ink, h = 34, cls, style }) {
 }
 
 /* ---- countdown ---- */
-/* Avant l'ouverture : compte à rebours vers les inscriptions, puis vers la course. */
+/* Avant le 28/10/2026 10h00 : compte à rebours vers l'ouverture des inscriptions, puis vers le départ (bascule automatique). */
 const OPEN = new Date("2026-10-28T10:00:00+01:00").getTime();
 const RACE = new Date("2027-04-04T09:30:00+02:00").getTime();
 function useCountdown() {

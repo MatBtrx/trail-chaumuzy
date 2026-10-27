@@ -1,3 +1,5 @@
+> **Mise à jour 27/10/2026 - Inscriptions ouvertes** : tous les boutons pointent vers la billetterie Miles Republic (https://fr.milesrepublic.com/event/trail-de-chaumuzy-18058), avec suivi utm + événement `cta_inscription`. Liste d'attente Brevo et `ouverture.js` retirés. Compte à rebours vers le départ. Distances officielles : 23 km (D+/D- 407 m), 15 km (D+/D- 273 m). Réduction de 2 € pour les licencié(e)s FFA.
+
 # Trail de Chaumuzy 2027 — site officiel
 
 Site statique + une fonction serverless (pré-inscription Brevo). Déployé sur **Vercel** depuis la **racine** du dépôt. Domaine de production : **https://www.traildechaumuzy.fr**
@@ -77,7 +79,7 @@ Mapping parcours → liste Brevo : **23 km → 8**, **15 km → 9**, « Je ne sa
 
 ## Ouverture des inscriptions (28/10/2026 à 10h00)
 
-Tout est automatisé dans `ouverture.js`. **Seule action requise** : coller le lien Miles Republic dans `dossards.json` > `"registrationUrl"`, puis pousser.
+Tout est automatisé dans `(supprimé) ouverture.js`. **Seule action requise** : coller le lien Miles Republic dans `dossards.json` > `"registrationUrl"`, puis pousser.
 
 - Tant que le lien est vide, le site reste en mode « liste d'attente ».
 - Lien renseigné + date atteinte : boutons « Je m'inscris » vers la billetterie, liste d'attente Brevo masquée, barre mobile, FAQ, titre de l'onglet, repère d'urgence FFA et données Google (InStock) basculent ensemble.

@@ -148,11 +148,43 @@ function Icon({
     }), /*#__PURE__*/React.createElement("path", {
       d: "M12 13v7M9.2 20h5.6"
     })),
-    share: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("circle", { cx: 18, cy: 5, r: 2.6 }), /*#__PURE__*/React.createElement("circle", { cx: 6, cy: 12, r: 2.6 }), /*#__PURE__*/React.createElement("circle", { cx: 18, cy: 19, r: 2.6 }), /*#__PURE__*/React.createElement("path", { d: "M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3" })),
-    link: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", { d: "M9.5 14.5l5-5" }), /*#__PURE__*/React.createElement("path", { d: "M8 13l-1.7 1.7a3.2 3.2 0 0 1-4.5-4.5L4 8" }), /*#__PURE__*/React.createElement("path", { d: "M16 11l1.7-1.7a3.2 3.2 0 0 0-4.5-4.5L11 7" })),
-    check: /*#__PURE__*/React.createElement("path", { d: "M5 12l5 5L20 7" }),
-    whatsapp: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", { d: "M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" }), /*#__PURE__*/React.createElement("path", { d: "M8.5 8.2c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.5l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.3c.3.1.4 0 .6-.1l.5-.6c.1-.2.3-.2.5-.1l1.5.8c.2.1.3.2.3.4 0 .5-.2 1.2-.9 1.5-.7.3-1.5.4-3-.2a9 9 0 0 1-4.3-4c-.6-1.2-.6-2-.3-2.6z", fill: "currentColor", stroke: "none" })),
-    facebook: /*#__PURE__*/React.createElement("path", { d: "M14 8.5V7c0-.8.4-1 1-1h1.5V3H14c-2 0-3.3 1.3-3.3 3.4v2.1H8.5V12h2.2v9h3.3v-9h2.3l.5-3.5H14z", fill: "currentColor", stroke: "none" })
+    share: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("circle", {
+      cx: "18",
+      cy: "5",
+      r: "2.6"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "6",
+      cy: "12",
+      r: "2.6"
+    }), /*#__PURE__*/React.createElement("circle", {
+      cx: "18",
+      cy: "19",
+      r: "2.6"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"
+    })),
+    link: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", {
+      d: "M9.5 14.5l5-5"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M8 13l-1.7 1.7a3.2 3.2 0 0 1-4.5-4.5L4 8"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M16 11l1.7-1.7a3.2 3.2 0 0 0-4.5-4.5L11 7"
+    })),
+    check: /*#__PURE__*/React.createElement("path", {
+      d: "M5 12l5 5L20 7"
+    }),
+    whatsapp: /*#__PURE__*/React.createElement("g", null, /*#__PURE__*/React.createElement("path", {
+      d: "M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z"
+    }), /*#__PURE__*/React.createElement("path", {
+      d: "M8.5 8.2c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .6.5l.7 1.6c.1.2 0 .4-.1.5l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.3c.3.1.4 0 .6-.1l.5-.6c.1-.2.3-.2.5-.1l1.5.8c.2.1.3.2.3.4 0 .5-.2 1.2-.9 1.5-.7.3-1.5.4-3-.2a9 9 0 0 1-4.3-4c-.6-1.2-.6-2-.3-2.6z",
+      fill: "currentColor",
+      stroke: "none"
+    })),
+    facebook: /*#__PURE__*/React.createElement("path", {
+      d: "M14 8.5V7c0-.8.4-1 1-1h1.5V3H14c-2 0-3.3 1.3-3.3 3.4v2.1H8.5V12h2.2v9h3.3v-9h2.3l.5-3.5H14z",
+      fill: "currentColor",
+      stroke: "none"
+    })
   };
   return /*#__PURE__*/React.createElement("svg", p, g[n] || null);
 }
@@ -162,20 +194,26 @@ function Logo({
   cls,
   style
 }) {
+  const st = {
+    height: h,
+    width: "auto",
+    flexShrink: 0,
+    ...style
+  };
+  /* Logos are inlined as data URIs (logo-data.js) so the deployed bundle has
+     zero asset dependency; fall back to the file path if the data isn't loaded. */
+  const L = typeof window !== "undefined" && window.LOGO_TRAIL || {};
+  const src = ink ? L.ink || "assets/logo-trail-chaumuzy.png" : L.white || "assets/logo-trail-chaumuzy-white.png";
   return /*#__PURE__*/React.createElement("img", {
     className: cls,
-    src: (typeof window !== "undefined" && window.LOGO_TRAIL ? (ink ? window.LOGO_TRAIL.ink : window.LOGO_TRAIL.white) : null) || (ink ? "assets/logo-trail-chaumuzy.png" : "assets/logo-trail-chaumuzy-white.png"),
+    src: src,
     alt: "Logo officiel du Trail de Chaumuzy",
-    style: {
-      height: h,
-      width: "auto",
-      flexShrink: 0,
-      ...style
-    }
+    style: st
   });
 }
 
 /* ---- countdown ---- */
+/* Avant le 28/10/2026 10h00 : compte à rebours vers l'ouverture des inscriptions, puis vers le départ (bascule automatique). */
 const OPEN = new Date("2026-10-28T10:00:00+01:00").getTime();
 const RACE = new Date("2027-04-04T09:30:00+02:00").getTime();
 function useCountdown() {
@@ -245,7 +283,7 @@ function Countdown() {
     className: "cd-wrap"
   }, /*#__PURE__*/React.createElement("p", {
     className: "cd-cap"
-  }, t.pre ? "Ouverture des inscriptions dans" : "D\xE9part dans"), /*#__PURE__*/React.createElement("div", {
+  }, t.pre ? "Ouverture des inscriptions dans" : "Départ dans"), /*#__PURE__*/React.createElement("div", {
     className: "countdown"
   }, /*#__PURE__*/React.createElement(Ring, {
     value: t.d,
