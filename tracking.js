@@ -33,7 +33,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   document.addEventListener('click', function (e) {
     var el = e.target.closest('a,button'); if (!el) return;
     var h = el.getAttribute('href') || '', txt = (el.textContent || '').trim().slice(0, 40);
-    if (el.dataset.reg || h.indexOf('milesrepublic.com') > -1) t('cta_inscription', { emplacement: el.dataset.cta || place(el), distance: el.dataset.km || distance(el) || 'non précisée' });
+    if (/reglement-sportif/.test(h)) t('reglement_pdf', { emplacement: el.dataset.cta || place(el) });
+    else if (el.dataset.reg || h.indexOf('milesrepublic.com') > -1) t('cta_inscription', { emplacement: el.dataset.cta || place(el), distance: el.dataset.km || distance(el) || 'non précisée' });
     else if (h.indexOf('meet.brevo.com') > -1) t('rdv_b2b', { emplacement: place(el) });
     else if (/\.gpx$/.test(h)) t('gpx', { fichier: h.split('/').pop() });
     else if (h.indexOf('mailto:') === 0) t(h.indexOf('partenaires') > -1 ? 'contact_partenaire' : 'contact_email', { emplacement: place(el) });

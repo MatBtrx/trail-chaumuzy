@@ -1155,11 +1155,19 @@ function Partenaires() {
 }
 
 /* ---------- FAQ ----------
-   Inscriptions ouvertes sur Miles Republic. */
+   Contenu aligné sur le Règlement sportif 2027 (mise à jour du 28 octobre 2026). */
+const REGLEMENT_PDF = "assets/reglement-sportif-trail-chaumuzy-2027.pdf";
 const FAQ = [{
   q: "Comment puis-je m'inscrire ?",
-  a: "Exclusivement en ligne sur la plateforme Miles Republic, à partir du mercredi 28 octobre 2026 à 10h00, dans la limite de 500 dossards. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement et envoi de votre licence ou PPS. Une réduction de 2 € est offerte pour les licencié(e)s FFA.",
+  a: "Exclusivement en ligne sur la plateforme Miles Republic, à partir du mercredi 28 octobre 2026 à 10h00, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement sportif et envoi de votre licence ou PPS. Une réduction de 2 € est offerte pour les licencié(e)s FFA.",
   regInline: true
+}, {
+  q: "Où consulter le règlement sportif ?",
+  a: "Le règlement sportif 2027 (mise à jour du 28 octobre 2026) est consultable et téléchargeable en PDF. Son acceptation est obligatoire lors de l'inscription sur Miles Republic, par case à cocher valant signature.",
+  link: {
+    href: REGLEMENT_PDF,
+    label: "Télécharger le règlement (PDF)"
+  }
 }, {
   q: "Quels documents dois-je fournir ?",
   a: "Au choix : une licence FFA Athlé Compétition, Athlé Running ou Athlé Entreprise en cours de validité (les licences Santé, Encadrement et Découverte ne sont pas acceptées), ou une attestation Pass Prévention Santé (PPS) délivrée par la FFA sur pps.athle.fr, datée de moins d'un an. Les licences d'autres fédérations ne sont acceptées que si elles figurent sur la liste des partenariats reconnus par la FFA. Les licences étrangères ne le sont pas : les coureurs étrangers doivent fournir un PPS. Le document est demandé à l'inscription, et au plus tard au retrait du dossard. Coureurs mineurs (15 km) : une autorisation parentale signée est également demandée."
@@ -1186,19 +1194,22 @@ const FAQ = [{
   a: "Oui, par puce électronique, avec un classement pour chaque épreuve. Les résultats officiels sont publiés en ligne à l'issue de la course. Les réclamations se font par écrit auprès du directeur de course, dans les 30 minutes suivant l'affichage des résultats. Sont récompensés, sans cumul, les trois premiers hommes et les trois premières femmes au scratch de chaque épreuve, ainsi que le premier et la première de chaque catégorie d'âge. Les distances n'étant pas officielles au sens FFA, elles ne permettent ni record ni points au classement des clubs."
 }, {
   q: "Que se passe-t-il en cas de mauvais temps ?",
-  a: "En début de printemps, la météo peut être changeante : pluie, vent, sols glissants. En cas de force majeure ou de danger pour les coureurs, l'organisation peut modifier les parcours, les horaires ou les barrières horaires, neutraliser une portion, reporter ou annuler l'épreuve. Aucun remboursement ne peut alors être exigé ; selon les circonstances, un report, un avoir ou un remboursement partiel pourra être proposé."
+  a: "En début de printemps, la météo peut être changeante : pluie, vent, sols glissants. En cas de force majeure ou de danger pour les coureurs, l'organisation peut basculer sur un parcours de repli, modifier les horaires ou les barrières horaires, neutraliser une portion, reporter ou annuler l'épreuve. Aucun remboursement ne peut alors être exigé ; selon les circonstances, un report, un avoir ou un remboursement partiel pourra être proposé."
 }, {
   q: "Les accompagnants peuvent-ils suivre les coureurs ?",
   a: "Non. Pour des raisons de sécurité, les suiveurs, accompagnants à vélo, poussettes et animaux, même tenus en laisse, sont interdits sur les parcours. Les ravitaillements organisés par des proches en dehors des zones prévues sont interdits et passibles de mise hors course. Vos supporters sont les bienvenus sur la zone départ et arrivée."
 }, {
   q: "Quel dispositif de sécurité est prévu ?",
-  a: "Un dispositif de secours adapté à 500 coureurs : secouristes d'une association agréée, médecin de course, ambulance et défibrillateur au Foyer Rural de Chaumuzy, avec une prise en charge possible en tout point du parcours en moins de 30 minutes. Des signaleurs sécurisent les traversées de routes, une équipe de tête et des serre-files ferment le parcours. Chaque coureur s'engage à porter assistance à un concurrent en difficulté jusqu'à l'arrivée des secours."
+  a: "Un dispositif de secours adapté à 500 coureurs : secouristes d'une association agréée, médecin de course, ambulance et défibrillateur au Foyer Rural de Chaumuzy, avec une prise en charge possible en tout point du parcours en moins de 30 minutes. Des signaleurs sécurisent les traversées de routes, une équipe de tête et des serre-files ferment le parcours. Chaque coureur s'engage à porter assistance à un concurrent en difficulté jusqu'à l'arrivée des secours. Le trail sollicite fortement le cœur : ne prenez pas le départ en cas de fièvre ou d'état grippal et signalez sans délai tout malaise ou douleur thoracique."
 }, {
   q: "Le trail est-il éco-responsable ?",
-  a: "Oui. Aucun gobelet jetable sur les ravitaillements, produits locaux et de saison, balisage retiré après l'épreuve. Les coureurs restent sur les sentiers balisés, sans couper les virages, et respectent les vignes, les cultures et la faune. Le covoiturage est encouragé. L'organisation suit une démarche RSE inspirée de la norme ISO 20121."
+  a: "Oui. Aucun gobelet jetable sur les ravitaillements, produits locaux et de saison, balisage retiré après l'épreuve. Les coureurs restent sur les sentiers balisés, sans couper les virages, et respectent les vignes, les cultures et la faune. Il est interdit de fumer sur les parcours (risque incendie). Le covoiturage est encouragé. L'organisation suit une démarche RSE inspirée de la norme ISO 20121."
 }, {
   q: "Puis-je annuler ou céder mon dossard ?",
-  a: "L'engagement est personnel, ferme et définitif : l'inscription ne bénéficie d'aucun droit de rétractation (article L.221-28 du Code de la consommation) et n'ouvre droit à aucun remboursement de la part de l'organisateur. En revanche, si vous ne pouvez plus participer, vous pouvez céder votre dossard via la plateforme Miles Republic : c'est la seule voie autorisée. Tout échange en dehors de la plateforme expose le porteur et le titulaire initial à la mise hors course. Une assurance annulation facultative peut être proposée à l'inscription."
+  a: "L'engagement est personnel, ferme et définitif : l'inscription ne bénéficie d'aucun droit de rétractation (article L.221-28 du Code de la consommation) et n'ouvre droit à aucun remboursement de la part de l'organisateur. En revanche, si vous ne pouvez plus participer, vous pouvez céder votre dossard via la plateforme Miles Republic : c'est la seule voie autorisée. Tout échange en dehors de la plateforme expose le porteur et le titulaire initial à la mise hors course. Pour vous protéger, souscrivez l'assurance annulation BEticketing Sans Justificatif d'Assur Connect, proposée lors de l'inscription sur Miles Republic : elle rembourse les droits d'inscription dans les conditions de l'assureur. La demande se fait en ligne au plus tard à la fin du deuxième jour suivant l'épreuve."
+}, {
+  q: "Suis-je assuré pendant la course ?",
+  a: "L'organisation a souscrit une assurance responsabilité civile couvrant les participants pendant l'épreuve. Pour les dommages corporels, les licenciés FFA bénéficient des garanties de leur licence. Pour les non-licenciés, l'organisation recommande l'assurance individuelle accident BEsafe d'Assur Connect, proposée lors de l'inscription : frais médicaux, frais de recherche et de secours, assistance rapatriement. Chaque coureur reste responsable de ses effets personnels."
 }, {
   q: "Proposez-vous une offre pour les entreprises ?",
   a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
@@ -1243,6 +1254,7 @@ function FaqItem({
     href: item.link.href,
     target: "_blank",
     rel: "noopener",
+    "data-cta": item.link.href === REGLEMENT_PDF ? "reglement-faq" : undefined,
     style: {
       color: "var(--accent-safe)",
       fontWeight: 600
@@ -1282,6 +1294,13 @@ function Faq() {
   }, "Pr\xEAt \xE0 prendre le d\xE9part ?"), /*#__PURE__*/React.createElement("a", _extends({
     className: "btn btn-primary"
   }, reg("faq")), "Je m'inscris")), /*#__PURE__*/React.createElement("p", {
+    className: "faq-foot"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: REGLEMENT_PDF,
+    target: "_blank",
+    rel: "noopener",
+    "data-cta": "reglement-faq-pied"
+  }, "Consulter le r\xE8glement sportif (PDF)")), /*#__PURE__*/React.createElement("p", {
     className: "faq-foot"
   }, "Une autre question ? \xC9crivez-nous \xE0 ", /*#__PURE__*/React.createElement("a", {
     href: "mailto:marne.outdoor.experiences@gmail.com"
@@ -1431,6 +1450,11 @@ function Footer() {
   }, "Devenir partenaire")), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Infos"), /*#__PURE__*/React.createElement("p", null, "Dimanche 4 avril 2027"), /*#__PURE__*/React.createElement("p", null, "D\xE9part 09h30 - Chaumuzy (51)"), /*#__PURE__*/React.createElement("a", {
+    href: REGLEMENT_PDF,
+    target: "_blank",
+    rel: "noopener",
+    "data-cta": "reglement-footer"
+  }, "R\xE8glement sportif"), /*#__PURE__*/React.createElement("a", {
     href: "mentions-legales.html"
   }, "Mentions l\xE9gales"), /*#__PURE__*/React.createElement("a", {
     href: "confidentialite.html"
