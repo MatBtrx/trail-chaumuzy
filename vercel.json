@@ -3,56 +3,117 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/parcours-24km.html", "destination": "/parcours-23km.html", "permanent": true },
-    { "source": "/parcours-18km.html", "destination": "/parcours-15km.html", "permanent": true },
-    { "source": "/assets/trail_chaumuzy_24km.gpx", "destination": "/assets/trail_chaumuzy_23km.gpx", "permanent": true },
-    { "source": "/assets/trail_chaumuzy_18km.gpx", "destination": "/assets/trail_chaumuzy_15km.gpx", "permanent": true }
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/parcours-24km.html",
+      "destination": "/#parcours",
+      "permanent": true
+    },
+    {
+      "source": "/parcours-18km.html",
+      "destination": "/#parcours",
+      "permanent": true
+    },
+    {
+      "source": "/assets/trail_chaumuzy_24km.gpx",
+      "destination": "/assets/trail_chaumuzy_23km.gpx",
+      "permanent": true
+    },
+    {
+      "source": "/assets/trail_chaumuzy_18km.gpx",
+      "destination": "/assets/trail_chaumuzy_15km.gpx",
+      "permanent": true
+    },
+    {
+      "source": "/merci.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/venir-sejourner.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/parcours-23km.html",
+      "destination": "/#parcours",
+      "permanent": true
+    },
+    {
+      "source": "/parcours-15km.html",
+      "destination": "/#parcours",
+      "permanent": true
+    }
   ],
   "headers": [
     {
-      "source": "/merci.html",
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, follow" }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
       ]
     },
     {
       "source": "/dossards.json",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*).html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/hifi.css",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/build/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

@@ -3,7 +3,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 
 /* ---------- data ---------- */
 /* Jauge de dossards + early bird masqués tant que la billetterie n'est pas ouverte.
-   Repasser à true à l'ouverture des inscriptions (octobre 2026). */
+   Passer à true dès que les chiffres d'inscrits Miles Republic sont renseignés dans dossards.json. */
 const SHOW_GAUGE = false;
 /* CTA de téléchargement des tracés GPX masqué pour le moment. Repasser à true pour réafficher. */
 const SHOW_GPX = false;
@@ -434,10 +434,12 @@ function Parcours() {
     className: "par-tabs"
   }, /*#__PURE__*/React.createElement("button", {
     className: "par-tab" + (km === 23 ? " on" : ""),
-    onClick: () => setKm(23)
+    onClick: () => setKm(23),
+    "data-tab": "23"
   }, "Trail Exp\xE9rience - 23 km"), /*#__PURE__*/React.createElement("button", {
     className: "par-tab" + (km === 15 ? " on" : ""),
-    onClick: () => setKm(15)
+    onClick: () => setKm(15),
+    "data-tab": "15"
   }, "Trail D\xE9couverte - 15 km"))), /*#__PURE__*/React.createElement("div", {
     className: "card par-card",
     key: km
@@ -530,7 +532,21 @@ function Parcours() {
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "arrowDown",
     s: 16
-  }), " Trac\xE9 GPX \xE0 venir"), SHOW_GPX && /*#__PURE__*/React.createElement("a", {
+  }), " Trac\xE9 GPX \xE0 venir"), /*#__PURE__*/React.createElement("a", {
+    className: "btn btn-gold",
+    href: REGLEMENT_PDF,
+    target: "_blank",
+    rel: "noopener",
+    "data-cta": "reglement-parcours-" + p.km + "km",
+    style: {
+      justifyContent: "center",
+      flex: "1 1 0",
+      minWidth: 150
+    }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    n: "arrowDown",
+    s: 16
+  }), " R\xE8glement sportif (PDF)"), SHOW_GPX && /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold",
     href: "assets/trail_chaumuzy_" + p.km + "km.gpx",
     download: true
@@ -1020,7 +1036,7 @@ function Partenaires() {
       maxWidth: 720,
       margin: "0 auto"
     }
-  }, "Une 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition, 500 coureurs et 4 communes du vignoble champenois\xA0: une visibilit\xE9 locale forte pour votre entreprise. Id\xE9al pour associer votre marque \xE0 un \xE9v\xE9nement sportif \xE9co-responsable en Champagne, f\xE9d\xE9rer vos \xE9quipes ou soutenir le sport de territoire. Trois niveaux d'engagement, \xE0 votre image.")), /*#__PURE__*/React.createElement("div", {
+  }, "Une 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition, 500 coureurs et 4 communes du vignoble champenois\xA0: une visibilit\xE9 locale forte pour votre entreprise. Id\xE9al pour associer votre marque \xE0 un \xE9v\xE9nement sportif \xE9co-responsable en Champagne, f\xE9d\xE9rer vos \xE9quipes ou soutenir le sport de territoire.", /*#__PURE__*/React.createElement("br", null), "Trois niveaux d'engagement, \xE0 votre image.")), /*#__PURE__*/React.createElement("div", {
     className: "tier-grid tier-grid-2"
   }, PARTNER_TIERS.map(tr => {
     const color = tr.tone === "accent" ? "var(--accent-safe)" : tr.tone === "gold" ? "var(--gold-ink)" : "var(--ink)";
@@ -1157,9 +1173,11 @@ function Partenaires() {
 /* ---------- FAQ ----------
    Contenu aligné sur le Règlement sportif 2027 (mise à jour du 28 octobre 2026). */
 const REGLEMENT_PDF = "assets/reglement-sportif-trail-chaumuzy-2027.pdf";
+/* Typo française : espace insécable avant ? ! : ; pour éviter les signes orphelins en début de ligne. */
+const nb = t => typeof t === "string" ? t.replace(/ ([?!:;»])/g, "\u00A0$1").replace(/« /g, "«\u00A0") : t;
 const FAQ = [{
   q: "Comment puis-je m'inscrire ?",
-  a: "Exclusivement en ligne sur la plateforme Miles Republic, à partir du mercredi 28 octobre 2026 à 10h00, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement sportif et envoi de votre licence ou PPS. Une réduction de 2 € est offerte pour les licencié(e)s FFA.",
+  a: "Les inscriptions sont ouvertes, exclusivement en ligne sur la plateforme Miles Republic, dans la limite de 500 dossards : 200 sur le 23 km et 300 sur le 15 km. Aucune inscription n'est prise sur place. Votre inscription est validée après paiement, acceptation du règlement sportif et envoi de votre licence ou PPS. Une réduction de 2 € est offerte pour les licencié(e)s FFA.",
   regInline: true
 }, {
   q: "Où consulter le règlement sportif ?",
@@ -1209,7 +1227,11 @@ const FAQ = [{
   a: "L'engagement est personnel, ferme et définitif : l'inscription ne bénéficie d'aucun droit de rétractation (article L.221-28 du Code de la consommation) et n'ouvre droit à aucun remboursement de la part de l'organisateur. En revanche, si vous ne pouvez plus participer, vous pouvez céder votre dossard via la plateforme Miles Republic : c'est la seule voie autorisée. Tout échange en dehors de la plateforme expose le porteur et le titulaire initial à la mise hors course. Pour vous protéger, souscrivez l'assurance annulation BEticketing Sans Justificatif d'Assur Connect, proposée lors de l'inscription sur Miles Republic : elle rembourse les droits d'inscription dans les conditions de l'assureur. La demande se fait en ligne au plus tard à la fin du deuxième jour suivant l'épreuve."
 }, {
   q: "Suis-je assuré pendant la course ?",
-  a: "L'organisation a souscrit une assurance responsabilité civile couvrant les participants pendant l'épreuve. Pour les dommages corporels, les licenciés FFA bénéficient des garanties de leur licence. Pour les non-licenciés, l'organisation recommande l'assurance individuelle accident BEsafe d'Assur Connect, proposée lors de l'inscription : frais médicaux, frais de recherche et de secours, assistance rapatriement. Chaque coureur reste responsable de ses effets personnels."
+  a: "L'organisation a souscrit une assurance responsabilité civile couvrant les participants pendant l'épreuve. Pour les dommages corporels, les licenciés FFA bénéficient des garanties de leur licence. Pour les non-licenciés, l'organisation recommande l'assurance individuelle accident BEsafe d'Assur Connect, proposée lors de l'inscription : frais médicaux, frais de recherche et de secours, assistance rapatriement. Chaque coureur reste responsable de ses effets personnels.",
+  inlineLink: {
+    text: "BEsafe",
+    href: "https://assur-connect.com/cg-besafe/"
+  }
 }, {
   q: "Proposez-vous une offre pour les entreprises ?",
   a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
@@ -1230,8 +1252,9 @@ function FaqItem({
   }, /*#__PURE__*/React.createElement("button", {
     className: "faq-q",
     onClick: onToggle,
-    "aria-expanded": open
-  }, /*#__PURE__*/React.createElement("span", null, item.q), /*#__PURE__*/React.createElement("span", {
+    "aria-expanded": open,
+    "data-faq": item.q
+  }, /*#__PURE__*/React.createElement("span", null, nb(item.q)), /*#__PURE__*/React.createElement("span", {
     className: "faq-icon"
   }, /*#__PURE__*/React.createElement(Icon, {
     n: "chevronDown",
@@ -1243,14 +1266,24 @@ function FaqItem({
     }
   }, /*#__PURE__*/React.createElement("p", {
     ref: bodyRef
-  }, item.regInline ? item.a.split("Miles Republic").map((part, k, arr) => /*#__PURE__*/React.createElement(React.Fragment, {
+  }, item.inlineLink ? nb(item.a).split(item.inlineLink.text).map((part, k, arr) => /*#__PURE__*/React.createElement(React.Fragment, {
+    key: k
+  }, part, k < arr.length - 1 && /*#__PURE__*/React.createElement("a", {
+    href: item.inlineLink.href,
+    target: "_blank",
+    rel: "noopener",
+    style: {
+      color: "var(--accent-safe)",
+      fontWeight: 600
+    }
+  }, item.inlineLink.text))) : item.regInline ? nb(item.a).split("Miles Republic").map((part, k, arr) => /*#__PURE__*/React.createElement(React.Fragment, {
     key: k
   }, part, k < arr.length - 1 && /*#__PURE__*/React.createElement("a", _extends({}, reg("faq-reponse"), {
     style: {
       color: "var(--accent-safe)",
       fontWeight: 600
     }
-  }), "Miles Republic"))) : item.a, item.link && /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("a", {
+  }), "Miles Republic"))) : nb(item.a), item.link && /*#__PURE__*/React.createElement(React.Fragment, null, " ", /*#__PURE__*/React.createElement("a", {
     href: item.link.href,
     target: "_blank",
     rel: "noopener",
@@ -1291,20 +1324,9 @@ function Faq() {
     className: "faq-cta"
   }, /*#__PURE__*/React.createElement("p", {
     className: "display"
-  }, "Pr\xEAt \xE0 prendre le d\xE9part ?"), /*#__PURE__*/React.createElement("a", _extends({
+  }, "Pr\xEAt \xE0 prendre le d\xE9part\xA0?"), /*#__PURE__*/React.createElement("a", _extends({
     className: "btn btn-primary"
-  }, reg("faq")), "Je m'inscris")), /*#__PURE__*/React.createElement("p", {
-    className: "faq-foot"
-  }, /*#__PURE__*/React.createElement("a", {
-    href: REGLEMENT_PDF,
-    target: "_blank",
-    rel: "noopener",
-    "data-cta": "reglement-faq-pied"
-  }, "Consulter le r\xE8glement sportif (PDF)")), /*#__PURE__*/React.createElement("p", {
-    className: "faq-foot"
-  }, "Une autre question ? \xC9crivez-nous \xE0 ", /*#__PURE__*/React.createElement("a", {
-    href: "mailto:marne.outdoor.experiences@gmail.com"
-  }, "marne.outdoor.experiences@gmail.com"))));
+  }, reg("faq")), "Je m'inscris"))));
 }
 
 /* ---------- footer ---------- */
@@ -1384,11 +1406,11 @@ function Footer() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "footer-top"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
-    className: "muted",
     style: {
       maxWidth: 320,
       fontSize: 15,
-      margin: 0
+      margin: 0,
+      color: "var(--gold)"
     },
     "data-comment-anchor": "27087cbcc0-p-756-13"
   }, "Trail de Chaumuzy - 1", /*#__PURE__*/React.createElement("sup", null, "re"), " \xE9dition."), /*#__PURE__*/React.createElement("div", {
@@ -1399,10 +1421,7 @@ function Footer() {
       marginTop: 10
     }
   }, /*#__PURE__*/React.createElement("span", {
-    className: "muted",
-    style: {
-      fontSize: 15
-    }
+    className: "footer-org"
   }, "Organis\xE9 par"), /*#__PURE__*/React.createElement("img", {
     src: "assets/logo-marne-white.webp",
     alt: "Marne Outdoor Exp\xE9riences",
@@ -1430,16 +1449,7 @@ function Footer() {
   }, /*#__PURE__*/React.createElement("h5", null, "Course"), NAV.map(n => /*#__PURE__*/React.createElement("a", {
     key: n.id,
     href: "#" + n.id
-  }, n.l)), /*#__PURE__*/React.createElement("a", {
-    key: "p24",
-    href: "parcours-23km.html"
-  }, "Parcours 23 km"), /*#__PURE__*/React.createElement("a", {
-    key: "p18",
-    href: "parcours-15km.html"
-  }, "Parcours 15 km"), /*#__PURE__*/React.createElement("a", {
-    key: "vs",
-    href: "venir-sejourner.html"
-  }, "Venir & s\xE9journer")), /*#__PURE__*/React.createElement("div", {
+  }, n.l))), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
   }, /*#__PURE__*/React.createElement("h5", null, "Contact"), /*#__PURE__*/React.createElement("a", {
     href: "mailto:marne.outdoor.experiences@gmail.com"
@@ -1449,12 +1459,7 @@ function Footer() {
     rel: "noopener"
   }, "Devenir partenaire")), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
-  }, /*#__PURE__*/React.createElement("h5", null, "Infos"), /*#__PURE__*/React.createElement("p", null, "Dimanche 4 avril 2027"), /*#__PURE__*/React.createElement("p", null, "D\xE9part 09h30 - Chaumuzy (51)"), /*#__PURE__*/React.createElement("a", {
-    href: REGLEMENT_PDF,
-    target: "_blank",
-    rel: "noopener",
-    "data-cta": "reglement-footer"
-  }, "R\xE8glement sportif"), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h5", null, "Infos"), /*#__PURE__*/React.createElement("p", null, "Dimanche 4 avril 2027"), /*#__PURE__*/React.createElement("p", null, "D\xE9parts 9h30 et 10h30 - Chaumuzy (51)"), /*#__PURE__*/React.createElement("a", {
     href: "mentions-legales.html"
   }, "Mentions l\xE9gales"), /*#__PURE__*/React.createElement("a", {
     href: "confidentialite.html"
@@ -1515,7 +1520,7 @@ function StickyCTA() {
     }
   }), /*#__PURE__*/React.createElement("div", {
     className: "txt"
-  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Inscriptions d\xE8s le mercredi 28 octobre 2026 \xE0 10h00")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("b", null, "Trail de Chaumuzy"), /*#__PURE__*/React.createElement("span", null, "Dimanche 4 avril 2027 - Inscriptions ouvertes")), /*#__PURE__*/React.createElement("a", {
     className: "btn btn-gold sp",
     href: "#programme"
   }, "Programme"), /*#__PURE__*/React.createElement("a", _extends({

@@ -213,14 +213,12 @@ function Logo({
 }
 
 /* ---- countdown ---- */
-/* Avant le 28/10/2026 10h00 : compte à rebours vers l'ouverture des inscriptions, puis vers le départ (bascule automatique). */
-const OPEN = new Date("2026-10-28T10:00:00+01:00").getTime();
+/* Compte à rebours vers le départ du 23 km (4 avril 2027, 9h30). */
 const RACE = new Date("2027-04-04T09:30:00+02:00").getTime();
 function useCountdown() {
   const calc = () => {
-    const now = Date.now(),
-      pre = now < OPEN;
-    const ms = Math.max(0, (pre ? OPEN : RACE) - now);
+    const pre = false;
+    const ms = Math.max(0, RACE - Date.now());
     return {
       pre,
       d: Math.floor(ms / 86400000),
@@ -283,11 +281,11 @@ function Countdown() {
     className: "cd-wrap"
   }, /*#__PURE__*/React.createElement("p", {
     className: "cd-cap"
-  }, t.pre ? "Ouverture des inscriptions dans" : "Départ dans"), /*#__PURE__*/React.createElement("div", {
+  }, "D\xE9part dans"), /*#__PURE__*/React.createElement("div", {
     className: "countdown"
   }, /*#__PURE__*/React.createElement(Ring, {
     value: t.d,
-    max: t.pre ? 60 : 400,
+    max: 400,
     label: "Jours",
     lead: true
   }), /*#__PURE__*/React.createElement(Ring, {

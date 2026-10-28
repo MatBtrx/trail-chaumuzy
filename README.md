@@ -1,3 +1,5 @@
+> **Mise à jour 28/10/2026 - Inscriptions ouvertes** : compte à rebours vers le départ uniquement. Fichiers retirés de la prod : merci.html, api/subscribe.js (Brevo), index.prod.html, index.dev.html, hifi-*.jsx (sources d'édition conservées hors dépôt), assets/logo-marne-white.png. Nouveaux événements Vercel : section_vue, faq_question, parcours_onglet, calendrier, itineraire.
+
 > **Mise à jour 27/10/2026 - Inscriptions ouvertes** : tous les boutons pointent vers la billetterie Miles Republic (https://fr.milesrepublic.com/event/trail-de-chaumuzy-18058), avec suivi utm + événement `cta_inscription`. Liste d'attente Brevo et `ouverture.js` retirés. Compte à rebours vers le départ. Distances officielles : 23 km (D+/D- 407 m), 15 km (D+/D- 273 m). Réduction de 2 € pour les licencié(e)s FFA.
 
 # Trail de Chaumuzy 2027 — site officiel
