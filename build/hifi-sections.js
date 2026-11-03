@@ -1300,9 +1300,10 @@ function FaqItem({
 /* ---------- bénévoles ----------
    Section « Devenez bénévole » : recrutement direct via Synapse Crew.
    Utilise Icon et Reveal (hifi-ui.js) et les classes existantes (section, wrap, section-head, eyebrow, display, lead, btn). */
-const VOLUNTEER_URL = "https://synapse-crew.vercel.app/inscription/trail-de-chaumuzy";
+/* r = code du recruteur « Site internet » dans Synapse Crew : les bénévoles inscrits depuis le site lui sont rattachés. */
+const VOLUNTEER_URL = "https://synapse-crew.vercel.app/inscription/trail-de-chaumuzy?r=c1165979cd";
 const volunteerLink = where => ({
-  href: VOLUNTEER_URL + "?utm_source=traildechaumuzy.fr&utm_medium=site&utm_campaign=benevoles-2027&utm_content=" + where,
+  href: VOLUNTEER_URL + "&utm_source=traildechaumuzy.fr&utm_medium=site&utm_campaign=benevoles-2027&utm_content=" + where,
   target: "_blank",
   rel: "noopener",
   "data-cta": "benevoles-" + where
