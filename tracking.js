@@ -2,7 +2,8 @@
    Suivi des clics dans Vercel Web Analytics (événements personnalisés, offre Pro).
    Événement clé de vente : « cta_inscription » { emplacement, distance } = clic vers la billetterie.
    Tout lien vers milesrepublic.com est compté comme cta_inscription.
-   Autres événements : scroll_profondeur, section_vue, faq_question, parcours_onglet, calendrier, itineraire, gpx, reglement_pdf, partage, contact_*. */
+   Autres événements : scroll_profondeur, section_vue, faq_question, parcours_onglet, calendrier, itineraire, gpx, reglement_pdf, partage, contact_*,
+   cta_benevole (clic vers l'inscription bénévole Synapse Crew). */
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 (function () {
   /* Source d'arrivée du visiteur (utm_source / referrer), gardée le temps de la visite et jointe aux clics d'inscription :
@@ -44,6 +45,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     var h = el.getAttribute('href') || '', txt = (el.textContent || '').trim().slice(0, 40);
     if (/reglement-sportif/.test(h)) t('reglement_pdf', { emplacement: el.dataset.cta || place(el) });
     else if (el.dataset.reg || h.indexOf('milesrepublic.com') > -1) t('cta_inscription', { emplacement: el.dataset.cta || place(el), distance: el.dataset.km || distance(el) || 'non précisée', source: src });
+    else if (h.indexOf('synapse-crew.vercel.app/inscription') > -1) t('cta_benevole', { emplacement: el.dataset.cta || place(el), source: src });
     else if (h.indexOf('meet.brevo.com') > -1) t('rdv_b2b', { emplacement: place(el) });
     else if (/\.gpx$/.test(h)) t('gpx', { fichier: h.split('/').pop() });
     else if (/\.ics$/.test(h) || /calendar\.google/.test(h)) t('calendrier', { type: /\.ics$/.test(h) ? 'ics' : 'google' });
@@ -70,7 +72,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         if (en.isIntersecting && !seen[id]) { seen[id] = 1; t('section_vue', { section: id }); io.unobserve(en.target); }
       });
     }, { threshold: 0.4 });
-    var watch = function () { ['parcours', 'programme', 'inscriptions', 'partenaires', 'faq'].forEach(function (id) { var el = document.getElementById(id); if (el && !seen[id]) io.observe(el); }); };
+    var watch = function () { ['parcours', 'programme', 'inscriptions', 'partenaires', 'benevoles', 'faq'].forEach(function (id) { var el = document.getElementById(id); if (el && !seen[id]) io.observe(el); }); };
     if (document.readyState === 'complete') setTimeout(watch, 800); else window.addEventListener('load', function () { setTimeout(watch, 800); });
   }
 })();

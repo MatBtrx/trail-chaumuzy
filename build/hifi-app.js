@@ -54,7 +54,7 @@ function App() {
     r.setProperty("--disp-tk", th.tk);
     document.body.dataset.typo = TWEAK_DEFAULTS.typo;
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Territoire, null), /*#__PURE__*/React.createElement(PulseDivider, null), /*#__PURE__*/React.createElement(Parcours, null), /*#__PURE__*/React.createElement(Programme, null), /*#__PURE__*/React.createElement(Inscriptions, null), /*#__PURE__*/React.createElement(Partenaires, null), /*#__PURE__*/React.createElement(Faq, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(StickyCTA, null));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Nav, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(Territoire, null), /*#__PURE__*/React.createElement(PulseDivider, null), /*#__PURE__*/React.createElement(Parcours, null), /*#__PURE__*/React.createElement(Programme, null), /*#__PURE__*/React.createElement(Inscriptions, null), /*#__PURE__*/React.createElement(Partenaires, null), /*#__PURE__*/React.createElement(Benevoles, null), /*#__PURE__*/React.createElement(Faq, null)), /*#__PURE__*/React.createElement(Footer, null), /*#__PURE__*/React.createElement(StickyCTA, null));
 }
 
 /* ---- color helpers ---- */

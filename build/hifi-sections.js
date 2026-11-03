@@ -122,6 +122,9 @@ const NAV = [{
   id: "inscriptions",
   l: "Inscriptions"
 }, {
+  id: "benevoles",
+  l: "Bénévoles"
+}, {
   id: "faq",
   l: "FAQ"
 }];
@@ -1294,6 +1297,126 @@ function FaqItem({
     }
   }, item.link.label)))));
 }
+/* ---------- bénévoles ----------
+   Section « Devenez bénévole » : recrutement direct via Synapse Crew.
+   Utilise Icon et Reveal (hifi-ui.js) et les classes existantes (section, wrap, section-head, eyebrow, display, lead, btn). */
+const VOLUNTEER_URL = "https://synapse-crew.vercel.app/inscription/trail-de-chaumuzy";
+const volunteerLink = where => ({
+  href: VOLUNTEER_URL + "?utm_source=traildechaumuzy.fr&utm_medium=site&utm_campaign=benevoles-2027&utm_content=" + where,
+  target: "_blank",
+  rel: "noopener",
+  "data-cta": "benevoles-" + where
+});
+const MISSIONS_BENEVOLES = [{
+  icon: "shield",
+  name: "Signaleur ou signaleuse",
+  desc: "Sécuriser une traversée de route au passage des coureurs.",
+  when: "Dimanche matin",
+  note: "Majeur(e) et titulaire du permis"
+}, {
+  icon: "droplet",
+  name: "Ravitaillement",
+  desc: "Préparer boissons et encas, et encourager chaque coureur.",
+  when: "Dimanche matin"
+}, {
+  icon: "users",
+  name: "Accueil coureurs",
+  desc: "Remise des dossards, consigne, informations et médailles.",
+  when: "Dimanche, dès 6 h 30"
+}, {
+  icon: "route",
+  name: "Balisage",
+  desc: "Poser, vérifier puis retirer le balisage des parcours.",
+  when: "Samedi après-midi ou dimanche"
+}, {
+  icon: "flag",
+  name: "Sécurité course",
+  desc: "Ouvrir la course ou fermer la marche en serre-file.",
+  when: "Dimanche matin"
+}, {
+  icon: "mountain",
+  name: "Logistique",
+  desc: "Monter et démonter les zones de départ et d'arrivée.",
+  when: "Samedi ou dimanche après-midi"
+}];
+const ATOUTS_BENEVOLES = [{
+  icon: "heart",
+  t: "Aucune expérience requise",
+  d: "Un briefing avant la course et un ou une responsable à chaque poste : vous n'êtes jamais seul(e)."
+}, {
+  icon: "calendar",
+  t: "Vous choisissez",
+  d: "Samedi, dimanche ou les deux : indiquez vos disponibilités et les missions qui vous tentent le plus."
+}, {
+  icon: "phone",
+  t: "Tout sur votre téléphone",
+  d: "Votre fiche bénévole : horaires, point de rendez-vous, itinéraire et contact de votre responsable."
+}];
+function Benevoles() {
+  return React.createElement("section", {
+    className: "section cream-2",
+    id: "benevoles"
+  }, React.createElement("div", {
+    className: "wrap"
+  }, React.createElement("div", {
+    className: "section-head center"
+  }, React.createElement("div", {
+    className: "eyebrow center",
+    style: {
+      justifyContent: "center"
+    }
+  }, "Rejoignez l'\xE9quipe"), React.createElement("h2", {
+    className: "display"
+  }, "Devenez b\xE9n\xE9vole"), React.createElement("p", {
+    className: "lead"
+  }, "Derri\xE8re chaque coureur, il y a des b\xE9n\xE9voles qui balisent, ravitaillent, s\xE9curisent et encouragent. Pour cette premi\xE8re \xE9dition, nous cherchons ", React.createElement("strong", null, "65 b\xE9n\xE9voles"), " : une matin\xE9e au grand air, une \xE9quipe soud\xE9e et la Montagne de Reims en toile de fond.")), React.createElement(Reveal, {
+    className: "bnv-grid"
+  }, MISSIONS_BENEVOLES.map(m => React.createElement("div", {
+    className: "bnv-card",
+    key: m.name
+  }, React.createElement("span", {
+    className: "bnv-icon"
+  }, React.createElement(Icon, {
+    n: m.icon,
+    s: 22
+  })), React.createElement("h3", {
+    className: "bnv-name"
+  }, m.name), React.createElement("p", {
+    className: "bnv-desc"
+  }, m.desc), React.createElement("div", {
+    className: "bnv-when"
+  }, React.createElement(Icon, {
+    n: "clock",
+    s: 15
+  }), " ", m.when), m.note && React.createElement("div", {
+    className: "bnv-note"
+  }, m.note)))), React.createElement(Reveal, {
+    className: "bnv-atouts",
+    d: 1
+  }, ATOUTS_BENEVOLES.map(a => React.createElement("div", {
+    className: "bnv-atout",
+    key: a.t
+  }, React.createElement("span", {
+    className: "bnv-atout-icon"
+  }, React.createElement(Icon, {
+    n: a.icon,
+    s: 20
+  })), React.createElement("div", null, React.createElement("strong", null, a.t), React.createElement("p", null, a.d))))), React.createElement("div", {
+    className: "bnv-cta"
+  }, React.createElement("p", {
+    className: "display"
+  }, "On compte sur vous\xA0?"), React.createElement("a", Object.assign({
+    className: "btn btn-primary"
+  }, volunteerLink("section")), "Je deviens b\xE9n\xE9vole ", React.createElement(Icon, {
+    n: "arrow",
+    s: 18
+  })), React.createElement("p", {
+    className: "bnv-small"
+  }, "Inscription en 3 minutes \xB7 Samedi 3 et dimanche 4 avril 2027 \xB7 Une question\xA0? ", React.createElement("a", {
+    href: "mailto:marne.outdoor.experiences@gmail.com"
+  }, "marne.outdoor.experiences@gmail.com")))));
+}
+
 function Faq() {
   const [open, setOpen] = useState(0);
   return /*#__PURE__*/React.createElement("section", {
