@@ -62,6 +62,7 @@ Les sources JSX ne sont pas dans le dépôt : elles sont dans le projet **Claude
 Search Console : soumettre `sitemap.xml` et demander l'indexation de la page d'accueil après une grosse mise à jour. Vérifier l'image de partage avec le Facebook Sharing Debugger ou LinkedIn Post Inspector.
 
 ## Historique utile
+- **07/11/2026** : section « Devenez bénévole » et entrée « Bénévoles » du menu masquées (code conservé dans `build/hifi-app.js` et `build/hifi-sections.js`, à décommenter pour réafficher).
 - **03/11/2026** : section « Devenez bénévole » (Synapse Crew) et suivi `cta_benevole`. Tri du dépôt.
 - **28/10/2026** : ouverture des inscriptions. Retrait de la pré-inscription Brevo (`api/subscribe.js`, `merci.html`), de la liste d'attente et des anciennes versions de `index.html`. Les variables Vercel `BREVO_*` ne servent plus.
 - **27/10/2026** : distances officielles 23 et 15 km (anciennes pages et GPX 18/24 km redirigés).
