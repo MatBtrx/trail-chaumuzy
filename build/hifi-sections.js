@@ -121,10 +121,7 @@ const NAV = [{
 }, {
   id: "inscriptions",
   l: "Inscriptions"
-}, {
-  id: "benevoles",
-  l: "Bénévoles"
-}, {
+}, /* entrée « Bénévoles » masquée : { id: "benevoles", l: "Bénévoles" }, */ {
   id: "faq",
   l: "FAQ"
 }];
