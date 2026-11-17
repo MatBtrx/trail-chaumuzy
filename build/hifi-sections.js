@@ -629,7 +629,7 @@ function Programme() {
 }
 
 /* ---------- inscriptions ---------- */
-const MEET_B2B = "https://meet.brevo.com/mathieu-boutroux-2/rendez-vous-de-30-minutes";
+const MEET_B2B = "https://cal.com/mathieu-boutroux-b9ho3g/15min";
 
 /* B2B enterprise offer - premium pack + interactive quote simulator + brochure lead */
 const B2B_UNIT = 50; // € / dossard
@@ -1237,7 +1237,7 @@ const FAQ = [{
   a: "Oui. Le Pack entreprise (50 € / dossard) permet d'engager une équipe avec inscription centralisée, facture unique et visibilité de votre marque.",
   link: {
     href: MEET_B2B,
-    label: "Réserver un rendez-vous de 30 min"
+    label: "Réserver un rendez-vous de 15 min"
   }
 }];
 ;

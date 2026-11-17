@@ -46,7 +46,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     if (/reglement-sportif/.test(h)) t('reglement_pdf', { emplacement: el.dataset.cta || place(el) });
     else if (el.dataset.reg || h.indexOf('milesrepublic.com') > -1) t('cta_inscription', { emplacement: el.dataset.cta || place(el), distance: el.dataset.km || distance(el) || 'non précisée', source: src });
     else if (h.indexOf('synapse-crew.vercel.app/inscription') > -1) t('cta_benevole', { emplacement: el.dataset.cta || place(el), source: src });
-    else if (h.indexOf('meet.brevo.com') > -1) t('rdv_b2b', { emplacement: place(el) });
+    else if (h.indexOf('cal.com/') > -1) t('rdv_b2b', { emplacement: place(el) });
     else if (/\.gpx$/.test(h)) t('gpx', { fichier: h.split('/').pop() });
     else if (/\.ics$/.test(h) || /calendar\.google/.test(h)) t('calendrier', { type: /\.ics$/.test(h) ? 'ics' : 'google' });
     else if (el.dataset.faq && el.getAttribute('aria-expanded') !== 'true') t('faq_question', { question: el.dataset.faq.slice(0, 60) });
