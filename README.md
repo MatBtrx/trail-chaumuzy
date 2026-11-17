@@ -27,17 +27,24 @@ Site statique (HTML, CSS, JavaScript précompilé), sans serveur ni compilation.
 | `robots.txt` · `sitemap.xml` | Référencement. |
 | `vercel.json` | En-têtes de sécurité, cache, redirections des anciennes adresses (pages 18 et 24 km, anciens GPX). |
 
-Les sources JSX ne sont pas dans le dépôt : elles sont dans le projet **Claude Design** du trail.
+**Ce dépôt est la référence du site.** Le code de la page d'accueil est `build/*.js` (React précompilé) : on le modifie directement. Les anciennes sources `.jsx` n'existent plus (elles n'ont pas été reprises lors du passage de Claude Design à claude.ai).
 
-## Mettre à jour le site
+## Mettre à jour le site (depuis le 17/11/2026)
 
-- **Petite modification** (texte d'un fichier HTML, `dossards.json`, PDF) : sur GitHub, ouvrir le fichier → crayon → **Commit**. Vercel publie en environ 30 secondes.
-- **Nouvel export Claude Design** : GitHub → **Add file → Upload files** → déposer le contenu exporté en gardant les chemins (`build/`, `assets/`).
-  ⚠️ Un export qui ne contient pas les ajouts faits directement dans ce dépôt les efface. Ajouts à reporter dans Claude Design avant tout nouvel export :
-  - section « Devenez bénévole » (commit `39ddd93`, 3/11/2026) ;
-  - `tracking.js` et son chargement dans `index.html`.
-- **Cache** : après modification d'un fichier JS ou CSS, augmenter son numéro `?v=` dans `index.html`, sinon les visiteurs gardent l'ancienne version.
-- **Claude Design autonome ferme le 14/12/2026** : ce dépôt devient alors la seule référence du site.
+Le site se pilote depuis Claude (projet claude.ai « Synapse-sport »), comme celui du Trail de Blancs-Coteaux.
+
+1. **Proposer les changements** sur le canevas Claude Design **« Site Trail de Chaumuzy — Accueil »** : copie statique de la page d'accueil, découpée en trois planches. On y modifie les textes directement, on ajoute ou supprime des éléments, ou on laisse un commentaire sur un élément. Rien de ce canevas n'est publié tel quel.
+2. **Dire « publie » (ou « mise en ligne ») à Claude.** Claude relit les planches, repère les modifications et les reporte dans ce dépôt :
+   - sur une **branche de travail**, jamais directement sur `main` ;
+   - il vérifie le rendu et l'**aperçu Vercel** de la branche ;
+   - puis il publie sur `main` : Vercel met le site en ligne en environ 30 secondes ;
+   - il vérifie www.traildechaumuzy.fr et le statut du déploiement Vercel ;
+   - enfin il remet à jour la copie `site/` de l'ancien projet Claude Design « Trail de Chaumuzy » et, si besoin, le canevas.
+3. **Ne plus téléverser d'export Claude Design** (GitHub → *Add file → Upload files*) : un export écrase les modifications faites dans ce dépôt (c'est ce qui est arrivé avec le dernier commit « Add files via upload »). L'ancien projet Claude Design ne sert plus qu'à consulter la copie `site/`.
+4. **Cache** : après **chaque** modification d'un fichier JS ou CSS (`build/*.js`, `hifi.css`, `trace-data.js`, `tracking.js`…), augmenter son numéro `?v=` dans `index.html` (format `AAAAMMJJ` + lettre, par ex. `?v=20261117a`). Sinon les visiteurs gardent l'ancienne version, mise en cache pour un an.
+5. **Petite correction urgente** (texte d'une page légale, `dossards.json`, PDF) : possible aussi sur GitHub (fichier → crayon → **Commit**), en le signalant à Claude pour qu'il remette à jour le canevas et la copie `site/`.
+
+Projet Vercel : équipe `synapse-sport`, projet `trail-chaumuzy`. Aucun secret (clé, jeton, mot de passe) ne doit être placé dans ce dépôt : il est publié tel quel.
 
 ### Jauge de dossards
 `dossards.json` : renseigner `sold` (inscrits relevés sur Miles Republic) par catégorie et `updated` (date du relevé). La jauge s'affiche quand `SHOW_GAUGE` vaut `true` (en tête de `build/hifi-sections.js`).
@@ -62,6 +69,7 @@ Les sources JSX ne sont pas dans le dépôt : elles sont dans le projet **Claude
 Search Console : soumettre `sitemap.xml` et demander l'indexation de la page d'accueil après une grosse mise à jour. Vérifier l'image de partage avec le Facebook Sharing Debugger ou LinkedIn Post Inspector.
 
 ## Historique utile
+- **17/11/2026** : pilotage du site depuis Claude (canevas « Site Trail de Chaumuzy — Accueil », copie `site/` dans l'ancien projet Claude Design). Fin des téléversements d'export Claude Design.
 - **07/11/2026** : section « Devenez bénévole » et entrée « Bénévoles » du menu masquées (code conservé dans `build/hifi-app.js` et `build/hifi-sections.js`, à décommenter pour réafficher).
 - **03/11/2026** : section « Devenez bénévole » (Synapse Crew) et suivi `cta_benevole`. Tri du dépôt.
 - **28/10/2026** : ouverture des inscriptions. Retrait de la pré-inscription Brevo (`api/subscribe.js`, `merci.html`), de la liste d'attente et des anciennes versions de `index.html`. Les variables Vercel `BREVO_*` ne servent plus.
