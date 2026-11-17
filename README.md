@@ -15,16 +15,18 @@ Site statique (HTML, CSS, JavaScript précompilé), sans serveur ni compilation.
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page d'accueil : `<head>` SEO (Open Graph, données structurées SportsEvent et FAQPage), puis chargement des scripts. |
+| `index.html` | Page d'accueil : `<head>` SEO (Open Graph, données structurées SportsEvent et FAQPage), thème définitif (`<style id="theme">`), **contenu pré-rendu** dans `#root` (voir plus bas), puis chargement des scripts. |
+| `vendor/` | React 18.3.1 (fichiers officiels, hébergés sur le site au lieu d'unpkg.com). |
 | `build/hifi-ui.js` · `build/hifi-sections.js` · `build/hifi-app.js` | Code React précompilé de la page (composants, sections, ordre des sections). |
 | `hifi.css` | Styles de toutes les pages. |
 | `trace-data.js` | Tracés GPS des deux parcours. |
-| `logo-data.js` | Logos embarqués (data-URI). |
+| `logo-data.js` | Ancien fichier de logos embarqués (87 Ko) : **n'est plus chargé** depuis le 17/11/2026, les logos viennent de `assets/*.webp`. |
 | `dossards.json` | Jauge des dossards (voir plus bas). |
 | `tracking.js` | Suivi des clics (Vercel Web Analytics). |
 | `mentions-legales.html` · `confidentialite.html` | Pages légales et RGPD. |
 | `assets/` | Logos, favicon, image de partage `og-image-2027-v4.jpg`, photo, règlement sportif PDF, tracés `.gpx` 15 et 23 km, calendrier `.ics`. |
-| `robots.txt` · `sitemap.xml` | Référencement. |
+| `robots.txt` · `sitemap.xml` · `llms.txt` | Référencement ; `llms.txt` résume l'épreuve pour les assistants IA (à tenir à jour avec les dates, tarifs et liens). |
+| `outils/prerender.py` | Script de pré-rendu de la page d'accueil (non publié : voir `.vercelignore`). |
 | `vercel.json` | En-têtes de sécurité, cache, redirections des anciennes adresses (pages 18 et 24 km, anciens GPX). |
 
 **Ce dépôt est la référence du site.** Le code de la page d'accueil est `build/*.js` (React précompilé) : on le modifie directement. Les anciennes sources `.jsx` n'existent plus (elles n'ont pas été reprises lors du passage de Claude Design à claude.ai).
@@ -41,8 +43,9 @@ Le site se pilote depuis Claude (projet claude.ai « Synapse-sport »), comme ce
    - il vérifie www.traildechaumuzy.fr et le statut du déploiement Vercel ;
    - enfin il remet à jour la copie `site/` de l'ancien projet Claude Design « Trail de Chaumuzy » et, si besoin, le canevas.
 3. **Ne plus téléverser d'export Claude Design** (GitHub → *Add file → Upload files*) : un export écrase les modifications faites dans ce dépôt (c'est ce qui est arrivé avec le dernier commit « Add files via upload »). L'ancien projet Claude Design ne sert plus qu'à consulter la copie `site/`.
-4. **Cache** : après **chaque** modification d'un fichier JS ou CSS (`build/*.js`, `hifi.css`, `trace-data.js`, `tracking.js`…), augmenter son numéro `?v=` dans `index.html` (format `AAAAMMJJ` + lettre, par ex. `?v=20261117a`). Sinon les visiteurs gardent l'ancienne version, mise en cache pour un an.
-5. **Petite correction urgente** (texte d'une page légale, `dossards.json`, PDF) : possible aussi sur GitHub (fichier → crayon → **Commit**), en le signalant à Claude pour qu'il remette à jour le canevas et la copie `site/`.
+4. **Pré-rendu** : après chaque modification de `build/*.js`, `hifi.css`, `trace-data.js` ou d'un texte de la page, relancer `python3 outils/prerender.py` (Playwright et Chrome requis). Il recopie le contenu affiché dans `index.html`, pour Google, les assistants IA et un affichage plus rapide. Sans cela, les robots continuent de lire l'ancien texte.
+5. **Cache** : après **chaque** modification d'un fichier JS ou CSS (`build/*.js`, `hifi.css`, `trace-data.js`, `tracking.js`…), augmenter son numéro `?v=` dans `index.html` (format `AAAAMMJJ` + lettre, par ex. `?v=20261117a`). Sinon les visiteurs gardent l'ancienne version, mise en cache pour un an.
+6. **Petite correction urgente** (texte d'une page légale, `dossards.json`, PDF) : possible aussi sur GitHub (fichier → crayon → **Commit**), en le signalant à Claude pour qu'il remette à jour le canevas et la copie `site/`.
 
 Projet Vercel : équipe `synapse-sport`, projet `trail-chaumuzy`. Aucun secret (clé, jeton, mot de passe) ne doit être placé dans ce dépôt : il est publié tel quel.
 
@@ -69,6 +72,8 @@ Projet Vercel : équipe `synapse-sport`, projet `trail-chaumuzy`. Aucun secret (
 Search Console : soumettre `sitemap.xml` et demander l'indexation de la page d'accueil après une grosse mise à jour. Vérifier l'image de partage avec le Facebook Sharing Debugger ou LinkedIn Post Inspector.
 
 ## Historique utile
+- **17/11/2026 (optimisation)** : contenu de l'accueil pré-rendu dans `index.html` (lisible sans JavaScript), thème définitif dans le HTML, React hébergé dans `vendor/`, logos en WebP (fin du chargement de `logo-data.js`), `llms.txt`, sitemap à jour, lien du calendrier corrigé (traildechaumuzy.fr).
+- **17/11/2026** : rendez-vous partenaires et entreprises via Cal.com (15 min), plus de lien Brevo.
 - **17/11/2026** : pilotage du site depuis Claude (canevas « Site Trail de Chaumuzy — Accueil », copie `site/` dans l'ancien projet Claude Design). Fin des téléversements d'export Claude Design.
 - **07/11/2026** : section « Devenez bénévole » et entrée « Bénévoles » du menu masquées (code conservé dans `build/hifi-app.js` et `build/hifi-sections.js`, à décommenter pour réafficher).
 - **03/11/2026** : section « Devenez bénévole » (Synapse Crew) et suivi `cta_benevole`. Tri du dépôt.

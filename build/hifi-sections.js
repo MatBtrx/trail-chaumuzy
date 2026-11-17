@@ -969,7 +969,7 @@ function EarlyBird() {
 /* ---------- add to calendar ---------- */
 function AddToCalendar() {
   // Google Calendar pre-filled link (UTC times: 23km start 09:30 local = 07:30Z)
-  const g = "https://calendar.google.com/calendar/render?action=TEMPLATE" + "&text=" + encodeURIComponent("Trail de Chaumuzy 2027") + "&dates=20270404T073000Z/20270404T120000Z" + "&details=" + encodeURIComponent("1re édition. Deux parcours nature au cœur du vignoble champenois. Infos : https://trail-chaumuzy.fr") + "&location=" + encodeURIComponent("Foyer Rural de Chaumuzy, 33 rue du Capitaine Chesnais, 51170 Chaumuzy");
+  const g = "https://calendar.google.com/calendar/render?action=TEMPLATE" + "&text=" + encodeURIComponent("Trail de Chaumuzy 2027") + "&dates=20270404T073000Z/20270404T120000Z" + "&details=" + encodeURIComponent("1re édition. Deux parcours nature au cœur du vignoble champenois. Infos : https://www.traildechaumuzy.fr") + "&location=" + encodeURIComponent("Foyer Rural de Chaumuzy, 33 rue du Capitaine Chesnais, 51170 Chaumuzy");
   return /*#__PURE__*/React.createElement("div", {
     className: "cal-block"
   }, /*#__PURE__*/React.createElement("div", {

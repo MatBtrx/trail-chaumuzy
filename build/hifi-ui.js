@@ -203,7 +203,7 @@ function Logo({
   /* Logos are inlined as data URIs (logo-data.js) so the deployed bundle has
      zero asset dependency; fall back to the file path if the data isn't loaded. */
   const L = typeof window !== "undefined" && window.LOGO_TRAIL || {};
-  const src = ink ? L.ink || "assets/logo-trail-chaumuzy.png" : L.white || "assets/logo-trail-chaumuzy-white.png";
+  const src = ink ? L.ink || "assets/logo-trail-chaumuzy.png" : L.white || "assets/logo-trail-chaumuzy-white.webp";
   return /*#__PURE__*/React.createElement("img", {
     className: cls,
     src: src,
